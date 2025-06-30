@@ -1,0 +1,74 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+:root {
+  /* HueMn Brand Colors [cite: image.png-3a9df981-d7ca-4e3e-bd7c-0fbb788780c4] */
+  --color-light-blue: #9FE7F5;
+  --color-medium-blue: #429EBD;
+  --color-dark-blue: #053F5C;
+  --color-light-orange: #F7A019;
+  --color-orange: #F27F0C;
+
+  /* Basic Resets & Defaults (Example) */
+  --color-text: #333;
+  --color-background: #ffffff;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    --font-heading: 'Archivo Black', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark; /* Basic light/dark mode support */
+  color: var(--color-text);
+  background-color: var(--color-background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Add more global styles or resets as needed */
+
+/* Example of using a variable */
+h1, h2, h3 { /* Example applying to multiple headings */
+  font-family: var(--font-heading);
+  text-transform: uppercase; /* Match the style from screenshots */
+  /* Add other heading styles like margin, weight etc. */
+}
+
+/* Basic Dark Mode Example (Optional - can be refined later) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: rgba(255, 255, 255, 0.87);
+    --color-background: #242424;
+  }
+   h1 {
+     color: var(--color-light-blue);
+   }
+}
+
+/* Add to src/index.css */
+
+/* Make the root app container take up at least the full viewport height */
+/* and use flexbox to control layout */
+#root, .app-container { /* Target #root (created by Vite) and your wrapper */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make the main content area grow to fill available space */
+.main-content {
+  flex-grow: 1;
+  /* Add some padding if desired */
+   padding: 1rem; /* Example padding */
+}
+
+/* Footer styles are already in Footer.module.css */
+/* Header styles are already in Header.module.css */

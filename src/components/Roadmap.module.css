@@ -1,0 +1,29 @@
+/* src/components/Roadmap.module.css */
+.roadmapSection {
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: #f0f0f0; /* Light background for contrast */
+    margin-top: 2rem;
+  }
+  
+  /* Basic dark mode adjustment */
+  @media (prefers-color-scheme: dark) {
+    .roadmapSection {
+       background-color: #2a2a2a;
+    }
+     .roadmapSection h2 {
+        color: var(--color-light-blue);
+     }
+  }
+  
+  .roadmapSection h2 {
+    margin-bottom: 1.5rem;
+    color: var(--color-dark-blue);
+  }
+  
+  .roadmapImage {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds subtle shadow */
+  }
