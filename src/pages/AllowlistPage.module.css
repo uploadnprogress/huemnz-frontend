@@ -1,0 +1,101 @@
+/* Add this keyframe animation to the top of the file */
+@keyframes spinAndFlicker {
+    0% { transform: rotate(0deg) scale(1); opacity: 1; }
+    25% { transform: rotate(90deg) scale(0.8); opacity: 0.5; }
+    50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
+    75% { transform: rotate(270deg) scale(0.9); opacity: 0.7; }
+    100% { transform: rotate(360deg) scale(1); opacity: 1; }
+  }
+  
+  .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4rem 2rem;
+      font-family: 'Inter', sans-serif;
+  }
+  
+  .gameBox {
+      width: 100%;
+      max-width: 600px;
+      background: var(--color-card-background);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      color: var(--color-text-primary);
+  }
+  
+  .gameBox h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  .gameBox p { color: var(--color-text-secondary); margin-bottom: 2rem; line-height: 1.5; }
+  
+  .walletInput {
+      padding: 0.9rem 1.2rem;
+      font-size: 1rem;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-background);
+      color: var(--color-text-secondary);
+      border-radius: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+      text-align: center;
+      cursor: not-allowed;
+  }
+  
+  .diceContainer { display: flex; justify-content: space-around; align-items: center; margin-bottom: 2rem; }
+  .diceWrapper h3 { font-size: 1rem; color: var(--color-text-secondary); margin-bottom: 1rem; }
+  .dicePair { display: flex; gap: 1rem; justify-content: center; }
+  .diceIcon { font-size: 4rem; }
+  .vs { font-size: 2rem; font-weight: 700; color: var(--color-light-orange); margin: 0 1rem; }
+  
+  /* This class triggers the new animation */
+  .rolling {
+      animation: spinAndFlicker 0.5s infinite linear;
+  }
+  
+  .resultMessage { font-size: 1.5rem; font-weight: bold; margin-bottom: 2rem; }
+  .resultMessage.win { color: #28a745; }
+  .resultMessage.lose { color: #dc3545; }
+  .resultMessage.tie { color: var(--color-light-orange); }
+  
+  .gameBox button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-dark-blue);
+    background-color: var(--color-orange);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .gameBox button:disabled {
+      background-color: #333;
+      color: #666;
+      cursor: not-allowed;
+      opacity: 0.7;
+  }
+  
+  /* Win Screen Styles */
+  .winScreen { padding: 1rem; }
+  .winScreen h2 { color: var(--color-light-orange); }
+  .walletProof {
+      background-color: var(--color-background);
+      border: 1px solid var(--color-light-orange);
+      padding: 0.75rem;
+      border-radius: 8px;
+      margin: 1rem 0 2rem 0;
+      font-size: 1.1rem;
+  }
+  .walletProof strong { color: var(--color-text-primary); }
+  
+  .instructions { text-align: left; background: var(--color-background); padding: 1.5rem; border-radius: 8px; }
+  .instructions h3 { margin-top: 0; color: var(--color-light-orange); }
+  .instructions ol { padding-left: 1.5rem; margin: 0; }
+  .instructions li { margin-bottom: 1rem; line-height: 1.5; color: var(--color-text-secondary); }
+  .instructions li:last-child { margin-bottom: 0; }
+  .instructions a { color: var(--color-light-blue); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .instructions a:hover { text-decoration: underline; }

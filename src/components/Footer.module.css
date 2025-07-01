@@ -1,47 +1,61 @@
-/* src/components/Footer.module.css */
 .footer {
-    background-color: #f8f8f8;
-    color: #333;
-    padding: 1.5rem 0;
-    margin-top: 2rem; /* Push footer down */
-    border-top: 1px solid #eee;
-  }
-  
-  /* Basic dark mode adjustment */
-  @media (prefers-color-scheme: dark) {
-   .footer {
-      background-color: #2f2f2f;
-      color: rgba(255, 255, 255, 0.87);
-      border-top: 1px solid #444;
-    }
-   .footer a {
-     color: var(--color-light-blue);
-   }
-  }
-  
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    gap: 1rem; /* Add gap between items */
-    text-align: center;
-  }
-  
-  .container p {
-      margin: 0;
-  }
-  
-  .container a {
-    color: var(--color-dark-blue);
-    text-decoration: none;
-    margin-left: 1rem;
-  }
-  
-  .container a:hover {
-      text-decoration: underline;
-  }
+  background-color: #021c29; /* Match main background */
+  color: #a0d8e8;
+  padding: 3rem 0;
+  border-top: 1px solid var(--color-border);
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left .logo {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.left p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.center {
+  display: flex;
+  gap: 2rem;
+}
+
+.center a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.center a:hover {
+  color: var(--color-text-primary);
+}
+
+.right {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.right a {
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.right a:hover {
+  color: var(--color-light-orange);
+}

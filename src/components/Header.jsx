@@ -1,23 +1,25 @@
-// src/components/Header.jsx
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
+import logoImage from '../assets/logo.png'; // Using your specified name
 
 function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        {/* Use Link for logo to go home */}
-        <Link to="/" className={styles.logo}>HueMnz</Link>
-        <nav className={styles.nav}>
-          {/* Use Link component for navigation */}
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link> {/* Assuming content from /intro goes here */}
-          <Link to="/vision">The Vision</Link> {/* Assuming content from /our-views goes here */}
-          <Link to="/faq">FAQ</Link>
-          <Link to="/allowlist">Allowlist</Link> {/* Added Allowlist */}
-          <Link to="/mint">Mint</Link> {/* Added Mint */}
-          <Link to="/contact">Contact</Link>
+        <NavLink to="/" className={styles.logo}>
+            <img src={logoImage} alt="Huemnz Logo" />
+        </NavLink>
+        <nav className={styles.navLinks}>
+          <NavLink to="/about" className={({ isActive }) => `${styles.navButton} ${isActive ? styles.active : ''}`}>
+            About
+          </NavLink>
+          <NavLink to="/faq" className={({ isActive }) => `${styles.navButton} ${isActive ? styles.active : ''}`}>
+            FAQ
+          </NavLink>
+          <NavLink to="/allowlist" className={({ isActive }) => `${styles.navButton} ${styles.allowlistButton} ${isActive ? styles.active : ''}`}>
+            Allowlist Game
+          </NavLink>
         </nav>
       </div>
     </header>

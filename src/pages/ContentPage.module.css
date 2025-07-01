@@ -1,0 +1,41 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .container h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #f0f0f0;
+  }
+  
+  .content h2, .faqItem h3 {
+    font-size: 1.8rem;
+    color: #007BFF;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .content p, .faqItem p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #a0a0a0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .faqItem {
+    background-color: #121212;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+  }

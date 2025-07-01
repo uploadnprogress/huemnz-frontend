@@ -1,154 +1,130 @@
 /* ===== GLOBAL STYLES & THEME ===== */
 :root {
-    --background-color: #0a0a0a; /* Very dark background */
-    --text-color: #e0e0e0; /* Soft white for readability */
-    --primary-accent: #007BFF; /* Vibrant blue for calls to action */
-    --border-color: #2a2a2a; /* Subtle borders */
-    --card-background: #121212; /* Background for cards/sections */
-  }
-  
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
-  /* ===== LAYOUT & CONTAINER ===== */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    overflow-x: hidden; /* Prevents horizontal scroll from animations */
-  }
-  
-  /* ===== HEADER STYLES ===== */
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-  
-  .nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    margin-left: 2rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  
-  .nav a:hover {
-    color: var(--primary-accent);
-  }
-  
-  /* ===== HERO SECTION ===== */
-  .hero {
-    text-align: center;
-    padding: 6rem 0;
-  }
-  
-  .hero h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(90deg, #ffffff, #aaaaaa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .hero p {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-    color: #a0a0a0;
-  }
-  
-  /* ===== GALLERY / CHARACTERS SECTION ===== */
-  .gallerySection {
-    padding: 4rem 0;
-    text-align: center;
-  }
-  
-  .gallerySection h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .galleryGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .artPlaceholder {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1; /* Ensures images are square */
+  --background-color: #0a0a0a;
+  --text-color: #e0e0e0;
+  --primary-accent: #007BFF;
+  --border-color: #2a2a2a;
+  --card-background: #121212;
+}
+
+/* ===== LAYOUT & CONTAINER ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER STYLES ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin-left: 2.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--primary-accent);
+}
+
+/* ===== GENERIC CONTENT SECTION ===== */
+.contentSection {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.infoSection {
+  padding: 6rem 0;
+  text-align: center;
+  background-color: var(--card-background);
+  border-radius: 16px;
+  margin: 2rem 0;
+}
+
+.contentSection h2, .infoSection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.sectionDescription {
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  color: #a0a0a0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ===== SNEAK PEEKS GRID ===== */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.artCard {
     background-color: var(--card-background);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .artPlaceholder:hover {
+    padding: 1rem;
+}
+
+.artCard:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 123, 255, 0.1);
-  }
-  
-  /* ===== ALLOWLIST SECTION ===== */
-  .allowlistSection {
-    text-align: center;
-    padding: 6rem 0;
-    background-color: var(--card-background);
-    border-radius: 16px;
-    margin: 4rem 0;
-  }
-  
-  .allowlistSection h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .allowlistSection p {
-    color: #a0a0a0;
-    margin-bottom: 2rem;
-  }
-  
-  .inputGroup {
+}
+
+.artPlaceholder {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+}
+
+.artCaption {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* ===== BUTTON GROUP FOR NAVIGATION ===== */
+.buttonGroup {
     display: flex;
     justify-content: center;
-    gap: 10px;
-  }
-  
-  .emailInput {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    border: 1px solid var(--border-color);
-    background-color: #1a1a1a;
-    color: var(--text-color);
-    border-radius: 8px;
-    width: 300px;
-  }
-  
-  /* ===== SHARED BUTTON STYLES ===== */
-  .primaryButton {
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.secondaryButton {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
-    color: #ffffff;
-    background-color: var(--primary-accent);
-    border: none;
+    color: var(--text-color);
+    background-color: transparent;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .primaryButton:hover {
-    background-color: #0056b3;
-  }
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.secondaryButton:hover {
+    background-color: var(--primary-accent);
+    border-color: var(--primary-accent);
+    color: #ffffff;
+}
