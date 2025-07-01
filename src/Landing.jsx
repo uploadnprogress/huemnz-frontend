@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './Landing.module.css';
-import backgroundImage from '../assets/landing.jpg'; // Using your specified name
-import logoImage from '../assets/logo.png';
+// Correct Path: From 'src', go into 'assets'
+import backgroundImage from './assets/landing.jpg';
+import logoImage from './assets/logo.png';
 
 function Landing({ onEnter }) {
   const [formData, setFormData] = useState({

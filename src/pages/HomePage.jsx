@@ -9,12 +9,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 // --- CORRECTED ASSET HANDLING ---
-// Use Vite's import.meta.glob to correctly import all slide images from the assets folder.
+// Use a relative path for the glob import
 const slideModules = import.meta.glob('../assets/slide*.{jpg,png,jpeg,svg}', { eager: true, as: 'url' });
 const slideImages = Object.values(slideModules);
 
-// Import other static images using the correct relative path.
-// From 'src/pages', we go up one level ('../') to 'src/', then into 'assets/'.
+// Use the correct relative path for all other images
 import roadmapImage from '../assets/roadmap.png';
 import artistImage from '../assets/artist.jpg';
 import founderImage from '../assets/founder.jpg';
