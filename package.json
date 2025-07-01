@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@polkadot/api": "^16.2.2",
+    "@polkadot/extension-dapp": "^0.61.1",
     "framer-motion": "^12.20.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

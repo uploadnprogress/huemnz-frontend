@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useOutletContext } from 'react-router-dom';
 import Slider from 'react-slick';
 import styles from './HomePage.module.css';
 
 // Import carousel styles
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-
-// --- CORRECTED ASSET HANDLING ---
-// Use a relative path for the glob import
-const slideModules = import.meta.glob('../assets/slide*.{jpg,png,jpeg,svg}', { eager: true, as: 'url' });
-const slideImages = Object.values(slideModules);
-
-// Use the correct relative path for all other images
-import roadmapImage from '../assets/roadmap.png';
-import artistImage from '../assets/artist.jpg';
-import founderImage from '../assets/founder.jpg';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -27,8 +17,11 @@ const fadeIn = {
   }
 };
 
-function HomePage({ userData }) {
+function HomePage() {
+  const { userData } = useOutletContext();
   const [isWinner, setIsWinner] = useState(false);
+  // Create an array of public paths for the carousel
+  const slideImages = Array.from({ length: 8 }, (_, i) => `/assets/slide${i + 1}.jpg`);
 
   useEffect(() => {
     const winnerData = localStorage.getItem('huemnzWinner');
@@ -123,7 +116,7 @@ function HomePage({ userData }) {
         className={styles.roadmapSection} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeIn}
       >
         <h2>Roadmap</h2>
-        <img src={roadmapImage} alt="Huemnz Project Roadmap" className={styles.roadmapImage}/>
+        <img src="/assets/roadmap.png" alt="Huemnz Project Roadmap" className={styles.roadmapImage}/>
       </motion.section>
 
       <motion.section 
@@ -132,13 +125,13 @@ function HomePage({ userData }) {
         <h2>Meet the Founders</h2>
         <div className={styles.teamGrid}>
           <div className={styles.teamMember}>
-            <img src={artistImage} alt="The Artist"/>
+            <img src="/assets/artist.jpg" alt="The Artist"/>
             <h3>The Artist</h3>
             <p>The visionary architect behind the Huemnz aesthetic, translating complex ideas into iconic visual art.</p>
             <a href="#" target="_blank" rel="noopener noreferrer">View Portfolio</a>
           </div>
           <div className={styles.teamMember}>
-            <img src={founderImage} alt="The Founder"/>
+            <img src="/assets/founder.jpg" alt="The Founder"/>
             <h3>The Founder</h3>
             <p>The technical mind building the foundational protocols that power the Huemnz ecosystem.</p>
             <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer">View GitHub</a>

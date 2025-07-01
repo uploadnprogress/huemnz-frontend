@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate, Navigate, Outlet } from 'react-router-dom';
 
-// Import Layout Components
+// Import Layout Components & Pages
 import Header from './components/Header';
 import Footer from './components/Footer';
-
-// Import Page Components
-import Landing from './Landing'; // CORRECTED PATH
+import Landing from './pages/Landing';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import FAQPage from './pages/FAQPage';
@@ -14,13 +12,14 @@ import AllowlistPage from './pages/AllowlistPage';
 import ContactPage from './pages/ContactPage';
 import VisionPage from './pages/VisionPage';
 
-// This component provides the main site layout with Header and Footer
-const MainLayout = () => (
+// This is the main site layout. The <Outlet> component is a placeholder
+// where the correct page (HomePage, AboutPage, etc.) will be rendered by the router.
+const MainLayout = ({ userData }) => (
   <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: '#0a0a0a' }}>
     <Header />
     <main style={{ flex: 1 }}>
-      {/* Outlet renders the matched child route (e.g., HomePage, AboutPage) */}
-      <Outlet />
+      {/* We pass userData down to the child routes via the Outlet's context */}
+      <Outlet context={{ userData }} />
     </main>
     <Footer />
   </div>
@@ -28,34 +27,37 @@ const MainLayout = () => (
 
 function App() {
   const [userData, setUserData] = useState(() => {
+    // On initial load, try to get user data from localStorage
     const savedData = localStorage.getItem('huemnzUserData');
     return savedData ? JSON.parse(savedData) : null;
   });
   
   const navigate = useNavigate();
 
+  // This function is called from the Landing page form
   const handleEnter = (formData) => {
     console.log('User has entered with data:', formData);
+    // Save the user's data to localStorage to "remember" them
     localStorage.setItem('huemnzUserData', JSON.stringify(formData));
     setUserData(formData);
-    navigate('/');
+    navigate('/'); // Navigate to the main site
   };
-  
-  // A helper to pass the userData prop to components that need it
-  const withUserData = (Component) => <Component userData={userData} />;
 
   return (
     <Routes>
       <Route path="/welcome" element={<Landing onEnter={handleEnter} />} />
 
-      {/* If userData exists, render the main site layout, otherwise redirect to welcome */}
-      <Route element={userData ? <MainLayout /> : <Navigate to="/welcome" replace />}>
-        <Route path="/" element={withUserData(HomePage)} />
+      {/* If userData exists, render the main site layout. Otherwise, redirect to welcome. */}
+      <Route 
+        element={userData ? <MainLayout userData={userData} /> : <Navigate to="/welcome" replace />}
+      >
+        {/* All routes inside here will be rendered within the MainLayout's <Outlet> */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/allowlist" element={<AllowlistPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/faq" element={<FAQPage />} />
-        <Route path="/allowlist" element={withUserData(AllowlistPage)} />
-        <Route path="/contact" element={<ContactPage />} />
         <Route path="/vision" element={<VisionPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Route>
       
       {/* Fallback for any unmatched URL */}

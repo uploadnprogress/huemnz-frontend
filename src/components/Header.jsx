@@ -1,15 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.css';
-// Correct Path: From 'src/components' go up to 'src', then to 'assets'
-import logoImage from '../assets/logo.png';
+
+// NO LONGER importing the logo image
 
 function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <NavLink to="/" className={styles.logo}>
-            <img src={logoImage} alt="Huemnz Logo" />
+            {/* Reference the image directly from the public path */}
+            <img src="/assets/logo.png" alt="Huemnz Logo" />
         </NavLink>
         <nav className={styles.navLinks}>
           <NavLink to="/about" className={({ isActive }) => `${styles.navButton} ${isActive ? styles.active : ''}`}>
