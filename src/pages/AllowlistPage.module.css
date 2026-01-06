@@ -37,13 +37,14 @@
   }
   
   .front  { transform: rotateY(0deg) translateZ(32px); }
-  .back   { transform: rotateX(180deg) translateZ(32px); }
+  .back   { transform: rotateY(180deg) translateZ(32px); }
   .right  { transform: rotateY(90deg) translateZ(32px); }
   .left   { transform: rotateY(-90deg) translateZ(32px); }
   .top    { transform: rotateX(90deg) translateZ(32px); }
   .bottom { transform: rotateX(-90deg) translateZ(32px); }
   
-  /* ===== EXISTING STYLES ===== */
+  
+  /* ===== PAGE STYLES ===== */
   
   .container {
       display: flex;
@@ -64,7 +65,17 @@
       color: var(--color-text-primary);
   }
   
-  .gameBox h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+  /* ADDED: Gradient title style */
+  .gradientTitle {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--color-light-blue), var(--color-light-orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+  
+  
   .gameBox p { color: var(--color-text-secondary); margin-bottom: 2rem; line-height: 1.5; }
   
   .walletInput {
@@ -112,9 +123,9 @@
   }
   
   .winScreen {
-      padding: 1rem;
-      margin-top: 2rem; /* Added margin for spacing */
-      border-top: 1px solid var(--color-border); /* Added separator line */
+      padding: 2rem 1rem 1rem 1rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--color-border);
   }
   .winScreen h2 { color: var(--color-light-orange); }
   .walletProof {

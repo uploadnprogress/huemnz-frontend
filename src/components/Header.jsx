@@ -1,31 +1,37 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import logoImg from '../assets/Huemnz Logo.jpg';
 import styles from './Header.module.css';
 
-// NO LONGER importing the logo image
+const Header = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-function Header() {
+  // Logic: If on home, scroll top. If elsewhere, go home.
+  const handleLogoClick = () => {
+    if (location.pathname === '/home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/home');
+    }
+  };
+
   return (
     <header className={styles.header}>
-      <div className={styles.container}>
-        <NavLink to="/" className={styles.logo}>
-            {/* Reference the image directly from the public path */}
-            <img src="/assets/logo.png" alt="Huemnz Logo" />
-        </NavLink>
-        <nav className={styles.navLinks}>
-          <NavLink to="/about" className={({ isActive }) => `${styles.navButton} ${isActive ? styles.active : ''}`}>
-            About
-          </NavLink>
-          <NavLink to="/faq" className={({ isActive }) => `${styles.navButton} ${isActive ? styles.active : ''}`}>
-            FAQ
-          </NavLink>
-          <NavLink to="/allowlist" className={({ isActive }) => `${styles.navButton} ${styles.allowlistButton} ${isActive ? styles.active : ''}`}>
-            Allowlist Game
-          </NavLink>
-        </nav>
+      <div className={styles.logo} onClick={handleLogoClick}>
+        <img src={logoImg} alt="HUEMNZ" className={styles.logoImage} />
       </div>
+      <nav className={styles.nav}>
+        <span className={styles.navLink} onClick={() => navigate('/about')}>About</span>
+        <span className={styles.navLink} onClick={() => navigate('/vision')}>Vision</span>
+        <span className={styles.navLink} onClick={() => navigate('/faq')}>FAQ</span>
+        <span className={`${styles.navLink} ${styles.disabledLink}`}>Mint <small>(Soon)</small></span>
+        <button className={styles.gameButton} onClick={() => navigate('/allowlist')}>
+          Allowlist Game
+        </button>
+      </nav>
     </header>
   );
-}
+};
 
 export default Header;

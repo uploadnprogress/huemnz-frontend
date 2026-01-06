@@ -1,86 +1,67 @@
 .landingContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: var(--color-background);
-    text-align: center;
-    padding: 2rem;
-    box-sizing: border-box;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(2, 28, 41, 0.85); /* Use dark blue brand color for overlay */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  
-  .content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    background: rgba(3, 37, 53, 0.6); /* Dark blue card background */
-    padding: 3rem;
-    border-radius: 16px;
-    border: 1px solid var(--color-border);
-  }
-  
-  .logoPlaceholder {
-    height: 50px;
-    width: auto;
-    margin-bottom: 2rem;
-  }
-  
-  .content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    color: var(--color-text-primary);
-  }
-  
-  .content p {
-    font-size: 1.2rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 2.5rem;
-    line-height: 1.6;
-  }
-  
-  .connectContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .ctaButton {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-dark-blue);
-    background-color: var(--color-orange);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .ctaButton:hover {
-    background-color: var(--color-light-orange);
-    transform: scale(1.02);
-  }
-  
-  .errorMessage {
-      margin-top: 1rem;
-      color: #ff4d4d;
-      font-weight: 500;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.content {
+  max-width: 700px;
+}
+
+.content h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  color: #f0f0f0;
+}
+
+.content p {
+  font-size: 1.25rem;
+  color: #a0a0a0;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.emailInput {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  border: 1px solid #2a2a2a;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.ctaButton {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 400px;
+}
+
+.ctaButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}

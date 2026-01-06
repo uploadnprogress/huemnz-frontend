@@ -1,68 +1,51 @@
 .header {
-    background-color: rgba(2, 28, 41, 0.7); /* Dark blue, semi-transparent */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--color-border);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo img {
-    height: 40px; /* Adjust logo height as needed */
-    width: auto;
-  }
-  
-  .navLinks {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .navButton {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    background-color: transparent;
-    border: 1px solid transparent;
-  }
-  
-  .navButton:hover {
-    color: var(--color-text-primary);
-    background-color: var(--color-border);
-  }
-  
-  .navButton.active {
-    color: var(--color-text-primary);
-    background-color: var(--color-dark-blue);
-    border-color: var(--color-medium-blue);
-  }
-  
-  .allowlistButton {
-      background-color: var(--color-orange);
-      color: var(--color-dark-blue);
-      border-color: var(--color-orange);
-  }
-  
-  .allowlistButton:hover {
-      background-color: var(--color-light-orange);
-      border-color: var(--color-light-orange);
-  }
-  
-  .allowlistButton.active {
-      background-color: var(--color-light-orange);
-      box-shadow: 0 0 15px var(--color-light-orange);
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #2a2a2a;
+  background-color: #0a0a0a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.logo { cursor: pointer; }
+.logoImage { height: 50px; width: auto; object-fit: contain; }
+
+.nav { display: flex; align-items: center; gap: 2rem; }
+
+.navLink { 
+  color: #e0e0e0; 
+  font-weight: 600; 
+  cursor: pointer; 
+  transition: color 0.3s; 
+}
+.navLink:hover { color: #007BFF; }
+
+.disabledLink { 
+  color: #555; 
+  cursor: not-allowed; 
+  pointer-events: none; 
+}
+
+.gameButton {
+  padding: 0.6rem 1.2rem;
+  font-weight: 700;
+  color: #000;
+  background-color: #F7931A;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.gameButton:hover { transform: scale(1.05); }
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+  .navLink { display: none; }
+  .gameButton { margin-left: auto; }
+}

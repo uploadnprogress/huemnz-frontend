@@ -1,30 +1,69 @@
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 4rem 2rem;
-    color: #e0e0e0;
+    padding: 4rem 2rem 6rem 2rem;
+    color: var(--color-text-primary);
     font-family: 'Inter', sans-serif;
   }
   
   .container h1 {
     font-size: 3rem;
     text-align: center;
-    margin-bottom: 3rem;
-    color: #f0f0f0;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+    background: linear-gradient(90deg, var(--color-light-blue), var(--color-light-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 4rem;
+      font-weight: 500;
   }
   
   .content h2, .faqItem h3 {
     font-size: 1.8rem;
-    color: #007BFF;
+    color: var(--color-light-orange);
     margin-bottom: 1rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
   }
   
   .content p, .faqItem p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #a0a0a0;
+    color: var(--color-text-secondary);
     margin-bottom: 1.5rem;
+  }
+  
+  .content ul {
+      list-style-type: none;
+      padding-left: 0;
+  }
+  
+  .content li {
+      background-color: var(--color-card-background);
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border-left: 3px solid var(--color-medium-blue);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+  }
+  
+  .contentBlock {
+      margin-top: 1.5rem;
+  }
+  
+  .contentBlock h3 {
+      font-size: 1.3rem;
+      color: var(--color-light-blue);
+      margin-bottom: 0.5rem;
   }
   
   .faqList {
@@ -34,8 +73,8 @@
   }
   
   .faqItem {
-    background-color: #121212;
+    background-color: var(--color-card-background);
     padding: 2rem;
     border-radius: 12px;
-    border: 1px solid #2a2a2a;
+    border: 1px solid var(--color-border);
   }
