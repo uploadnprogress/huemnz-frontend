@@ -45,3 +45,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   text-transform: uppercase;
 }
+
+/* src/index.css */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* This is the key line */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
