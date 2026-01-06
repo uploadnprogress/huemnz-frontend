@@ -36,7 +36,7 @@ function HomePage() {
   const navigate = useNavigate();
   const [isWinner, setIsWinner] = useState(false);
   
-  // FORM STATES
+  // FORM STATES: 'idle', 'submitting', 'success', 'error', 'blocked'
   const [formStatus, setFormStatus] = useState('idle'); 
 
   // ===== SLIDE ARRAY =====
@@ -75,6 +75,23 @@ function HomePage() {
     setFormStatus('submitting');
 
     const formData = new FormData(e.target);
+    const emailValue = formData.get('Email'); 
+    
+    // --- 🛑 VALIDATION GATEWAY ---
+    
+    // 1. strict pattern check (must be name@domain.com)
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailValue)) {
+        setFormStatus('blocked'); 
+        return; 
+    }
+
+    // 2. The Bouncer: Block specific fake domains
+    if (emailValue && (emailValue.toLowerCase().includes('test.mail') || emailValue.toLowerCase().includes('test.com'))) {
+        setFormStatus('blocked');
+        return; 
+    }
+    // -----------------------------------------
 
     // EMAIL ADDRESS
     const YOUR_EMAIL = "info@huemn.life";
@@ -191,12 +208,12 @@ function HomePage() {
           </div>
         </motion.section>
 
-        {/* SUBMISSION FORM (UPDATED FIELD NAMES) */}
+        {/* SUBMISSION FORM (UPDATED WITH OPT-IN) */}
         <section className={styles.submissionSection}>
           <h3>Share Your Art</h3>
           <p>Want to be featured on our socials or the homepage carousel? Leave your art here.</p>
           
-          <form className={styles.artForm} onSubmit={handleSubmit} enctype="multipart/form-data">
+          <form className={styles.artForm} onSubmit={handleSubmit} encType="multipart/form-data">
             
             <input type="hidden" name="_subject" value="New Art Submission (Huemnz)" />
             <input type="hidden" name="_captcha" value="false" />
@@ -223,15 +240,47 @@ function HomePage() {
               />
             </div>
 
+            {/* --- MARKETING OPT-IN CHECKBOX --- */}
+            <div style={{
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '12px', 
+                marginTop: '15px', 
+                textAlign: 'left',
+                color: '#cccccc',
+                fontSize: '0.9rem'
+            }}>
+                <input 
+                    type="checkbox" 
+                    name="Newsletter_Opt_In" 
+                    value="Yes" 
+                    id="newsletter_check" 
+                    defaultChecked 
+                    style={{width: '16px', height: '16px', cursor: 'pointer'}}
+                />
+                <label htmlFor="newsletter_check" style={{cursor: 'pointer'}}>
+                    Keep me updated on future Huemnz drops and news.
+                </label>
+            </div>
+            {/* ---------------------------------- */}
+
             <button type="submit" className={styles.primaryButton} disabled={formStatus === 'submitting'}>
               {formStatus === 'submitting' ? 'Uploading...' : 'Submit for Review'}
             </button>
 
+            {/* STATUS MESSAGES */}
             {formStatus === 'success' && (
               <motion.div className={styles.successMessage} initial={{opacity:0}} animate={{opacity:1}}>
                 Received! Check your email for confirmation.
               </motion.div>
             )}
+            
+            {formStatus === 'blocked' && (
+              <div className={styles.errorMessage} style={{ color: '#ff4444' }}>
+                Please provide a valid email address.
+              </div>
+            )}
+
             {formStatus === 'error' && (
               <div className={styles.errorMessage}>
                 Something went wrong. Please try again.
@@ -253,8 +302,8 @@ function HomePage() {
             <span onClick={() => navigate('/allowlist')}>Game</span>
           </div>
           <div className={styles.socialIcons}>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
-            <a href="https://discord.gg" target="_blank" rel="noopener noreferrer"><FaDiscord /></a>
+            <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+            <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /></a>
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
           </div>
         </div>
