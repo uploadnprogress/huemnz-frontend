@@ -1,58 +1,118 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Outlet, Navigate } from 'react-router-dom';
-import Header from './components/Header'; // The global header
-
-// Pages
-import Landing from './pages/Landing';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import Landing from './components/Landing';
 import HomePage from './pages/HomePage';
-import AllowlistPage from './pages/AllowlistPage';
-import VisionPage from './pages/VisionPage';
 import AboutPage from './pages/AboutPage';
+import VisionPage from './pages/VisionPage';
 import FAQPage from './pages/FAQPage';
-import MintPage from './pages/MintPage';
+import AllowlistPage from './pages/AllowlistPage';
+import './App.css';
 
-// Layout Component: Renders Header + Page Content
-const Layout = ({ userData }) => {
+// Wallet Connection Component
+const WalletConnect = ({ onConnect, userData }) => {
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        onConnect(accounts[0]);
+      } catch (error) {
+        console.error("Connection failed", error);
+      }
+    } else {
+      alert("Please install Metamask!");
+    }
+  };
+
   return (
-    <>
-      <Header />
-      {/* Add margin so content isn't hidden behind fixed header */}
-      <div style={{ marginTop: '80px' }}>
-        <Outlet context={{ userData }} />
-      </div>
-    </>
+    <button onClick={connectWallet} className="wallet-btn">
+      {userData?.wallet 
+        ? `${userData.wallet.substring(0, 6)}...${userData.wallet.substring(userData.wallet.length - 4)}`
+        : "Connect Wallet"}
+    </button>
   );
 };
 
 function App() {
-  const [userData, setUserData] = useState({
-    email: '',
-    wallet: ''
-  });
+  const [userData, setUserData] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleLogin = (email) => {
-    // Generate mock wallet for soft launch/game
-    const mockWallet = "0x" + Array(40).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join("");
-    setUserData({ email: email, wallet: mockWallet });
+  // CHECK FOR SAVED EMAIL ON LOAD
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('userEmail');
+    if (savedEmail) {
+      setUserData(prev => ({ ...prev, email: savedEmail }));
+      // If they are on the root path, send them to home automatically
+      if (location.pathname === '/') {
+        navigate('/home');
+      }
+    }
+  }, []);
+
+  const handleEnter = (email) => {
+    localStorage.setItem('userEmail', email); // Save permanently
+    setUserData(prev => ({ ...prev, email }));
   };
 
+  const handleWalletConnect = (wallet) => {
+    setUserData(prev => ({ ...prev, wallet }));
+  };
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  // Hide header on Landing page
+  const showHeader = location.pathname !== '/';
+
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Landing Page has NO Header */}
-        <Route path="/" element={<Landing onEnter={handleLogin} />} />
-        
-        {/* All other pages HAVE the Header */}
-        <Route element={<Layout userData={userData} />}>
-          <Route path="/home" element={userData.email ? <HomePage /> : <Navigate to="/" />} />
-          <Route path="/allowlist" element={<AllowlistPage />} />
-          <Route path="/vision" element={<VisionPage />} />
+    <div className="app-container">
+      {showHeader && (
+        <header className="main-header">
+          <div className="logo" onClick={() => navigate('/home')}>HUEMNZ</div>
+          
+          {/* DESKTOP NAV */}
+          <nav className="desktop-nav">
+            <Link to="/about">About</Link>
+            <Link to="/vision">Vision</Link>
+            <Link to="/faq">FAQ</Link>
+            <Link to="/allowlist" className="nav-highlight">Game</Link>
+            <WalletConnect onConnect={handleWalletConnect} userData={userData} />
+          </nav>
+
+          {/* MOBILE TOGGLE */}
+          <div className="mobile-toggle" onClick={toggleMenu}>
+            {isMenuOpen ? <FaTimes /> : <FaBars />}
+          </div>
+
+          {/* MOBILE NAV MENU */}
+          {isMenuOpen && (
+            <div className="mobile-nav">
+              <Link to="/about" onClick={closeMenu}>About</Link>
+              <Link to="/vision" onClick={closeMenu}>Vision</Link>
+              <Link to="/faq" onClick={closeMenu}>FAQ</Link>
+              <Link to="/allowlist" onClick={closeMenu}>Game</Link>
+              <div className="mobile-wallet-wrapper">
+                 <WalletConnect onConnect={handleWalletConnect} userData={userData} />
+              </div>
+            </div>
+          )}
+        </header>
+      )}
+
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Landing onEnter={handleEnter} />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/vision" element={<VisionPage />} />
           <Route path="/faq" element={<FAQPage />} />
-          <Route path="/mint" element={<MintPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route path="/allowlist" element={<AllowlistPage />} context={{ userData }} />
+        </Routes>
+      </AnimatePresence>
+    </div>
   );
 }
 
