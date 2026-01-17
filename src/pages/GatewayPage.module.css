@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
   width: 100%;
   background-color: #000;
   text-align: center;
@@ -21,7 +21,7 @@
   gap: 20px;
 }
 
-/* TYPOGRAPHY - USING CLASSES TO FORCE WHITE TEXT */
+/* TYPOGRAPHY - UPDATED TO USE CLASSES */
 .title {
   font-size: 2.5rem;
   line-height: 1.2;

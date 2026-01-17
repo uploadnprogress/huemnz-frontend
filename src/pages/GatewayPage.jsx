@@ -11,13 +11,11 @@ function GatewayPage({ onEnter }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    // 1. Basic Empty Check
     if (!email) {
       alert('Please enter your email to continue.');
       return;
     }
 
-    // 2. Validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
         alert("Please enter a valid email address (name@domain.com).");
@@ -30,7 +28,6 @@ function GatewayPage({ onEnter }) {
 
     setIsSubmitting(true);
 
-    // 3. SEND EMAIL
     try {
         const formData = new FormData();
         formData.append('email', email);
@@ -47,7 +44,6 @@ function GatewayPage({ onEnter }) {
         console.error("Gateway submission error:", error);
     }
 
-    // 4. ENTER THE SITE
     onEnter(email); 
     navigate('/home'); 
   };
@@ -60,9 +56,8 @@ function GatewayPage({ onEnter }) {
       transition={{ duration: 1.5 }}
     >
       <div className={styles.content}>
-        {/* THIS WAS MISSING THE CLASS */}
         <motion.h1 
-          className={styles.title} 
+          className={styles.title}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
@@ -70,7 +65,6 @@ function GatewayPage({ onEnter }) {
           An Ecosystem Powered by Trust and Tech
         </motion.h1>
 
-        {/* THIS WAS MISSING THE CLASS */}
         <motion.p 
           className={styles.description}
           initial={{ opacity: 0, y: 20 }}
