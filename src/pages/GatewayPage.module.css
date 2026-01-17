@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100vh; /* Full viewport height */
   width: 100%;
   background-color: #000;
   text-align: center;
@@ -21,19 +21,19 @@
   gap: 20px;
 }
 
-/* TYPOGRAPHY - UPDATED TO USE CLASSES */
+/* TYPOGRAPHY - These classes force the text to be WHITE */
 .title {
   font-size: 2.5rem;
   line-height: 1.2;
   margin-bottom: 10px;
-  color: #f0f0f0; /* Force White */
+  color: #f0f0f0; /* <--- THIS MAKES IT VISIBLE */
   font-weight: 700;
 }
 
 .description {
   font-size: 1.1rem;
   line-height: 1.5;
-  color: #ccc; /* Force Light Gray */
+  color: #ccc; /* <--- THIS MAKES IT VISIBLE */
   margin-bottom: 2rem;
 }
 

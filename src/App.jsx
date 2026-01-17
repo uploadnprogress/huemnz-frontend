@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import GatewayPage from './pages/GatewayPage';
+import GatewayPage from './pages/GatewayPage'; // <--- UPDATED IMPORT
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import VisionPage from './pages/VisionPage';
@@ -10,6 +10,7 @@ import FAQPage from './pages/FAQPage';
 import AllowlistPage from './pages/AllowlistPage';
 import './App.css';
 
+// Wallet Connection Component
 const WalletConnect = ({ onConnect, userData }) => {
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -39,11 +40,13 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // --- PERSISTENCE FIX: Runs once on load ---
   useEffect(() => {
     const savedEmail = localStorage.getItem('userEmail');
     if (savedEmail) {
       console.log("User already logged in:", savedEmail);
       setUserData(prev => ({ ...prev, email: savedEmail }));
+      // If currently on Gateway, move to Home
       if (location.pathname === '/') {
         navigate('/home');
       }
@@ -62,6 +65,7 @@ function App() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Show header on EVERY page except root ('/')
   const showHeader = location.pathname !== '/';
 
   return (
