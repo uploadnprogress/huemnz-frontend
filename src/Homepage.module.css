@@ -232,3 +232,162 @@ p { line-height: 1.6; max-width: 800px; margin: 0 auto 30px auto; }
     border-color: var(--primary-accent);
     color: #ffffff;
 }
+/* GLOBAL CONTAINER */
+.container {
+  width: 100%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* SECTIONS */
+.welcomeSection, 
+.missionSection, 
+.carouselSection, 
+.roadmapSection, 
+.teamSection, 
+.submissionSection {
+  width: 100%;
+  max-width: 1200px; /* Limits width on big screens */
+  padding: 60px 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* TEXT */
+h1, h2, h3 { color: #fff; margin-bottom: 20px; }
+p { color: #ccc; line-height: 1.6; max-width: 800px; margin: 0 auto 30px auto; }
+
+/* --- MISSION GRID (DESKTOP FIX) --- */
+/* Using GRID instead of Flex ensures they stay in a row */
+.missionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Forces 3 equal columns */
+  gap: 30px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.missionCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- TEAM GRID --- */
+.teamGrid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.teamMember {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+}
+
+.teamMember img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  margin-bottom: 15px;
+}
+
+/* SOCIAL BUTTONS */
+.memberSocials {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.memberSocials a {
+  font-size: 0.85rem;
+  color: #fff;
+  border: 1px solid #666;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.memberSocials a:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* IMAGES */
+.roadmapImage { width: 100%; max-width: 800px; border-radius: 10px; }
+
+/* FORM */
+.artForm {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formInput, .formTextarea {
+  padding: 12px;
+  background: #222;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.primaryButton {
+  padding: 12px 30px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* CAROUSEL */
+.carouselSection { display: block; width: 90%; margin: 0 auto; }
+.carouselImage { width: 100%; border-radius: 10px; padding: 0 5px; }
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  background: #111;
+  padding: 40px 20px;
+  text-align: center;
+}
+.footerContent { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.footerLinks { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.footerLinks span { cursor: pointer; color: #aaa; }
+.footerLinks span:hover { color: #fff; }
+.socialIcons { display: flex; gap: 20px; font-size: 1.5rem; justify-content: center; }
+
+/* --- MOBILE OVERRIDES (Crucial Fixes) --- */
+@media (max-width: 768px) {
+  .container { width: 100%; }
+
+  /* Force vertical stack on mobile */
+  .missionGrid {
+    grid-template-columns: 1fr; /* Switch to 1 column */
+  }
+
+  .teamGrid {
+    flex-direction: column;
+  }
+  
+  .carouselSection {
+    width: 100%;
+  }
+}

@@ -40,12 +40,13 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // CHECK FOR SAVED EMAIL ON LOAD
+  // --- PERSISTENCE FIX: Runs once on load ---
   useEffect(() => {
     const savedEmail = localStorage.getItem('userEmail');
     if (savedEmail) {
+      console.log("User already logged in:", savedEmail);
       setUserData(prev => ({ ...prev, email: savedEmail }));
-      // If they are on the root path, send them to home automatically
+      // If currently on Landing, move to Home
       if (location.pathname === '/') {
         navigate('/home');
       }
@@ -53,7 +54,7 @@ function App() {
   }, []);
 
   const handleEnter = (email) => {
-    localStorage.setItem('userEmail', email); // Save permanently
+    localStorage.setItem('userEmail', email); 
     setUserData(prev => ({ ...prev, email }));
   };
 
@@ -64,7 +65,7 @@ function App() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Hide header on Landing page
+  // Show header on EVERY page except root ('/')
   const showHeader = location.pathname !== '/';
 
   return (
@@ -82,19 +83,19 @@ function App() {
             <WalletConnect onConnect={handleWalletConnect} userData={userData} />
           </nav>
 
-          {/* MOBILE TOGGLE */}
+          {/* MOBILE MENU BUTTON */}
           <div className="mobile-toggle" onClick={toggleMenu}>
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
 
-          {/* MOBILE NAV MENU */}
+          {/* MOBILE DROPDOWN */}
           {isMenuOpen && (
             <div className="mobile-nav">
               <Link to="/about" onClick={closeMenu}>About</Link>
               <Link to="/vision" onClick={closeMenu}>Vision</Link>
               <Link to="/faq" onClick={closeMenu}>FAQ</Link>
               <Link to="/allowlist" onClick={closeMenu}>Game</Link>
-              <div className="mobile-wallet-wrapper">
+              <div style={{marginTop: '20px'}}>
                  <WalletConnect onConnect={handleWalletConnect} userData={userData} />
               </div>
             </div>
