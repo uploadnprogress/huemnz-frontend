@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import Landing from './pages/GatewayPage';
+// UPDATE 1: Import with the matching name
+import GatewayPage from './pages/GatewayPage';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import VisionPage from './pages/VisionPage';
@@ -46,7 +47,7 @@ function App() {
     if (savedEmail) {
       console.log("User already logged in:", savedEmail);
       setUserData(prev => ({ ...prev, email: savedEmail }));
-      // If currently on Landing, move to Home
+      // If currently on Gateway, move to Home
       if (location.pathname === '/') {
         navigate('/home');
       }
@@ -105,7 +106,8 @@ function App() {
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Landing onEnter={handleEnter} />} />
+          {/* UPDATE 2: Use the matching component name here */}
+          <Route path="/" element={<GatewayPage onEnter={handleEnter} />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/vision" element={<VisionPage />} />

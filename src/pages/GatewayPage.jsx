@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import styles from './GatewayPage.module.css';
 
-function Landing({ onEnter }) {
+// RENAMED FUNCTION TO MATCH FILENAME
+function GatewayPage({ onEnter }) {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
@@ -45,7 +46,6 @@ function Landing({ onEnter }) {
     >
       <div className={styles.content}>
         
-        {/* ADDED className={styles.title} HERE */}
         <motion.h1 
           className={styles.title}
           initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,6 @@ function Landing({ onEnter }) {
           An Ecosystem Powered by Trust and Tech
         </motion.h1>
         
-        {/* ADDED className={styles.description} HERE */}
         <motion.p 
           className={styles.description}
           initial={{ opacity: 0, y: 20 }}
@@ -90,4 +89,5 @@ function Landing({ onEnter }) {
   );
 }
 
-export default Landing;
+// CORRECT EXPORT
+export default GatewayPage;
