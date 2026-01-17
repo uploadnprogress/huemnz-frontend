@@ -11,47 +11,29 @@ function Landing({ onEnter }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    // 1. Basic Empty Check
-    if (!email) {
-      alert('Please enter your email to continue.');
-      return;
-    }
-
-    // 2. THE BOUNCER & VALIDATION (Same strict rules as inside)
+    // VALIDATION
+    if (!email) { alert('Please enter your email to continue.'); return; }
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address (name@domain.com).");
-        return;
-    }
-    if (email.toLowerCase().includes('test.mail') || email.toLowerCase().includes('test.com')) {
-        alert("Please enter a valid email address.");
-        return;
-    }
+    if (!emailPattern.test(email)) { alert("Please enter a valid email address."); return; }
+    if (email.toLowerCase().includes('test.mail') || email.toLowerCase().includes('test.com')) { alert("Please enter a valid email address."); return; }
 
     setIsSubmitting(true);
 
-    // 3. SEND EMAIL (Silently in background)
     try {
         const formData = new FormData();
         formData.append('email', email);
-        formData.append('_subject', 'New Gateway Signup (Huemnz)'); // Different subject so you know they came from the entrance
+        formData.append('_subject', 'New Gateway Signup (Huemnz)');
         formData.append('Source', 'Gateway Page');
-        formData.append('Marketing_Opt_In', 'True'); // Implicit opt-in since they are signing up to enter
+        formData.append('Marketing_Opt_In', 'True'); 
 
-        // Send to FormSubmit
         await fetch("https://formsubmit.co/ajax/info@huemn.life", {
             method: "POST",
             body: formData
         });
+    } catch (error) { console.error("Gateway error:", error); }
 
-    } catch (error) {
-        console.error("Gateway submission error:", error);
-        // We proceed anyway so a server glitch doesn't lock the user out
-    }
-
-    // 4. ENTER THE SITE
-    onEnter(email); // Save data in App.jsx
-    navigate('/home'); // Go to Homepage
+    onEnter(email); 
+    navigate('/home'); 
   };
 
   return (
@@ -62,14 +44,20 @@ function Landing({ onEnter }) {
       transition={{ duration: 1.5 }}
     >
       <div className={styles.content}>
+        
+        {/* ADDED className={styles.title} HERE */}
         <motion.h1 
+          className={styles.title}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           An Ecosystem Powered by Trust and Tech
         </motion.h1>
+        
+        {/* ADDED className={styles.description} HERE */}
         <motion.p 
+          className={styles.description}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}

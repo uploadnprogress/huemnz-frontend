@@ -21,20 +21,19 @@
   gap: 20px;
 }
 
-/* HEADINGS */
-h1 {
+/* TYPOGRAPHY - USING CLASSES TO FORCE WHITE TEXT */
+.title {
   font-size: 2.5rem;
   line-height: 1.2;
   margin-bottom: 10px;
-  color: #f0f0f0;
+  color: #f0f0f0; /* Force White */
   font-weight: 700;
 }
 
-/* PARAGRAPH */
-p {
+.description {
   font-size: 1.1rem;
   line-height: 1.5;
-  color: #ccc;
+  color: #ccc; /* Force Light Gray */
   margin-bottom: 2rem;
 }
 
@@ -86,7 +85,7 @@ p {
 
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 600px) {
-  h1 { font-size: 1.8rem; }
-  p { font-size: 1rem; }
+  .title { font-size: 1.8rem; }
+  .description { font-size: 1rem; }
   .landingContainer { padding: 15px; }
 }
