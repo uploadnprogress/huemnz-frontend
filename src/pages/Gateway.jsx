@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import styles from './LandingPage.module.css';
+import styles from './Gateway.module.css';
 
 function Landing({ onEnter }) {
   const [email, setEmail] = useState('');
