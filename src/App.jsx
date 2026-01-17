@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
-// UPDATE 1: Import with the matching name
-import GatewayPage from './pages/GatewayPage';
+import GatewayPage from './pages/GatewayPage'; // Correct Import
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import VisionPage from './pages/VisionPage';
@@ -75,7 +74,6 @@ function App() {
         <header className="main-header">
           <div className="logo" onClick={() => navigate('/home')}>HUEMNZ</div>
           
-          {/* DESKTOP NAV */}
           <nav className="desktop-nav">
             <Link to="/about">About</Link>
             <Link to="/vision">Vision</Link>
@@ -84,12 +82,10 @@ function App() {
             <WalletConnect onConnect={handleWalletConnect} userData={userData} />
           </nav>
 
-          {/* MOBILE MENU BUTTON */}
           <div className="mobile-toggle" onClick={toggleMenu}>
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
 
-          {/* MOBILE DROPDOWN */}
           {isMenuOpen && (
             <div className="mobile-nav">
               <Link to="/about" onClick={closeMenu}>About</Link>
@@ -106,7 +102,6 @@ function App() {
 
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          {/* UPDATE 2: Use the matching component name here */}
           <Route path="/" element={<GatewayPage onEnter={handleEnter} />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
