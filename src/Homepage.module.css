@@ -65,6 +65,8 @@
 
 /* Update these specific sections in HomePage.module.css */
 
+/* Update these specific sections in HomePage.module.css */
+
 .memberSocials {
   display: flex;
   flex-direction: column; /* Stack vertically */
@@ -88,7 +90,6 @@
   opacity: 0.8;
 }
 
-/* Ensure mission cards have consistent height for grid alignment */
 .missionCard {
   background-color: #021c29;
   border: 1px solid #2a2a2a;
