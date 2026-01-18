@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useOutletContext, useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
-import { FaTwitter, FaDiscord } from 'react-icons/fa'; // Only Twitter and Discord imported
+import { FaTwitter, FaDiscord } from 'react-icons/fa';
 import styles from './HomePage.module.css';
 
 import "slick-carousel/slick/slick.css"; 
@@ -55,7 +55,6 @@ function HomePage() {
     const formData = new FormData(e.target);
     const emailValue = formData.get('Email'); 
     
-    // Validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(emailValue) || emailValue.includes('test.mail')) {
         setFormStatus('blocked'); return; 
@@ -77,24 +76,24 @@ function HomePage() {
         )}
 
         <motion.section className={styles.welcomeSection} initial="hidden" animate="visible" variants={fadeIn}>
-          <h1>Welcome to the Ecosystem</h1>
-          <p>Huemnz is more than a collection; it's the start of a new standard for on-chain identity.</p>
+          <h1 className={styles.mainTitle}>Welcome to the Ecosystem</h1>
+          <p className={styles.subText}>Huemnz is more than a collection; it's the start of a new standard for on-chain identity.</p>
         </motion.section>
 
         <motion.section className={styles.missionSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-          <h2>This Hasn't Been Done Before.</h2>
+          <h2 className={styles.sectionTitle}>This Hasn't Been Done Before.</h2>
           <div className={styles.missionGrid}>
               <div className={styles.missionCard}>
-                  <h3>Digital Frailty</h3>
-                  <p>Impersonation and exploits are bugs, not features.</p>
+                  <h3 className={styles.cardTitle}>Digital Frailty</h3>
+                  <p className={styles.cardBody}>Impersonation and exploits are bugs, not features.</p>
               </div>
               <div className={styles.missionCard}>
-                  <h3>Provable Identity</h3>
-                  <p>We tie assets to a non-transferable SBT.</p>
+                  <h3 className={styles.cardTitle}>Provable Identity</h3>
+                  <p className={styles.cardBody}>We tie assets to a non-transferable SBT.</p>
               </div>
               <div className={styles.missionCard}>
-                  <h3>KYC Synergy</h3>
-                  <p>Anchoring your SBT to real-world identity securely.</p>
+                  <h3 className={styles.cardTitle}>KYC Synergy</h3>
+                  <p className={styles.cardBody}>Anchoring your SBT to real-world identity securely.</p>
               </div>
           </div>
         </motion.section>
@@ -108,25 +107,25 @@ function HomePage() {
         </section>
 
         <motion.section className={styles.roadmapSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-          <h2>Roadmap</h2>
+          <h2 className={styles.sectionTitle}>Roadmap</h2>
           <img src={roadmapImg} className={styles.roadmapImage}/>
         </motion.section>
 
         <motion.section className={styles.teamSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-          <h2>Meet the Founders</h2>
+          <h2 className={styles.sectionTitle}>Meet the Founders</h2>
           <div className={styles.teamGrid}>
             <div className={styles.teamMember}>
               <img src={artistImg} alt="The Artist"/>
-              <h3>The Artist</h3>
-              <p>The visionary architect behind the aesthetic.</p>
+              <h3 className={styles.memberTitle}>The Artist</h3>
+              <p className={styles.memberDesc}>The visionary architect behind the aesthetic.</p>
               <div className={styles.memberSocials}>
                   <a href="https://oziomajesuloba.artstation.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
               </div>
             </div>
             <div className={styles.teamMember}>
               <img src={founderImg} alt="The Founder"/>
-              <h3>The Founder</h3>
-              <p>The technical mind building the protocols.</p>
+              <h3 className={styles.memberTitle}>The Founder</h3>
+              <p className={styles.memberDesc}>The technical mind building the protocols.</p>
               <div className={styles.memberSocials}>
                   <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer">GitHub</a>
                   <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
@@ -136,7 +135,7 @@ function HomePage() {
         </motion.section>
 
         <section className={styles.submissionSection}>
-          <h3>Share Your Art</h3>
+          <h3 className={styles.sectionTitle}>Share Your Art</h3>
           <form className={styles.artForm} onSubmit={handleSubmit} encType="multipart/form-data">
             <input type="hidden" name="_subject" value="New Art Submission (Huemnz)" />
             <input type="hidden" name="_captcha" value="false" />
@@ -145,15 +144,15 @@ function HomePage() {
             <textarea name="Description" placeholder="Tell us about your art!" className={styles.formTextarea} required></textarea>
             <input type="file" name="attachment" className={styles.formInput} accept="image/*" multiple required />
             
-            <div style={{textAlign:'left', color:'#ccc'}}>
+            <div className={styles.optIn}>
                 <input type="checkbox" name="Newsletter_Opt_In" value="Yes" defaultChecked /> Keep me updated.
             </div>
 
             <button type="submit" className={styles.primaryButton} disabled={formStatus === 'submitting'}>
               {formStatus === 'submitting' ? 'Uploading...' : 'Submit'}
             </button>
-            {formStatus === 'success' && <div style={{color:'#4caf50'}}>Received!</div>}
-            {formStatus === 'blocked' && <div style={{color:'#f44336'}}>Invalid email.</div>}
+            {formStatus === 'success' && <div className={styles.successMessage}>Received!</div>}
+            {formStatus === 'blocked' && <div className={styles.errorMessage}>Invalid email.</div>}
           </form>
         </section>
       </main>
@@ -172,7 +171,7 @@ function HomePage() {
             <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /></a>
           </div>
         </div>
-        <p style={{color:'#666', marginTop:'20px'}}>© 2025 Huemnz. All rights reserved.</p>
+        <p className={styles.copyright}>© 2025 Huemnz. All rights reserved.</p>
       </footer>
     </div>
   );
