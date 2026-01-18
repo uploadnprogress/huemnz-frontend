@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useOutletContext, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Added Link and useNavigate
 import Slider from 'react-slick';
 import { FaTwitter, FaDiscord } from 'react-icons/fa';
 import styles from './HomePage.module.css';
@@ -24,8 +24,8 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
 };
 
-function HomePage() {
-  const { userData } = useOutletContext();
+// FIXED: Accepting userData as a prop
+function HomePage({ userData }) {
   const navigate = useNavigate();
   const [isWinner, setIsWinner] = useState(false);
   const [formStatus, setFormStatus] = useState('idle'); 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import GatewayPage from './pages/GatewayPage'; // <--- UPDATED IMPORT
+import GatewayPage from './pages/GatewayPage'; 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import VisionPage from './pages/VisionPage';
@@ -103,11 +103,12 @@ function App() {
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<GatewayPage onEnter={handleEnter} />} />
-          <Route path="/home" element={<HomePage />} />
+          {/* Passing userData as a prop to fix the Destructure error */}
+          <Route path="/home" element={<HomePage userData={userData} />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/vision" element={<VisionPage />} />
           <Route path="/faq" element={<FAQPage />} />
-          <Route path="/allowlist" element={<AllowlistPage />} context={{ userData }} />
+          <Route path="/allowlist" element={<AllowlistPage userData={userData} />} />
         </Routes>
       </AnimatePresence>
     </div>

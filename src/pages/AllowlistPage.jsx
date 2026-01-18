@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useOutletContext } from 'react-router-dom';
+// Removed useOutletContext as it causes crashes in non-nested routes
 import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord, FaTwitter } from 'react-icons/fa';
 import styles from './AllowlistPage.module.css';
 
@@ -27,8 +27,8 @@ const Dice = ({ value, isRolling }) => {
     );
 };
 
-function AllowlistPage() {
-    const { userData } = useOutletContext();
+// Fixed: Accepting userData as a prop to maintain architectural consistency
+function AllowlistPage({ userData }) {
     const [playerRoll, setPlayerRoll] = useState({ d1: 1, d2: 1 });
     const [pcRoll, setPcRoll] = useState({ d1: 1, d2: 1 });
     const [result, setResult] = useState(null);
@@ -56,7 +56,7 @@ function AllowlistPage() {
     // Send admin notification with both Wallet and Email
     const sendWinnerNotification = async (wallet) => {
         try {
-            // Retrieve the email stored during landing entry
+            // Retrieve the email stored during landing entry for persistence
             const userEmail = localStorage.getItem('userEmail') || 'Not Captured';
             
             const formData = new FormData();
