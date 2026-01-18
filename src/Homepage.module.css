@@ -1,12 +1,12 @@
 .container {
   max-width: 100%;
   margin: 0 auto;
-  background-color: #000000;
+  background-color: #000000; /* Pure black background */
   color: #e0e0e0;
   overflow-x: hidden;
 }
 
-/* Visibility Fixes - Force Colors */
+/* Visibility Fixes - Force white/gray colors against black background */
 .mainTitle, .sectionTitle, .cardTitle, .memberTitle, .footerLogo {
   color: #ffffff !important;
 }
@@ -15,17 +15,18 @@
   color: #cccccc !important;
 }
 
-/* MISSION TILES VERTICAL ON MOBILE */
+/* MISSION TILES - GRID LOGIC */
 .missionGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* Horizontal on Desktop */
   gap: 1.5rem;
   text-align: left;
 }
 
+/* Vertical Stack for Mobile */
 @media (max-width: 768px) {
   .missionGrid {
-    grid-template-columns: 1fr !important; /* Forces vertical stacking */
+    grid-template-columns: 1fr !important; /* 1 column on mobile */
   }
 }
 

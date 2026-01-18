@@ -166,6 +166,7 @@ function HomePage() {
             <span onClick={() => navigate('/faq')}>FAQ</span>
             <span onClick={() => navigate('/allowlist')}>Game</span>
           </div>
+          {/* Removed Instagram Icon */}
           <div className={styles.socialIcons}>
             <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
             <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /></a>
