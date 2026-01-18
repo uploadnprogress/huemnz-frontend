@@ -8,6 +8,9 @@ import AboutPage from './pages/AboutPage';
 import VisionPage from './pages/VisionPage';
 import FAQPage from './pages/FAQPage';
 import AllowlistPage from './pages/AllowlistPage';
+
+// Import the branding logo
+import logoImg from './assets/Huemnz Logo.jpg';
 import './App.css';
 
 const WalletConnect = ({ onConnect, userData }) => {
@@ -43,7 +46,9 @@ function App() {
     const savedEmail = localStorage.getItem('userEmail');
     if (savedEmail) {
       setUserData(prev => ({ ...prev, email: savedEmail }));
-      if (location.pathname === '/') navigate('/home');
+      if (location.pathname === '/') {
+        navigate('/home');
+      }
     }
   }, []);
 
@@ -65,20 +70,20 @@ function App() {
     <div className="app-container">
       {showHeader && (
         <header className="main-header">
-          {/* LOGO "H" - Functioning Home Button */}
+          {/* LOGO "H" - branding as home button */}
           <div className="logo-container" onClick={() => navigate('/home')}>
-             <span className="h-logo">H</span>
-             <span className="brand-text">HUEMNZ</span>
+            <img src={logoImg} alt="H" className="h-logo-img" />
           </div>
           
           <nav className="desktop-nav">
-            <Link to="/about" className="nav-link">About</Link>
-            <Link to="/vision" className="nav-link">Vision</Link>
-            <Link to="/faq" className="nav-link">FAQ</Link>
-            <Link to="/allowlist" className="nav-highlight-btn">Game</Link>
+            <Link to="/about" className="nav-button">About</Link>
+            <Link to="/vision" className="nav-button">Vision</Link>
+            <Link to="/faq" className="nav-button">FAQ</Link>
+            <Link to="/allowlist" className="nav-button highlight">Game</Link>
             <WalletConnect onConnect={handleWalletConnect} userData={userData} />
           </nav>
 
+          {/* Hamburger menu - visible only on mobile via CSS */}
           <div className="mobile-toggle" onClick={toggleMenu}>
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
@@ -97,8 +102,7 @@ function App() {
         </header>
       )}
 
-      {/* BODY SECTION: The black background stretches full-width here */}
-      <div style={{ marginTop: showHeader ? '70px' : '0px', width: '100%' }}>
+      <div className="page-content" style={{ marginTop: showHeader ? '80px' : '0' }}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<GatewayPage onEnter={handleEnter} />} />

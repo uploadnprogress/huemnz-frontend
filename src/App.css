@@ -1,52 +1,8 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* src/App.css */
 :root {
   --bg-black: #000000;
-  --bg-blueish: #021c29; /* The blueish background from mission cards */
+  --bg-blueish: #021c29; 
+  --gold: #F7931A; /* Yellowish gold from grids */
   --text-white: #ffffff;
-  --accent: #007BFF;
 }
 
 body, html, #root {
@@ -59,84 +15,103 @@ body, html, #root {
 }
 
 .app-container {
-  background-color: var(--bg-black);
-  min-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* HEADER: Now using the blueish background across the full width */
+/* HEADER STYLING */
 .main-header {
   width: 100%;
-  background-color: var(--bg-blueish); /* Blueish background for the header */
+  height: 80px;
+  background-color: var(--bg-blueish);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  border-bottom: 1px solid #1a1a1a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Navigation & Logo Styling */
 .logo-container {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  cursor: pointer;
-  gap: 10px;
 }
 
-.h-logo {
-  font-size: 2rem;
-  font-weight: 900;
-  color: #ffffff;
-  border: 2px solid #ffffff;
-  padding: 2px 10px;
+.h-logo-img {
+  height: 50px; /* Adjust size of the 'H' logo */
+  width: auto;
   border-radius: 4px;
 }
 
-.brand-text {
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #ffffff;
+/* NAVIGATION BUTTONS */
+.desktop-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
-.nav-link {
+.nav-button {
   text-decoration: none;
-  /* Updated to yellowish-gold color from homepage grids */
-  color: #F7931A; 
-  padding: 8px 16px;
-  transition: opacity 0.3s ease;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.nav-link:hover {
-  opacity: 0.8;
-  color: #F7931A; /* Keep color consistent on hover */
-}
-
-.nav-highlight-btn {
-  text-decoration: none;
-  background-color: var(--accent);
-  color: white;
+  color: var(--gold);
+  border: 1px solid var(--gold);
   padding: 8px 20px;
   border-radius: 6px;
-  font-weight: bold;
-  transition: transform 0.2s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--gold);
+  color: #000;
+}
+
+.nav-button.highlight {
+  background-color: var(--gold);
+  color: #000;
 }
 
 .wallet-btn {
   background: transparent;
-  border: 1px solid #ffffff;
-  color: white;
+  border: 1px solid var(--text-white);
+  color: var(--text-white);
   padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
+}
+
+/* MOBILE RESPONSIVENESS */
+.mobile-toggle {
+  display: none; /* Hidden on desktop */
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text-white);
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-blueish);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 850px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-toggle {
+    display: block;
+  }
 }
