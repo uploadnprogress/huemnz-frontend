@@ -8,39 +8,64 @@ function GatewayPage({ onEnter }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
+  // Animation variants for screen-filling effect
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3, delayChildren: 0.2 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" } 
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!email) return;
-
     setIsSubmitting(true);
-    localStorage.setItem('userEmail', email); // Save email for persistence
-
     try {
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('_subject', 'New Gateway Signup (Huemnz)');
-        await fetch("https://formsubmit.co/ajax/info@huemn.life", {
-            method: "POST",
-            body: formData
-        });
+      const formData = new FormData();
+      formData.append('email', email);
+      await fetch("https://formsubmit.co/ajax/info@huemn.life", {
+        method: "POST",
+        body: formData
+      });
     } catch (error) {
-        console.error("Gateway error:", error);
+      console.error("Gateway error:", error);
     }
-
-    onEnter(email); 
-    navigate('/home'); 
+    onEnter(email);
+    navigate('/home');
   };
 
   return (
-    <motion.div className={styles.landingContainer} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <motion.div 
+      className={styles.landingContainer}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className={styles.content}>
-        <motion.h1 className={styles.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+        <motion.h1 className={styles.title} variants={itemVariants}>
           An Ecosystem Powered by Trust and Tech
         </motion.h1>
-        <motion.p className={styles.description} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+        
+        <motion.p className={styles.description} variants={itemVariants}>
           Shouldn't your wallet do more than hold assets? Learn how your on-chain identity can protect more than your JPEGs.
         </motion.p>
-        <form className={styles.signupForm} onSubmit={handleSubmit}>
+        
+        <motion.form 
+          className={styles.signupForm} 
+          onSubmit={handleSubmit}
+          variants={itemVariants}
+        >
           <input
             type="email"
             placeholder="Enter your email to get started"
@@ -52,7 +77,7 @@ function GatewayPage({ onEnter }) {
           <button type="submit" className={styles.ctaButton} disabled={isSubmitting}>
             {isSubmitting ? 'Entering...' : 'Start the eXperience'}
           </button>
-        </form>
+        </motion.form>
       </div>
     </motion.div>
   );

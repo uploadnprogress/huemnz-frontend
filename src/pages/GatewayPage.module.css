@@ -4,14 +4,18 @@
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background-color: #000;
+  background-color: #000000;
   text-align: center;
   padding: 20px;
   box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden; /* Prevents stray scrollbars during animation */
 }
 
 .content {
-  max-width: 600px;
+  max-width: 800px; /* Increased to allow wider text on desktop */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -20,17 +24,41 @@
 }
 
 .title {
-  font-size: 2.5rem;
-  color: #ffffff !important; /* Force visible white */
-  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  color: #f0f0f0 !important;
+  font-weight: 800;
 }
 
 .description {
-  font-size: 1.1rem;
-  color: #cccccc !important; /* Force visible gray */
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #cccccc !important;
   margin-bottom: 2rem;
 }
 
+/* MOBILE RESPONSIVENESS - SCREEN FILLING LOGIC */
+@media (max-width: 600px) {
+  .title { 
+    /* 12vw ensures it fills width but stays within bounds */
+    font-size: 12vw; 
+    line-height: 1.0;
+    padding: 0 10px;
+    word-break: break-word; /* Prevents overflow if a word is very long */
+  }
+  
+  .description { 
+    font-size: 4.5vw; 
+    padding: 0 15px;
+  }
+  
+  .landingContainer { 
+    padding: 10px; 
+  }
+}
+
+/* Standard Form CSS */
 .signupForm {
   width: 100%;
   display: flex;
@@ -40,28 +68,27 @@
 }
 
 .emailInput {
-  padding: 1rem;
-  background-color: #1a1a1a;
-  color: #fff;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
   border: 1px solid #333;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
   border-radius: 8px;
-  width: 100%;
+  width: 90%;
   max-width: 400px;
+  box-sizing: border-box;
 }
 
 .ctaButton {
   padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
   background-color: #007BFF;
-  color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  width: 100%;
+  transition: all 0.3s ease;
+  width: 90%;
   max-width: 400px;
-}
-
-/* Mobile font scaling */
-@media (max-width: 600px) {
-  .title { font-size: 1.8rem; }
-  .description { font-size: 1rem; }
 }
