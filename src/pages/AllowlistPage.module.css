@@ -1,160 +1,58 @@
-/* ===== 3D DICE ANIMATION ===== */
-@keyframes tumble-3d {
-    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-    100% { transform: rotateX(720deg) rotateY(1080deg) rotateZ(360deg); }
-  }
-  
-  .scene {
-    width: 64px;
-    height: 64px;
-    perspective: 600px;
-  }
-  
-  .cube {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s ease-out;
-  }
-  
-  .rolling {
-    animation: tumble-3d 2.5s linear infinite;
-  }
-  
-  .face {
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    color: var(--color-text-primary);
-    background-color: var(--color-card-background);
-    border: 2px solid var(--color-light-orange);
-    border-radius: 8px;
-  }
-  
-  .front  { transform: rotateY(0deg) translateZ(32px); }
-  .back   { transform: rotateY(180deg) translateZ(32px); }
-  .right  { transform: rotateY(90deg) translateZ(32px); }
-  .left   { transform: rotateY(-90deg) translateZ(32px); }
-  .top    { transform: rotateX(90deg) translateZ(32px); }
-  .bottom { transform: rotateX(-90deg) translateZ(32px); }
-  
-  
-  /* ===== PAGE STYLES ===== */
-  
+/* src/pages/AllowlistPage.module.css */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 4rem 2rem;
-    font-family: 'Inter', sans-serif;
-    min-height: calc(100vh - 80px);
 }
 
-/* FIXED: Game Box now uses branded blue instead of grey */
 .gameBox {
     width: 100%;
     max-width: 600px;
-    background-color: #021c29; 
+    background-color: #021c29; /* Branded Blue Container */
     border: 1px solid #2a2a2a;
     border-radius: 16px;
     padding: 3rem;
     text-align: center;
-    color: #ffffff;
-}  
-  /* ADDED: Gradient title style */
-  .gradientTitle {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, var(--color-light-blue), var(--color-light-orange));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-  }
-  
-  
-  .gameBox p { color: var(--color-text-secondary); margin-bottom: 2rem; line-height: 1.5; }
-  
-  .walletInput {
-      padding: 0.9rem 1.2rem;
-      font-size: 1rem;
-      border: 1px solid var(--color-border);
-      background-color: var(--color-background);
-      color: var(--color-text-secondary);
-      border-radius: 8px;
-      width: 100%;
-      box-sizing: border-box;
-      margin-bottom: 2rem;
-      text-align: center;
-      cursor: not-allowed;
-  }
-  
-  .diceContainer { display: flex; justify-content: space-around; align-items: center; margin-bottom: 2rem; height: 120px; }
-  .diceWrapper h3 { font-size: 1rem; color: var(--color-text-secondary); margin-bottom: 1rem; }
-  .dicePair { display: flex; gap: 1rem; justify-content: center; }
-  .vs { font-size: 2rem; font-weight: 700; color: var(--color-light-orange); margin: 0 1rem; align-self: center; }
-  
-  .resultMessage { font-size: 1.5rem; font-weight: bold; margin-bottom: 2rem; }
-  .resultMessage.win { color: #28a745; }
-  .resultMessage.lose { color: #dc3545; }
-  .resultMessage.tie { color: var(--color-light-orange); }
-  
-  .gameBox button {
-    padding: 1rem 2rem;
+}
+
+/* Branded "No Wallet" styling */
+.walletInput {
+    width: 100%;
+    background-color: #000000;
+    color: #F7931A; /* Gold Text */
+    border: 1px solid #F7931A; /* Gold Border */
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 2rem;
     font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-dark-blue);
-    background-color: var(--color-orange);
+    letter-spacing: 1px;
+}
+
+.face {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    background-color: #000000;
+    border: 2px solid #F7931A;
+    border-radius: 8px;
+}
+
+.gameBox button {
+    padding: 1rem;
+    background-color: #F7931A;
+    color: #000;
     border: none;
     border-radius: 8px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     width: 100%;
-  }
-  
-  .gameBox button:disabled {
-      background-color: #333;
-      color: #666;
-      cursor: not-allowed;
-      opacity: 0.7;
-  }
-  
-  .winScreen {
-      padding: 2rem 1rem 1rem 1rem;
-      margin-top: 2rem;
-      border-top: 1px solid var(--color-border);
-  }
-  .winScreen h2 { color: var(--color-light-orange); }
-  .walletProof {
-      background-color: var(--color-background);
-      border: 1px solid var(--color-light-orange);
-      padding: 0.75rem;
-      border-radius: 8px;
-      margin: 1rem 0 2rem 0;
-      font-size: 1.1rem;
-  }
-  .walletProof strong { color: var(--color-text-primary); }
-  
-  .instructions { text-align: left; background: var(--color-background); padding: 1.5rem; border-radius: 8px; }
-  .instructions h3 { margin-top: 0; color: var(--color-light-orange); }
-  .instructions ol { padding-left: 1.5rem; margin: 0; }
-  .instructions li { margin-bottom: 1rem; line-height: 1.5; color: var(--color-text-secondary); }
-  .instructions li:last-child { margin-bottom: 0; }
-  .instructions a { color: var(--color-light-blue); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
-  .instructions a:hover { text-decoration: underline; }
-  
-  .resetButton {
-      background-color: #555 !important;
-      color: #fff !important;
-      margin-top: 1.5rem;
-      font-size: 0.9rem !important;
-      padding: 0.5rem 1rem !important;
-  }
-  
-  .resetButton:hover {
-      background-color: #777 !important;
-  }
+}
+
+.gameBox button:disabled {
+    background-color: #333;
+    color: #666;
+    cursor: not-allowed;
+}

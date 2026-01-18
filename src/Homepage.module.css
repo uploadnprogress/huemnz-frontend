@@ -1,28 +1,13 @@
 /* src/pages/HomePage.module.css */
-
 .container {
   max-width: 100%;
   margin: 0 auto;
   background-color: #000000;
   color: #e0e0e0;
-  overflow-x: hidden;
 }
 
-/* Visibility Fixes */
-.mainTitle, .sectionTitle, .cardTitle, .memberTitle, .footerLogo {
-  color: #ffffff !important;
-}
-
-.subText, .cardBody, .memberDesc, .copyright {
-  color: #cccccc !important;
-}
-
-/* REMOVING GREY: All section wrappers set to transparent */
-.welcomeSection, 
-.missionSection, 
-.roadmapSection, 
-.teamSection, 
-.carouselSection {
+/* Force all sections to be transparent to show the solid black index.css background */
+.welcomeSection, .missionSection, .roadmapSection, .teamSection, .carouselSection {
   max-width: 1200px;
   margin: 0 auto;
   padding: 6rem 2rem;
@@ -30,60 +15,39 @@
   background-color: transparent !important;
 }
 
-/* MISSION GRID */
 .missionGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  text-align: left;
 }
 
-/* BRANDED BLUE CONTAINERS: The only visible boxes on the black background */
+/* The Blueish Card remains the only container */
 .missionCard {
   background-color: #021c29;
   border: 1px solid #2a2a2a;
   padding: 2.5rem;
   border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  height: 100%; 
-}
-
-.missionCard h3 {
-  color: #F7931A !important;
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
+  height: 100%;
 }
 
 @media (max-width: 768px) {
-  .missionGrid {
-    grid-template-columns: 1fr !important;
-  }
+  .missionGrid { grid-template-columns: 1fr !important; }
 }
 
-/* TEAM SOCIALS: Stacked Vertically */
 .memberSocials {
   display: flex;
-  flex-direction: column; 
-  align-items: center;    
-  gap: 12px;              
-  margin-top: 15px;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .socialLink {
-  color: #F7931A !important; 
-  text-decoration: none;
+  color: #F7931A !important;
   font-weight: 600;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
-/* FOOTER */
 .footer { 
   background-color: #050505; 
-  padding: 4rem 2rem 2rem; 
+  padding: 4rem 2rem; 
   border-top: 1px solid #2a2a2a;
-  text-align: center; 
 }
