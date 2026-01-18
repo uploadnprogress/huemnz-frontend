@@ -101,14 +101,14 @@ function HomePage() {
         <section className={styles.carouselSection}>
           <Slider {...carouselSettings}>
             {slideImages.map((src, index) => (
-               <div key={index} className={styles.carouselSlide}><img src={src} className={styles.carouselImage} /></div>
+               <div key={index} className={styles.carouselSlide}><img src={src} className={styles.carouselImage} alt="Character Slide" /></div>
             ))}
           </Slider>
         </section>
 
         <motion.section className={styles.roadmapSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
           <h2 className={styles.sectionTitle}>Roadmap</h2>
-          <img src={roadmapImg} className={styles.roadmapImage}/>
+          <img src={roadmapImg} className={styles.roadmapImage} alt="Project Roadmap"/>
         </motion.section>
 
         <motion.section className={styles.teamSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>

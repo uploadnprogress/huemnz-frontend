@@ -1,7 +1,7 @@
 .container {
   max-width: 100%;
   margin: 0 auto;
-  background-color: #0a0a0a;
+  background-color: #000000;
   color: #e0e0e0;
   overflow-x: hidden;
 }
@@ -25,7 +25,7 @@
 
 @media (max-width: 768px) {
   .missionGrid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr !important; /* Forces vertical stacking */
   }
 }
 
@@ -67,7 +67,7 @@
 }
 
 .memberSocials a {
-  color: #F7931A;
+  color: #007BFF;
   margin: 0 10px;
   text-decoration: none;
 }
@@ -76,3 +76,4 @@
 .footer { background-color: #050505; padding: 4rem 2rem 2rem; text-align: center; }
 .footerLinks { display: flex; gap: 2rem; justify-content: center; margin-bottom: 20px; }
 .socialIcons { display: flex; gap: 1.5rem; justify-content: center; }
+.copyright { margin-top: 20px; font-size: 0.8rem; }
