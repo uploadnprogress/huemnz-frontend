@@ -1,4 +1,5 @@
 /* src/pages/HomePage.module.css */
+
 .container {
   max-width: 100%;
   margin: 0 auto;
@@ -16,7 +17,7 @@
   color: #cccccc !important;
 }
 
-/* FORCE SOLID BLACK BACKGROUND: Set section backgrounds to transparent */
+/* REMOVING GREY: All section wrappers set to transparent */
 .welcomeSection, 
 .missionSection, 
 .roadmapSection, 
@@ -29,21 +30,15 @@
   background-color: transparent !important;
 }
 
-/* MISSION TILES - GRID LOGIC */
+/* MISSION GRID */
 .missionGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); 
   gap: 1.5rem;
   text-align: left;
 }
 
-@media (max-width: 768px) {
-  .missionGrid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* BLUEISH CONTAINERS: The only visible boxes on the black background */
+/* BRANDED BLUE CONTAINERS: The only visible boxes on the black background */
 .missionCard {
   background-color: #021c29;
   border: 1px solid #2a2a2a;
@@ -60,41 +55,29 @@
   font-size: 1.6rem;
 }
 
-.cardBody {
-  color: #cccccc !important;
-  line-height: 1.6;
+@media (max-width: 768px) {
+  .missionGrid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
-/* TEAM SOCIALS: Stacked vertically */
+/* TEAM SOCIALS: Stacked Vertically */
 .memberSocials {
   display: flex;
-  flex-direction: column; /* Force vertical stacking */
-  align-items: center;    /* Center links */
-  gap: 12px;              /* Spacing between links */
+  flex-direction: column; 
+  align-items: center;    
+  gap: 12px;              
   margin-top: 15px;
 }
 
 .socialLink {
-  color: #F7931A !important;
+  color: #F7931A !important; 
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.3s ease;
-}
-
-.socialLink:hover {
-  opacity: 0.8;
-}
-
-/* CAROUSEL */
-.carouselImage { 
-  width: 100%; 
-  height: auto; 
-  border-radius: 8px; 
-  border: 1px solid #2a2a2a;
 }
 
 /* FOOTER */

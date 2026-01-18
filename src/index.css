@@ -3,11 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 :root {
+  /* Brand Colors */
   --color-light-orange: #F7931A;
-  --color-background: #000000; 
+  
+  /* THEMATIC COLORS: FORCED BLACK THEME */
+  --color-background: #000000; /* Pure black foundation */
   --color-text-primary: #ffffff;
   --color-text-secondary: #cccccc;
   --color-border: #2a2a2a;
+  --color-card-background: #021c29; /* Branded Blue */
+
+  /* Fonts */
   --font-body: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-heading: 'Archivo Black', sans-serif;
 
@@ -23,7 +29,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #000000 !important; /* Strictly enforce solid black background */
+  background-color: #000000 !important; /* Strictly enforced solid black */
   overflow-x: hidden;
   box-sizing: border-box;
 }
