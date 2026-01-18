@@ -6,8 +6,12 @@ import styles from './AllowlistPage.module.css';
 
 const Dice = ({ value, isRolling }) => {
     const rotationMap = {
-        1: 'rotateY(0deg) rotateX(0deg)', 2: 'rotateX(-90deg)', 3: 'rotateY(-90deg)',
-        4: 'rotateY(90deg)', 5: 'rotateX(90deg)', 6: 'rotateY(180deg)',
+        1: 'rotateY(0deg) rotateX(0deg)', 
+        2: 'rotateX(-90deg)', 
+        3: 'rotateY(-90deg)',
+        4: 'rotateY(90deg)', 
+        5: 'rotateX(90deg)', 
+        6: 'rotateY(180deg)',
     };
     return (
         <div className={styles.scene}>
@@ -33,6 +37,7 @@ function AllowlistPage() {
     const [winnerWallet, setWinnerWallet] = useState('');
     const walletAddress = userData?.wallet || '';
 
+    // Check for previous win on load
     useEffect(() => {
         const winnerData = localStorage.getItem('huemnzWinner');
         if (winnerData) {
@@ -48,9 +53,10 @@ function AllowlistPage() {
         }
     }, [walletAddress]);
 
-    // SEND NOTIFICATION WITH EMAIL
+    // Send admin notification with both Wallet and Email
     const sendWinnerNotification = async (wallet) => {
         try {
+            // Retrieve the email stored during landing entry
             const userEmail = localStorage.getItem('userEmail') || 'Not Captured';
             
             const formData = new FormData();
@@ -63,7 +69,9 @@ function AllowlistPage() {
                 method: "POST",
                 body: formData
             });
-        } catch (error) { console.error('Silent alarm failed', error); }
+        } catch (error) { 
+            console.error('Silent alarm failed', error); 
+        }
     };
 
     const handleRoll = () => {
@@ -83,15 +91,23 @@ function AllowlistPage() {
             setPcRoll({ d1: c1, d2: c2 });
             setIsRolling(false);
             
+            // Win condition: User total > PC total
             if ((p1 + p2) > (c1 + c2)) {
                 setResult('win');
                 setIsGuaranteed(true);
                 setWinnerWallet(walletAddress);
-                const winData = JSON.stringify({ status: 'winner', wallet: walletAddress, winningRoll: { player: {d1:p1,d2:p2}, pc: {d1:c1,d2:c2} }});
+                const winData = JSON.stringify({ 
+                    status: 'winner', 
+                    wallet: walletAddress, 
+                    winningRoll: { player: {d1:p1,d2:p2}, pc: {d1:c1,d2:c2} }
+                });
                 localStorage.setItem('huemnzWinner', winData);
                 sendWinnerNotification(walletAddress);
-            } else if ((p1 + p2) < (c1 + c2)) setResult('lose');
-            else setResult('tie');
+            } else if ((p1 + p2) < (c1 + c2)) {
+                setResult('lose');
+            } else {
+                setResult('tie');
+            }
         }, 2500); 
     };
 
@@ -106,6 +122,7 @@ function AllowlistPage() {
                             <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /> Join Discord</a>
                             <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer"><FaTwitter /> Follow X</a>
                         </div>
+                        {/* Reset button for testing purposes */}
                         <button onClick={() => {localStorage.removeItem('huemnzWinner'); setIsGuaranteed(false);}} className={styles.resetButton}>Reset (Test)</button>
                     </div>
                 ) : (
@@ -113,16 +130,35 @@ function AllowlistPage() {
                         <h2 className={styles.gradientTitle}>The Allowlist Challenge</h2>
                         <input type="text" className={styles.walletInput} value={walletAddress || 'No Wallet'} disabled />
                         <div className={styles.diceContainer}>
-                            <div className={styles.diceWrapper}><h3>You</h3><div className={styles.dicePair}><Dice value={playerRoll.d1} isRolling={isRolling}/><Dice value={playerRoll.d2} isRolling={isRolling}/></div></div>
+                            <div className={styles.diceWrapper}>
+                                <h3>You</h3>
+                                <div className={styles.dicePair}>
+                                    <Dice value={playerRoll.d1} isRolling={isRolling}/>
+                                    <Dice value={playerRoll.d2} isRolling={isRolling}/>
+                                </div>
+                            </div>
                             <div className={styles.vs}>VS</div>
-                            <div className={styles.diceWrapper}><h3>PC</h3><div className={styles.dicePair}><Dice value={pcRoll.d1} isRolling={isRolling}/><Dice value={pcRoll.d2} isRolling={isRolling}/></div></div>
+                            <div className={styles.diceWrapper}>
+                                <h3>PC</h3>
+                                <div className={styles.dicePair}>
+                                    <Dice value={pcRoll.d1} isRolling={isRolling}/>
+                                    <Dice value={pcRoll.d2} isRolling={isRolling}/>
+                                </div>
+                            </div>
                         </div>
-                        {result && !isRolling && <div className={`${styles.resultMessage} ${styles[result]}`}>{result.toUpperCase()}!</div>}
-                        <button onClick={handleRoll} disabled={isRolling || !walletAddress}>{isRolling ? 'Rolling...' : 'Roll'}</button>
+                        {result && !isRolling && (
+                            <div className={`${styles.resultMessage} ${styles[result]}`}>
+                                {result.toUpperCase()}!
+                            </div>
+                        )}
+                        <button onClick={handleRoll} disabled={isRolling || !walletAddress}>
+                            {isRolling ? 'Rolling...' : 'Roll'}
+                        </button>
                     </>
                 )}
             </motion.div>
         </div>
     );
 }
+
 export default AllowlistPage;
