@@ -1,20 +1,67 @@
 .container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 100px 20px;
+  padding: 120px 20px;
   background-color: #000;
   min-height: 100vh;
 }
 
-.container h1, .container h2 {
+.container h1 {
   color: #ffffff !important;
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.subtitle {
+  color: #a0a0a0 !important;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  font-style: italic;
+}
+
+.content, .faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.content > div, .faqItem, .contentBlock {
+  background-color: #021c29; 
+  border: 1px solid #2a2a2a;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.container h2, .faqItem h3 {
+  color: #F7931A !important; 
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .container h3 {
-  color: #F7931A !important;
+  color: #ffffff !important;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
 }
 
 .container p, .container li {
   color: #cccccc !important;
-  line-height: 1.6;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.container ul {
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+}
+
+.container li {
+  margin-bottom: 1rem;
+}
+
+.container strong {
+  color: #F7931A;
 }

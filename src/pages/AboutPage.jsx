@@ -12,23 +12,30 @@ function AboutPage() {
     >
       <h1>The Genesis of Huemnz</h1>
       <div className={styles.content}>
-        <h2>A Necessary Disruption</h2>
-        <p>
-          Huemnz wasn't born from a desire to launch another digital collectible. It was forged from the frustrating reality of the Web3 space: a world of infinite potential built on a foundation of digital quicksand.
-        </p>
-        <p>
-          As the founder, I watched brilliant artists lose their credibility to impersonators and savvy investors lose their fortunes to rudimentary scams. We celebrated ownership but neglected identity. We built decentralized economies on centralized points of failure. The promise of Web3 was being undermined by its own "digital frailty." This had to change.
-        </p>
-        <h2>The New Standard: Identity as a Foundation</h2>
-        <p>
-          We are here to introduce a new standard. Huemnz is the infrastructure for a more secure and equitable creator economy. We believe the future of digital interaction isn't just about faster transactions; it's about **provable reputation**.
-        </p>
-        <p>
-          By creating a synergistic link between a secure, one-time verification and a non-transferable Soul-Bound Token (SBT), Huemnz establishes a foundational "Proof of Personhood." This isn't about exposing your private data; it's about giving you a cryptographic key that says "I am me," which you can use to navigate the digital world with unprecedented security and confidence.
-        </p>
-        <p>
-          The art, beautifully crafted by our visionary artist, is the key to this new ecosystem. It is a symbol of your entry into a more secure, more trustworthy, and more *human* digital future.
-        </p>
+        <div>
+          <h2>A Necessary Revolution</h2>
+          <p>
+            Huemnz wasn't born from a desire to launch another digital collectible. It was forged from the frustrating reality of the Web3 space: a world of infinite potential built on digital quicksand. We saw brilliant builders and artists lose everything to impersonation and Sybil attacks because the industry prioritized anonymity over accountability.
+          </p>
+        </div>
+        <div>
+          <h2>Foundational Independence</h2>
+          <p>
+            We are here to move the industry toward true digital independence. By leveraging the <strong>Polkadot SDK</strong>, we’ve engineered a custom environment that puts the human first. We believe your digital identity should be your property—unbreakable, unstealable, and undeniable.
+          </p>
+        </div>
+        <div>
+          <h2>Built-in Security</h2>
+          <p>
+            The art is the key, but the code is the lock. Every line of our custom Layer 1 is designed to empower the creator and protect the collector. We established a foundational "Proof of Personhood" that gives you a cryptographic key to navigate the digital world with confidence.
+          </p>
+        </div>
+        <div>
+          <h2>The Visionary Core</h2>
+          <p>
+            The art, beautifully crafted by our visionary artist, is the symbol of your entry into this ecosystem. Together, the founder's technical architecture and the artist's aesthetic vision are building a more secure, more trustworthy, and more <em>human</em> digital future.
+          </p>
+        </div>
       </div>
     </motion.div>
   );

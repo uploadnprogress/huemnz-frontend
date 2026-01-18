@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom'; 
 import Slider from 'react-slick';
-import { FaTwitter, FaDiscord, FaGithub } from 'react-icons/fa'; // Added FaGithub
+import { FaTwitter, FaDiscord, FaGithub } from 'react-icons/fa'; 
 import styles from './HomePage.module.css';
 
 import "slick-carousel/slick/slick.css"; 
@@ -43,7 +43,7 @@ function HomePage({ userData }) {
     dots: true, 
     infinite: true, 
     speed: 500, 
-    autoplay: true, // Confirmed: Carousel moves on its own
+    autoplay: true, 
     autoplaySpeed: 3000, 
     slidesToShow: 4, 
     slidesToScroll: 1, 
@@ -113,30 +113,31 @@ function HomePage({ userData }) {
         <motion.section className={styles.teamSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
           <h2 className={styles.sectionTitle}>Meet the Founders</h2>
           <div className={styles.teamGrid}>
-            {/* The Artist Section */}
             <div className={styles.teamMember}>
               <img src={artistImg} alt="The Artist"/>
               <h3 className={styles.memberTitle}>The Artist</h3>
               <p className={styles.memberDesc}>The visionary architect behind the aesthetic.</p>
               <div className={styles.memberSocials}>
+                  {/* Portfolio on Top */}
                   <a href="https://oziomajesuloba.artstation.com/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Portfolio</a>
+                  {/* Twitter below it */}
                   <a href="https://x.com/oziomajesuloba" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @oziomajesuloba</a>
               </div>
             </div>
-            {/* The Founder Section */}
             <div className={styles.teamMember}>
               <img src={founderImg} alt="The Founder"/>
               <h3 className={styles.memberTitle}>The Founder</h3>
               <p className={styles.memberDesc}>The technical mind building the protocols.</p>
               <div className={styles.memberSocials}>
+                  {/* GitHub on Top */}
                   <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaGithub /> GitHub</a>
+                  {/* Twitter below it */}
                   <a href="https://x.com/singleletterd" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @singleletterd</a>
               </div>
             </div>
           </div>
         </motion.section>
 
-        {/* Art Submission Form remains unchanged */}
         <section className={styles.submissionSection}>
           <h3 className={styles.sectionTitle}>Share Your Art</h3>
           <form className={styles.artForm} onSubmit={handleSubmit} encType="multipart/form-data">
@@ -152,7 +153,6 @@ function HomePage({ userData }) {
         </section>
       </main>
 
-      {/* Footer remains unchanged */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.footerLogo}>HUEMNZ</div>
