@@ -3,30 +3,29 @@
 .container {
   max-width: 100%;
   margin: 0 auto;
-  background-color: #000000;
+  background-color: #000000; /* Pure black */
   color: #e0e0e0;
   overflow-x: hidden;
 }
 
-/* Visibility Fixes */
-.mainTitle, .sectionTitle, .cardTitle, .memberTitle, .footerLogo {
-  color: #ffffff !important;
-}
-
-.subText, .cardBody, .memberDesc, .copyright {
-  color: #cccccc !important;
-}
-
-/* SECTIONS - Backgrounds set to transparent to show solid black index.css */
-.welcomeSection, .missionSection, .roadmapSection, .teamSection, .carouselSection {
+/* ===== SECTIONS ===== */
+/* Removed all #121212 backgrounds to eliminate the grey container effect */
+.welcomeSection, 
+.missionSection, 
+.roadmapSection, 
+.teamSection, 
+.carouselSection {
   max-width: 1200px;
   margin: 0 auto;
   padding: 6rem 2rem;
   text-align: center;
-  background-color: transparent !important;
+  background-color: transparent !important; /* Allow index.css black to show */
 }
 
-/* MISSION TILES - GRID LOGIC */
+.mainTitle { font-size: 3.5rem; margin-bottom: 1.5rem; color: #fff; }
+.subText { font-size: 1.2rem; color: #a0a0a0; max-width: 650px; margin: 0 auto; line-height: 1.6; }
+
+/* MISSION GRID */
 .missionGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
@@ -34,9 +33,8 @@
   text-align: left;
 }
 
-/* THE BLUEISH CONTAINERS: The only visible boxes on the black background */
 .missionCard {
-  background-color: #021c29;
+  background-color: #021c29; /* The blueish container */
   border: 1px solid #2a2a2a;
   padding: 2.5rem;
   border-radius: 12px;
@@ -45,23 +43,11 @@
   height: 100%; 
 }
 
-.missionCard h3 {
-  color: #F7931A !important;
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
-}
+.missionCard h3 { color: #F7931A; margin-bottom: 1rem; font-size: 1.6rem; }
+.cardBody { color: #cccccc; line-height: 1.6; }
 
-.cardBody {
-  color: #cccccc !important;
-  line-height: 1.6;
-  text-align: left;
-}
-
-/* Vertical Stack for Mobile */
 @media (max-width: 768px) {
-  .missionGrid {
-    grid-template-columns: 1fr !important;
-  }
+  .missionGrid { grid-template-columns: 1fr !important; }
 }
 
 /* CAROUSEL */
@@ -72,7 +58,7 @@
   border: 1px solid #2a2a2a;
 }
 
-/* TEAM GRID */
+/* TEAM SECTION */
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -89,49 +75,32 @@
   margin-bottom: 1rem; 
 }
 
-/* TEAM SOCIALS: Stacked vertically */
+/* FIXED: Stacking links vertically */
 .memberSocials {
   display: flex;
-  flex-direction: column; 
-  align-items: center;    
-  gap: 12px;              
+  flex-direction: column; /* Force vertical stacking */
+  align-items: center;    /* Center the buttons */
+  gap: 12px;              /* Spacing between links */
   margin-top: 15px;
 }
 
 .socialLink {
-  color: #F7931A !important; 
+  color: #F7931A !important;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.3s ease;
-}
-
-.socialLink:hover {
-  opacity: 0.8;
 }
 
 /* FOOTER */
 .footer { 
   background-color: #050505; 
   padding: 4rem 2rem 2rem; 
-  text-align: center; 
   border-top: 1px solid #2a2a2a;
+  text-align: center; 
 }
 
-.footerLinks { 
-  display: flex; 
-  gap: 2rem; 
-  justify-content: center; 
-  margin-bottom: 20px; 
-}
-
+.footerLinks { display: flex; gap: 2rem; justify-content: center; margin-bottom: 20px; }
 .footerLinks span { cursor: pointer; color: #fff; }
-
-.socialIcons { 
-  display: flex; 
-  gap: 1.5rem; 
-  justify-content: center; 
-}
+.socialIcons { display: flex; gap: 1.5rem; justify-content: center; }

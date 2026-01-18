@@ -3,27 +3,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 :root {
-  /* HueMn Brand Colors */
-  --color-light-blue: #9FE7F5;
-  --color-medium-blue: #429EBD;
-  --color-dark-blue: #053F5C;
-  --color-light-orange: #F7931A; /* Updated to match your grid gold */
-  --color-orange: #F27F0C;
-
-  /* Thematic Colors - FORCED SOLID BLACK THEME */
-  --color-background: #000000; /* Changed from dark blue to solid black */
-  --color-text-primary: #ffffff; 
-  --color-text-secondary: #cccccc; 
-  --color-accent-primary: var(--color-light-orange);
-  --color-accent-secondary: var(--color-medium-blue);
+  /* Brand Colors */
+  --color-light-orange: #F7931A;
+  
+  /* Solid Black Theme Base */
+  --color-background: #000000; 
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cccccc;
   --color-border: #2a2a2a;
-  --color-card-background: #021c29; /* The blueish container color */
+  --color-card-blueish: #021c29;
 
   /* Fonts */
   --font-body: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --font-heading: 'Archivo Black', sans-serif;
 
-  /* Base Setup */
   line-height: 1.6;
   font-weight: 400;
   text-rendering: optimizeLegibility;
@@ -33,12 +26,12 @@
 
 html, body {
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+  height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #000000 !important; /* Force solid black everywhere */
+  overflow-x: hidden;
   box-sizing: border-box;
-  background-color: #000000 !important; /* Force solid black */
 }
 
 *, *::before, *::after {
@@ -46,9 +39,6 @@ html, body {
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
   font-family: var(--font-body);
   color: var(--color-text-primary);
 }
@@ -57,9 +47,4 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   text-transform: uppercase;
   margin: 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
 }
