@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom'; // Added Link and useNavigate
+import { Link, useNavigate } from 'react-router-dom'; 
 import Slider from 'react-slick';
-import { FaTwitter, FaDiscord } from 'react-icons/fa';
+import { FaTwitter, FaDiscord, FaGithub } from 'react-icons/fa'; // Added FaGithub
 import styles from './HomePage.module.css';
 
 import "slick-carousel/slick/slick.css"; 
@@ -24,7 +24,6 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
 };
 
-// FIXED: Accepting userData as a prop
 function HomePage({ userData }) {
   const navigate = useNavigate();
   const [isWinner, setIsWinner] = useState(false);
@@ -41,7 +40,14 @@ function HomePage({ userData }) {
   }, [userData]);
 
   const carouselSettings = {
-    dots: true, infinite: true, speed: 500, autoplay: true, slidesToShow: 4, slidesToScroll: 1, arrows: false,
+    dots: true, 
+    infinite: true, 
+    speed: 500, 
+    autoplay: true, // Confirmed: Carousel moves on its own
+    autoplaySpeed: 3000, 
+    slidesToShow: 4, 
+    slidesToScroll: 1, 
+    arrows: false,
     responsive: [
         { breakpoint: 1024, settings: { slidesToShow: 3 } },
         { breakpoint: 600, settings: { slidesToShow: 2 } },
@@ -77,16 +83,16 @@ function HomePage({ userData }) {
           <h2 className={styles.sectionTitle}>This Hasn't Been Done Before.</h2>
           <div className={styles.missionGrid}>
               <div className={styles.missionCard}>
-                  <h3 className={styles.cardTitle}>Digital Frailty</h3>
-                  <p className={styles.cardBody}>Impersonation and exploits are bugs, not features.</p>
+                  <h3 className={styles.cardTitle}>The Problem: Digital Frailty</h3>
+                  <p className={styles.cardBody}>Impersonation, smart contract exploits, and the inability to build a lasting reputation are not features; they are bugs in the system. Current "security" is reactive, not foundational.</p>
               </div>
               <div className={styles.missionCard}>
-                  <h3 className={styles.cardTitle}>Provable Identity</h3>
-                  <p className={styles.cardBody}>We tie assets to a non-transferable SBT.</p>
+                  <h3 className={styles.cardTitle}>The Huemnz Solution: Provable Identity</h3>
+                  <p className={styles.cardBody}>We tie your unique assets to a non-transferable Soul-Bound Token (SBT), creating the first layer of true digital identity. This isn't just a profile picture; it's a verifiable link between you and your digital footprint.</p>
               </div>
               <div className={styles.missionCard}>
-                  <h3 className={styles.cardTitle}>KYC Synergy</h3>
-                  <p className={styles.cardBody}>Anchoring your SBT to real-world identity securely.</p>
+                  <h3 className={styles.cardTitle}>How It Works: KYC & SBT Synergy</h3>
+                  <p className={styles.cardBody}>Through a secure, one-time KYC verification, we anchor your SBT to a real-world identity without storing personal data on-chain. This creates a trust layer, enabling everything from fraud-proof transactions to a portable, persistent reputation across the Web3 space.</p>
               </div>
           </div>
         </motion.section>
@@ -107,26 +113,30 @@ function HomePage({ userData }) {
         <motion.section className={styles.teamSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
           <h2 className={styles.sectionTitle}>Meet the Founders</h2>
           <div className={styles.teamGrid}>
+            {/* The Artist Section */}
             <div className={styles.teamMember}>
               <img src={artistImg} alt="The Artist"/>
               <h3 className={styles.memberTitle}>The Artist</h3>
               <p className={styles.memberDesc}>The visionary architect behind the aesthetic.</p>
               <div className={styles.memberSocials}>
-                  <a href="https://oziomajesuloba.artstation.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
+                  <a href="https://oziomajesuloba.artstation.com/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Portfolio</a>
+                  <a href="https://x.com/oziomajesuloba" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @oziomajesuloba</a>
               </div>
             </div>
+            {/* The Founder Section */}
             <div className={styles.teamMember}>
               <img src={founderImg} alt="The Founder"/>
               <h3 className={styles.memberTitle}>The Founder</h3>
               <p className={styles.memberDesc}>The technical mind building the protocols.</p>
               <div className={styles.memberSocials}>
-                  <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer">GitHub</a>
-                  <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+                  <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaGithub /> GitHub</a>
+                  <a href="https://x.com/singleletterd" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @singleletterd</a>
               </div>
             </div>
           </div>
         </motion.section>
 
+        {/* Art Submission Form remains unchanged */}
         <section className={styles.submissionSection}>
           <h3 className={styles.sectionTitle}>Share Your Art</h3>
           <form className={styles.artForm} onSubmit={handleSubmit} encType="multipart/form-data">
@@ -142,6 +152,7 @@ function HomePage({ userData }) {
         </section>
       </main>
 
+      {/* Footer remains unchanged */}
       <footer className={styles.footer}>
         <div className={styles.footerContent}>
           <div className={styles.footerLogo}>HUEMNZ</div>
