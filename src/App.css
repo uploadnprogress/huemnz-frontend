@@ -40,3 +40,103 @@
 .read-the-docs {
   color: #888;
 }
+
+/* src/App.css */
+:root {
+  --bg-black: #000000;
+  --bg-blueish: #021c29; /* The blueish background from mission cards */
+  --text-white: #ffffff;
+  --accent: #007BFF;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-black);
+  color: var(--text-white);
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-container {
+  background-color: var(--bg-black);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER: Now using the blueish background across the full width */
+.main-header {
+  width: 100%;
+  background-color: var(--bg-blueish); /* Blueish background for the header */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+/* Navigation & Logo Styling */
+.logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.h-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.brand-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.nav-link {
+  text-decoration: none;
+  /* Updated to yellowish-gold color from homepage grids */
+  color: #F7931A; 
+  padding: 8px 16px;
+  transition: opacity 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+  color: #F7931A; /* Keep color consistent on hover */
+}
+
+.nav-highlight-btn {
+  text-decoration: none;
+  background-color: var(--accent);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.wallet-btn {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
