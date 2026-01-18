@@ -1,17 +1,17 @@
 .container {
   max-width: 100%;
   margin: 0 auto;
-  background-color: #000000; /* Pure black background */
+  background-color: #000000;
   color: #e0e0e0;
   overflow-x: hidden;
 }
 
-/* Visibility Fixes - Force white/gray colors against black background */
+/* Visibility Fixes */
 .mainTitle, .sectionTitle, .cardTitle, .memberTitle, .footerLogo {
   color: #ffffff !important;
 }
 
-.subText, .cardBody, .memberDesc, .copyright, .optIn {
+.subText, .cardBody, .memberDesc, .copyright {
   color: #cccccc !important;
 }
 
@@ -26,11 +26,10 @@
 /* Vertical Stack for Mobile */
 @media (max-width: 768px) {
   .missionGrid {
-    grid-template-columns: 1fr !important; /* 1 column on mobile */
+    grid-template-columns: 1fr !important;
   }
 }
 
-/* SECTIONS */
 .welcomeSection, .missionSection, .roadmapSection, .teamSection {
   max-width: 1200px;
   margin: 0 auto;
@@ -45,11 +44,9 @@
   border-radius: 12px;
 }
 
-/* CAROUSEL */
 .carouselSection { 
   padding: 4rem 2rem; 
   background-color: #121212; 
-  margin-bottom: 6rem; 
 }
 
 .carouselImage { 
@@ -58,7 +55,6 @@
   border-radius: 8px; 
 }
 
-/* TEAM */
 .teamGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -73,8 +69,7 @@
   text-decoration: none;
 }
 
-/* FOOTER */
 .footer { background-color: #050505; padding: 4rem 2rem 2rem; text-align: center; }
 .footerLinks { display: flex; gap: 2rem; justify-content: center; margin-bottom: 20px; }
+.footerLinks span { cursor: pointer; color: #fff; }
 .socialIcons { display: flex; gap: 1.5rem; justify-content: center; }
-.copyright { margin-top: 20px; font-size: 0.8rem; }

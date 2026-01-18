@@ -2,44 +2,19 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 100px 20px;
-  background-color: #000; /* Pure black background */
+  background-color: #000;
   min-height: 100vh;
 }
 
-/* Visibility Fix: Force all headings and text to be white/gray */
-.container h1 {
+.container h1, .container h2 {
   color: #ffffff !important;
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.container h2 {
-  color: #ffffff !important;
-  font-size: 2rem;
-  margin-top: 40px;
 }
 
 .container h3 {
-  color: #F7931A !important; /* Accent color for subheaders */
-  font-size: 1.5rem;
+  color: #F7931A !important;
 }
 
 .container p, .container li {
   color: #cccccc !important;
-  font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.subtitle {
-  color: #a0a0a0 !important;
-  font-size: 1.3rem;
-  margin-bottom: 50px;
-  font-style: italic;
-}
-
-.contentBlock {
-  margin-top: 30px;
-  border-left: 2px solid #2a2a2a;
-  padding-left: 20px;
 }

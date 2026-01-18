@@ -53,13 +53,6 @@ function HomePage() {
     e.preventDefault();
     setFormStatus('submitting');
     const formData = new FormData(e.target);
-    const emailValue = formData.get('Email'); 
-    
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(emailValue) || emailValue.includes('test.mail')) {
-        setFormStatus('blocked'); return; 
-    }
-
     try {
       await fetch("https://formsubmit.co/ajax/info@huemn.life", { method: 'POST', body: formData });
       setFormStatus('success'); e.target.reset();
@@ -138,21 +131,13 @@ function HomePage() {
           <h3 className={styles.sectionTitle}>Share Your Art</h3>
           <form className={styles.artForm} onSubmit={handleSubmit} encType="multipart/form-data">
             <input type="hidden" name="_subject" value="New Art Submission (Huemnz)" />
-            <input type="hidden" name="_captcha" value="false" />
             <input type="text" name="Alias" placeholder="Your Name or Alias" className={styles.formInput} required />
             <input type="email" name="Email" placeholder="Your Email" className={styles.formInput} required />
             <textarea name="Description" placeholder="Tell us about your art!" className={styles.formTextarea} required></textarea>
             <input type="file" name="attachment" className={styles.formInput} accept="image/*" multiple required />
-            
-            <div className={styles.optIn}>
-                <input type="checkbox" name="Newsletter_Opt_In" value="Yes" defaultChecked /> Keep me updated.
-            </div>
-
             <button type="submit" className={styles.primaryButton} disabled={formStatus === 'submitting'}>
               {formStatus === 'submitting' ? 'Uploading...' : 'Submit'}
             </button>
-            {formStatus === 'success' && <div className={styles.successMessage}>Received!</div>}
-            {formStatus === 'blocked' && <div className={styles.errorMessage}>Invalid email.</div>}
           </form>
         </section>
       </main>
@@ -166,7 +151,6 @@ function HomePage() {
             <span onClick={() => navigate('/faq')}>FAQ</span>
             <span onClick={() => navigate('/allowlist')}>Game</span>
           </div>
-          {/* Removed Instagram Icon */}
           <div className={styles.socialIcons}>
             <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
             <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /></a>
