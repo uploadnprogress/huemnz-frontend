@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom'; 
 import Slider from 'react-slick';
-import { FaTwitter, FaDiscord, FaGithub } from 'react-icons/fa'; 
+import { FaDiscord, FaGithub } from 'react-icons/fa'; 
 import styles from './HomePage.module.css';
 
 import "slick-carousel/slick/slick.css"; 
@@ -118,10 +118,8 @@ function HomePage({ userData }) {
               <h3 className={styles.memberTitle}>The Artist</h3>
               <p className={styles.memberDesc}>The visionary architect behind the aesthetic.</p>
               <div className={styles.memberSocials}>
-                  {/* Portfolio on Top */}
                   <a href="https://oziomajesuloba.artstation.com/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Portfolio</a>
-                  {/* Twitter below it */}
-                  <a href="https://x.com/oziomajesuloba" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @oziomajesuloba</a>
+                  <a href="https://x.com/oziomajesuloba" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>@oziomajesuloba</a>
               </div>
             </div>
             <div className={styles.teamMember}>
@@ -129,10 +127,8 @@ function HomePage({ userData }) {
               <h3 className={styles.memberTitle}>The Founder</h3>
               <p className={styles.memberDesc}>The technical mind building the protocols.</p>
               <div className={styles.memberSocials}>
-                  {/* GitHub on Top */}
                   <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaGithub /> GitHub</a>
-                  {/* Twitter below it */}
-                  <a href="https://x.com/singleletterd" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @singleletterd</a>
+                  <a href="https://x.com/singleletterd" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>@singleletterd</a>
               </div>
             </div>
           </div>
@@ -163,8 +159,8 @@ function HomePage({ userData }) {
             <span onClick={() => navigate('/allowlist')}>Game</span>
           </div>
           <div className={styles.socialIcons}>
-            <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
-            <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /></a>
+            <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer">Discord</a>
           </div>
         </div>
         <p className={styles.copyright}>© 2025 Huemnz. All rights reserved.</p>
