@@ -7,17 +7,17 @@
   --color-light-blue: #9FE7F5;
   --color-medium-blue: #429EBD;
   --color-dark-blue: #053F5C;
-  --color-light-orange: #F7A019;
+  --color-light-orange: #F7931A; /* Updated to match your grid gold */
   --color-orange: #F27F0C;
 
-  /* Thematic Colors based on Brand */
-  --color-background: #021c29; /* A very dark blue, almost black */
-  --color-text-primary: #f0f8ff; /* A soft, almost white blue */
-  --color-text-secondary: #a0d8e8; /* A muted light blue for paragraphs */
+  /* Thematic Colors - FORCED SOLID BLACK THEME */
+  --color-background: #000000; /* Changed from dark blue to solid black */
+  --color-text-primary: #ffffff; 
+  --color-text-secondary: #cccccc; 
   --color-accent-primary: var(--color-light-orange);
   --color-accent-secondary: var(--color-medium-blue);
-  --color-border: #0a2f42;
-  --color-card-background: #032535;
+  --color-border: #2a2a2a;
+  --color-card-background: #021c29; /* The blueish container color */
 
   /* Fonts */
   --font-body: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -26,10 +26,23 @@
   /* Base Setup */
   line-height: 1.6;
   font-weight: 400;
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #000000 !important; /* Force solid black */
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body {
@@ -37,25 +50,16 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: var(--font-body);
-  background-color: var(--color-background);
   color: var(--color-text-primary);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   text-transform: uppercase;
-}
-
-/* src/index.css */
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden; /* This is the key line */
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
-*, *::before, *::after {
-  box-sizing: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }

@@ -1,53 +1,14 @@
-/* ===== GLOBAL VARIABLES ===== */
-:root {
-  --bg: #000000;
-  --text: #e0e0e0;
-  --accent: #007BFF;
-  --game: #F7931A;
-  --border: #2a2a2a;
-  --bg-blueish: #021c29;
-}
+/* src/pages/HomePage.module.css */
 
 .container {
   max-width: 100%;
   margin: 0 auto;
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: #000000;
+  color: #e0e0e0;
   overflow-x: hidden;
 }
 
-/* ===== WINNER BANNER ===== */
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 5px rgba(40, 167, 69, 0.2); }
-  50% { box-shadow: 0 0 20px rgba(40, 167, 69, 0.5); }
-  100% { box-shadow: 0 0 5px rgba(40, 167, 69, 0.2); }
-}
-
-.winnerBanner {
-  background: linear-gradient(90deg, #28a745, #20c997);
-  text-align: center;
-  margin: 2rem auto;
-  max-width: 1200px;
-  border-radius: 8px;
-  border: 1px solid #28a745;
-  animation: pulseGlow 4s infinite ease-in-out;
-}
-.winnerBanner a {
-  display: block;
-  padding: 0.75rem 1rem;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* ===== SECTIONS ===== */
-.welcomeSection, .missionSection, .roadmapSection, .teamSection {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 6rem 2rem;
-  text-align: center;
-}
-
+/* Visibility Fixes */
 .mainTitle, .sectionTitle, .cardTitle, .memberTitle, .footerLogo {
   color: #ffffff !important;
 }
@@ -56,60 +17,79 @@
   color: #cccccc !important;
 }
 
-/* MISSION GRID */
-.missionGrid { 
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 1.5rem; 
-  text-align: left; 
+/* SECTIONS - Backgrounds set to transparent to show solid black index.css */
+.welcomeSection, .missionSection, .roadmapSection, .teamSection, .carouselSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  text-align: center;
+  background-color: transparent !important;
 }
 
-.missionCard { 
-  background-color: var(--bg-blueish); 
-  border: 1px solid var(--border); 
-  padding: 2.5rem; 
-  border-radius: 12px; 
+/* MISSION TILES - GRID LOGIC */
+.missionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1.5rem;
+  text-align: left;
+}
+
+/* THE BLUEISH CONTAINERS: The only visible boxes on the black background */
+.missionCard {
+  background-color: #021c29;
+  border: 1px solid #2a2a2a;
+  padding: 2.5rem;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100%; 
 }
-.missionCard h3 { color: var(--game); margin-bottom: 1rem; font-size: 1.6rem; }
 
+.missionCard h3 {
+  color: #F7931A !important;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.cardBody {
+  color: #cccccc !important;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Vertical Stack for Mobile */
 @media (max-width: 768px) {
-  .missionGrid { grid-template-columns: 1fr !important; }
-  .welcomeSection h1 { font-size: 2.5rem; }
+  .missionGrid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* CAROUSEL */
-.carouselSection { 
-  padding: 4rem 2rem; 
-  background-color: #121212; 
-  margin-bottom: 6rem; 
-  overflow: hidden; 
-}
 .carouselImage { 
   width: 100%; 
   height: auto; 
   border-radius: 8px; 
-  border: 1px solid var(--border); 
+  border: 1px solid #2a2a2a;
 }
 
-/* TEAM SECTION */
-.teamGrid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  gap: 3rem; 
-  max-width: 900px; 
-  margin: 0 auto; 
+/* TEAM GRID */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
+
 .teamMember img { 
   width: 200px; height: 200px; 
   object-fit: cover; 
   border-radius: 50%; 
-  border: 2px solid var(--border); 
+  border: 2px solid #2a2a2a; 
   margin-bottom: 1rem; 
 }
 
+/* TEAM SOCIALS: Stacked vertically */
 .memberSocials {
   display: flex;
   flex-direction: column; 
@@ -119,22 +99,39 @@
 }
 
 .socialLink {
-  color: var(--game) !important;
+  color: #F7931A !important; 
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: opacity 0.3s ease;
 }
 
-/* SUBMISSION FORM */
-.submissionSection { padding: 5rem 2rem; text-align: center; max-width: 800px; margin: 0 auto; }
-.artForm { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-.formInput, .formTextarea { padding: 1rem; border-radius: 8px; border: 1px solid var(--border); background: #000; color: #fff; }
-.primaryButton { padding: 1rem; background-color: var(--accent); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.socialLink:hover {
+  opacity: 0.8;
+}
 
 /* FOOTER */
-.footer { background-color: #050505; padding: 4rem 2rem 2rem; border-top: 1px solid var(--border); text-align: center; }
-.footerLinks { display: flex; gap: 2rem; justify-content: center; margin-bottom: 20px; }
-.socialIcons { display: flex; gap: 1.5rem; justify-content: center; }
-.socialIcons a { color: #fff; font-size: 1.5rem; }
+.footer { 
+  background-color: #050505; 
+  padding: 4rem 2rem 2rem; 
+  text-align: center; 
+  border-top: 1px solid #2a2a2a;
+}
+
+.footerLinks { 
+  display: flex; 
+  gap: 2rem; 
+  justify-content: center; 
+  margin-bottom: 20px; 
+}
+
+.footerLinks span { cursor: pointer; color: #fff; }
+
+.socialIcons { 
+  display: flex; 
+  gap: 1.5rem; 
+  justify-content: center; 
+}
