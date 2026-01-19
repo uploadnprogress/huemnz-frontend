@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord, FaTwitter } from 'react-icons/fa';
+import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord } from 'react-icons/fa';
 import styles from './AllowlistPage.module.css';
 
 const Dice = ({ value, isRolling }) => {
@@ -60,7 +60,7 @@ function AllowlistPage({ userData }) {
             formData.append('Winner Wallet', wallet);
             formData.append('Winner Email', userEmail);
             await fetch("https://formsubmit.co/ajax/info@huemn.life", { method: "POST", body: formData });
-        } catch (error) { console.error('Silent alarm failed', error); }
+        } catch (error) { console.error('Notification failed', error); }
     };
 
     const handleRoll = () => {
@@ -96,13 +96,13 @@ function AllowlistPage({ userData }) {
                         <p>Proof: <strong>{winnerWallet}</strong></p>
                         <div className={styles.instructions}>
                             <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /> Discord</a>
-                            <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer"><FaTwitter /> X</a>
+                            <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">Twitter</a>
                         </div>
                     </div>
                 ) : (
                     <>
                         <h2 className={styles.gradientTitle}>Allowlist Challenge</h2>
-                        <input type="text" className={styles.walletInput} value={walletAddress || 'No Wallet'} disabled />
+                        <input type="text" className={styles.walletInput} value={walletAddress || 'No Wallet Detected'} disabled />
                         <div className={styles.diceContainer}>
                             <div className={styles.diceWrapper}>
                                 <h3>You</h3>
@@ -120,7 +120,11 @@ function AllowlistPage({ userData }) {
                                 </div>
                             </div>
                         </div>
-                        {result && !isRolling && <div className={`${styles.resultMessage} ${styles[result]}`}>{result.toUpperCase()}!</div>}
+                        {result && !isRolling && (
+                            <div className={`${styles.resultMessage} ${styles[result]}`}>
+                                {result.toUpperCase()}!
+                            </div>
+                        )}
                         <button onClick={handleRoll} disabled={isRolling || !walletAddress}>{isRolling ? 'Rolling...' : 'Roll'}</button>
                     </>
                 )}

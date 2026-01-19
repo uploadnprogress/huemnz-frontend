@@ -3,25 +3,70 @@
 .container {
     display: flex;
     justify-content: center;
-    padding: 4rem 2rem;
+    align-items: center;
+    min-height: 100vh;
     background-color: #000000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
 }
 
 .gameBox {
-    width: 100%;
-    max-width: 600px;
-    background-color: #021c29;
+    background: #021c29;
     border: 1px solid #2a2a2a;
-    border-radius: 16px;
     padding: 3rem;
+    border-radius: 20px;
     text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* 3D DICE RESTORATION */
+.gradientTitle {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #F7931A, #ffb347);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.walletInput {
+    width: 100%;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    background: #000;
+    border: 1px solid #333;
+    color: #0f0;
+    font-family: monospace;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.diceContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3rem 0;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.vs {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.dicePair {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* ===== 3D DICE STYLES ===== */
 .scene {
-    width: 64px;
-    height: 64px;
-    perspective: 600px; /* Vital for 3D depth */
+    width: 60px;
+    height: 60px;
+    perspective: 600px;
     margin: 0 auto;
 }
 
@@ -29,76 +74,86 @@
     width: 100%;
     height: 100%;
     position: relative;
-    transform-style: preserve-3d; /* Required for 3D rotation */
-    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    transition: transform 1s ease-out;
+}
+
+.rolling {
+    animation: spin 0.5s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: rotateX(0) rotateY(0); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
 }
 
 .face {
     position: absolute;
-    width: 64px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    color: #F7931A; /* Branded Gold Dots */
-    background-color: #000000;
-    border: 2px solid #F7931A;
+    width: 60px;
+    height: 60px;
+    background: white; /* Reverted to white */
+    border: 2px solid #ccc;
     border-radius: 8px;
-    backface-visibility: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #000;
 }
 
 /* 3D Offsets */
-.front  { transform: rotateY(0deg) translateZ(32px); }
-.back   { transform: rotateY(180deg) translateZ(32px); }
-.right  { transform: rotateY(90deg) translateZ(32px); }
-.left   { transform: rotateY(-90deg) translateZ(32px); }
-.top    { transform: rotateX(90deg) translateZ(32px); }
-.bottom { transform: rotateX(-90deg) translateZ(32px); }
+.front  { transform: rotateY(0deg) translateZ(30px); }
+.back   { transform: rotateY(180deg) translateZ(30px); }
+.right  { transform: rotateY(90deg) translateZ(30px); }
+.left   { transform: rotateY(-90deg) translateZ(30px); }
+.top    { transform: rotateX(90deg) translateZ(30px); }
+.bottom { transform: rotateX(-90deg) translateZ(30px); }
 
-.rolling {
-    animation: tumble-3d 2s linear infinite;
-}
-
-@keyframes tumble-3d {
-    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-    100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(180deg); }
-}
-
-/* BRANDED ROLL BUTTON */
+/* Buttons & Results */
 .gameBox button {
-    padding: 1rem 2rem;
-    font-family: 'Archivo Black', sans-serif;
+    padding: 1rem 3rem;
     font-size: 1.2rem;
-    background-color: #F7931A;
-    color: #000000;
+    background: #F7931A;
     border: none;
     border-radius: 8px;
+    color: #000;
+    font-weight: bold;
     cursor: pointer;
     width: 100%;
-    margin-top: 2rem;
-    transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.gameBox button:hover:not(:disabled) {
-    transform: scale(1.02);
-    filter: brightness(1.1);
+    margin-top: 1rem;
 }
 
 .gameBox button:disabled {
-    background-color: #333;
-    color: #666;
+    background: #555;
     cursor: not-allowed;
 }
 
-.walletInput {
-    width: 100%;
-    background-color: #000000;
-    color: #F7931A;
-    border: 1px solid #F7931A;
-    padding: 12px;
-    border-radius: 8px;
+.resultMessage {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+}
+.win { color: #0f0; }
+.lose { color: #f00; }
+.tie { color: #ff0; }
+
+.winScreen {
     text-align: center;
-    font-family: 'Archivo Black', sans-serif;
-    margin-bottom: 2rem;
+}
+.instructions {
+    background: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+.instructions li {
+    margin-bottom: 0.5rem;
+    color: #ccc;
+}
+.instructions a {
+    color: #F7931A;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: 600;
 }
