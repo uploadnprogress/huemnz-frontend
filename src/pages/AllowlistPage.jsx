@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord, FaTwitter } from 'react-icons/fa';
+import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord } from 'react-icons/fa';
 import styles from './AllowlistPage.module.css';
 
 const Dice = ({ value, isRolling }) => {
@@ -60,11 +60,12 @@ function AllowlistPage({ userData }) {
             formData.append('Winner Wallet', wallet);
             formData.append('Winner Email', userEmail);
             await fetch("https://formsubmit.co/ajax/info@huemn.life", { method: "POST", body: formData });
-        } catch (error) { console.error('Silent alarm failed', error); }
+        } catch (error) { console.error('Notification failed', error); }
     };
 
     const handleRoll = () => {
-        /* if (!walletAddress) return; */ // Standard JS comment works fine here
+        // TEST MODE: Wallet check bypassed
+        /* if (!walletAddress) return; */
         setIsRolling(true);
         setResult(null);
         setTimeout(() => {
@@ -93,10 +94,14 @@ function AllowlistPage({ userData }) {
                 {isGuaranteed ? (
                     <div className={styles.winScreen}>
                         <h2 className={styles.gradientTitle}>Spot Secured!</h2>
-                        <p>Proof: <strong>{winnerWallet}</strong></p>
+                        <p>Proof: <strong>{winnerWallet || 'Verified'}</strong></p>
                         <div className={styles.instructions}>
-                            <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /> Discord</a>
-                            <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer"><FaTwitter /> X</a>
+                            <p>You have earned your spot in the ecosystem. Follow these steps to finalize your entry:</p>
+                            <ul>
+                                <li>Join the <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer">Huemnz Discord</a> to verify your role.</li>
+                                <li>Follow <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">@theHueMnz on X</a> for the latest updates.</li>
+                                <li>Keep this wallet address handy for the upcoming mint phase.</li>
+                            </ul>
                         </div>
                     </div>
                 ) : (
@@ -105,7 +110,7 @@ function AllowlistPage({ userData }) {
                         <input 
                             type="text" 
                             className={styles.walletInput} 
-                            /* value={walletAddress || 'No Wallet Detected'} */ 
+                            /* value={walletAddress || 'No Wallet Detected'} */
                             value={walletAddress || 'TEST MODE: BYPASS ACTIVE'} 
                             disabled 
                         />

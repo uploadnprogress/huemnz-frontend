@@ -10,9 +10,8 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* UPDATED: Container now uses branded blue */
 .gameBox {
-    background: #021c29; 
+    background: #021c29; /* Branded Blue */
     border: 1px solid #2a2a2a;
     padding: 3rem;
     border-radius: 20px;
@@ -28,16 +27,16 @@
     background: linear-gradient(90deg, #F7931A, #ffb347);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-family: 'Archivo Black', sans-serif;
 }
 
-/* UPDATED: Wallet font color now uses branded orange */
 .walletInput {
     width: 100%;
     padding: 1rem;
     margin: 1.5rem 0;
     background: #000;
     border: 1px solid #333;
-    color: #F7931A; 
+    color: #F7931A; /* Branded Orange */
     font-family: monospace;
     text-align: center;
     border-radius: 8px;
@@ -143,18 +142,43 @@
 .lose { color: #f00; }
 .tie { color: #ff0; }
 
-.winScreen {
-    text-align: center;
+/* WINNER SCREEN STYLES */
+.winScreen p {
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
+
 .instructions {
-    background: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: #000;
+    padding: 2rem;
+    border-radius: 12px;
     margin: 1.5rem 0;
     text-align: left;
+    border: 1px solid #2a2a2a;
 }
+
+.instructions p {
+    font-weight: 600;
+    color: #F7931A;
+    margin-bottom: 1rem;
+}
+
+.instructions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.instructions li {
+    margin-bottom: 1rem;
+    color: #ccc;
+    font-size: 0.95rem;
+    border-left: 2px solid #F7931A;
+    padding-left: 1rem;
+}
+
 .instructions a {
     color: #F7931A;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: bold;
 }
