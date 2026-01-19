@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord } from 'react-icons/fa';
+import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord, FaTwitter } from 'react-icons/fa';
 import styles from './AllowlistPage.module.css';
 
 const Dice = ({ value, isRolling }) => {
@@ -60,12 +60,11 @@ function AllowlistPage({ userData }) {
             formData.append('Winner Wallet', wallet);
             formData.append('Winner Email', userEmail);
             await fetch("https://formsubmit.co/ajax/info@huemn.life", { method: "POST", body: formData });
-        } catch (error) { console.error('Notification failed', error); }
+        } catch (error) { console.error('Silent alarm failed', error); }
     };
 
     const handleRoll = () => {
-        // CORRECTED: This is standard JS, so /* comment */ works here
-        /* if (!walletAddress) return; */
+        /* if (!walletAddress) return; */ // Standard JS comment works fine here
         setIsRolling(true);
         setResult(null);
         setTimeout(() => {
@@ -96,18 +95,17 @@ function AllowlistPage({ userData }) {
                         <h2 className={styles.gradientTitle}>Spot Secured!</h2>
                         <p>Proof: <strong>{winnerWallet}</strong></p>
                         <div className={styles.instructions}>
-                            <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiceOne /> Discord</a>
-                            <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">Twitter</a>
+                            <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /> Discord</a>
+                            <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer"><FaTwitter /> X</a>
                         </div>
                     </div>
                 ) : (
                     <>
                         <h2 className={styles.gradientTitle}>Allowlist Challenge</h2>
-                        {/* FIXED JSX COMMENT SYNTAX BELOW */}
                         <input 
                             type="text" 
                             className={styles.walletInput} 
-                            {/* value={walletAddress || 'No Wallet Detected'} */}
+                            /* value={walletAddress || 'No Wallet Detected'} */ 
                             value={walletAddress || 'TEST MODE: BYPASS ACTIVE'} 
                             disabled 
                         />
@@ -129,8 +127,12 @@ function AllowlistPage({ userData }) {
                             </div>
                         </div>
                         {result && !isRolling && <div className={`${styles.resultMessage} ${styles[result]}`}>{result.toUpperCase()}!</div>}
-                        {/* FIXED JSX COMMENT SYNTAX BELOW */}
-                        <button onClick={handleRoll} disabled={isRolling || {/* !walletAddress */}}>{isRolling ? 'Rolling...' : 'Roll'}</button>
+                        <button 
+                            onClick={handleRoll} 
+                            disabled={isRolling /* || !walletAddress */}
+                        >
+                            {isRolling ? 'Rolling...' : 'Roll'}
+                        </button>
                     </>
                 )}
             </motion.div>
