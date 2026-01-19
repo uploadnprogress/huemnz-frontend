@@ -4,6 +4,7 @@ import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, F
 import styles from './AllowlistPage.module.css';
 
 const Dice = ({ value, isRolling }) => {
+    // Standardized 3D rotation map
     const rotationMap = {
         1: 'rotateY(0deg) rotateX(0deg)', 
         2: 'rotateX(-90deg)', 
@@ -120,11 +121,7 @@ function AllowlistPage({ userData }) {
                                 </div>
                             </div>
                         </div>
-                        {result && !isRolling && (
-                            <div className={`${styles.resultMessage} ${styles[result]}`}>
-                                {result.toUpperCase()}!
-                            </div>
-                        )}
+                        {result && !isRolling && <div className={`${styles.resultMessage} ${styles[result]}`}>{result.toUpperCase()}!</div>}
                         <button onClick={handleRoll} disabled={isRolling || !walletAddress}>{isRolling ? 'Rolling...' : 'Roll'}</button>
                     </>
                 )}

@@ -1,107 +1,114 @@
 /* src/pages/AllowlistPage.module.css */
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #000000;
-    color: #fff;
-    font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
 }
 
 .gameBox {
-    background: #021c29;
-    border: 1px solid #2a2a2a;
-    padding: 3rem;
-    border-radius: 20px;
-    text-align: center;
-    max-width: 600px;
-    width: 90%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  background: #121212;
+  border: 1px solid #2a2a2a;
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .gradientTitle {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(90deg, #F7931A, #ffb347);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #F7931A, #ffb347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Archivo Black', sans-serif;
 }
 
+/* NO WALLET SECTION - Restored to Black/Green Terminal Style */
 .walletInput {
-    width: 100%;
-    padding: 1rem;
-    margin: 1.5rem 0;
-    background: #000;
-    border: 1px solid #333;
-    color: #0f0;
-    font-family: monospace;
-    text-align: center;
-    border-radius: 8px;
+  width: 100%;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  background: #000;
+  border: 1px solid #333;
+  color: #0f0; /* Terminal Green */
+  font-family: monospace;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .diceContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 3rem 0;
-    gap: 2rem;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3rem 0;
+  gap: 2rem;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
 }
 
 .vs {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #555;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #F7931A;
 }
 
 .dicePair {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
-/* ===== 3D DICE STYLES ===== */
+/* ===== 3D DICE STYLES - RESTORED & FIXED ===== */
 .scene {
-    width: 60px;
-    height: 60px;
-    perspective: 600px;
-    margin: 0 auto;
+  width: 60px;
+  height: 60px;
+  perspective: 600px;
+  margin: 0 auto;
 }
 
 .cube {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 1s ease-out;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1s ease-out;
 }
 
 .rolling {
-    animation: spin 0.5s infinite linear;
+  animation: spin 0.5s infinite linear;
 }
 
 @keyframes spin {
-    from { transform: rotateX(0) rotateY(0); }
-    to { transform: rotateX(360deg) rotateY(360deg); }
+  from { transform: rotateX(0) rotateY(0); }
+  to { transform: rotateX(360deg) rotateY(360deg); }
 }
 
 .face {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: white; /* Reverted to white */
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: #000;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: white;
+  border: 2px solid #F7931A; /* Orange Border */
+  box-shadow: 0 0 10px rgba(247, 147, 26, 0.4); /* Glow */
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* FIXED: Larger font-size + overflow:hidden clips the icon's internal border */
+  font-size: 75px; 
+  overflow: hidden; 
+  color: #000;
 }
 
-/* 3D Offsets */
 .front  { transform: rotateY(0deg) translateZ(30px); }
 .back   { transform: rotateY(180deg) translateZ(30px); }
 .right  { transform: rotateY(90deg) translateZ(30px); }
@@ -111,49 +118,45 @@
 
 /* Buttons & Results */
 .gameBox button {
-    padding: 1rem 3rem;
-    font-size: 1.2rem;
-    background: #F7931A;
-    border: none;
-    border-radius: 8px;
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 1rem;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  background: #F7931A;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-family: 'Archivo Black', sans-serif;
+  width: 100%;
 }
 
 .gameBox button:disabled {
-    background: #555;
-    cursor: not-allowed;
+  background: #555;
+  cursor: not-allowed;
 }
 
 .resultMessage {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem 0;
 }
 .win { color: #0f0; }
 .lose { color: #f00; }
 .tie { color: #ff0; }
 
 .winScreen {
-    text-align: center;
+  text-align: center;
 }
 .instructions {
-    background: #1a1a1a;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    text-align: left;
-}
-.instructions li {
-    margin-bottom: 0.5rem;
-    color: #ccc;
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  text-align: left;
 }
 .instructions a {
-    color: #F7931A;
-    text-decoration: none;
-    margin-left: 5px;
-    font-weight: 600;
+  color: #F7931A;
+  text-decoration: none;
+  font-weight: 600;
 }
