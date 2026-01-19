@@ -8,7 +8,7 @@
     min-height: calc(100vh - 80px);
 }
 
-/* FIXED: Main Game Box is now Branded Blue as requested */
+/* BRANDED BLUE CONTAINER */
 .gameBox {
     width: 100%;
     max-width: 600px;
@@ -19,7 +19,27 @@
     text-align: center;
 }
 
-/* REVERTED: Dice faces exactly as they were (using your original variables) */
+/* 3D DICE LOGIC - RESTORED TO PRE-DEPLOYMENT STATE */
+.scene {
+    width: 64px;
+    height: 64px;
+    perspective: 600px; /* Vital for 3D depth */
+    margin: 0 auto;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; /* Required for 3D rotation */
+    transition: transform 0.5s ease-out;
+}
+
+.rolling {
+    animation: tumble-3d 2.5s linear infinite;
+}
+
+/* FACE STYLING - REVERTED TO ORIGINAL VARIABLES */
 .face {
     position: absolute;
     width: 64px;
@@ -32,9 +52,23 @@
     background-color: var(--color-card-background);
     border: 2px solid var(--color-light-orange);
     border-radius: 8px;
+    backface-visibility: visible;
 }
 
-/* Branded "No Wallet" Section */
+/* FACE POSITIONS - 3D OFFSETS */
+.front  { transform: rotateY(0deg) translateZ(32px); }
+.back   { transform: rotateY(180deg) translateZ(32px); }
+.right  { transform: rotateY(90deg) translateZ(32px); }
+.left   { transform: rotateY(-90deg) translateZ(32px); }
+.top    { transform: rotateX(90deg) translateZ(32px); }
+.bottom { transform: rotateX(-90deg) translateZ(32px); }
+
+@keyframes tumble-3d {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: rotateX(720deg) rotateY(1080deg) rotateZ(360deg); }
+}
+
+/* BRANDED NO WALLET INPUT */
 .walletInput {
     width: 100%;
     background-color: #000000;
@@ -45,19 +79,4 @@
     text-align: center;
     font-weight: 700;
     margin-bottom: 2rem;
-}
-
-/* Original animations and cube logic */
-.scene { width: 64px; height: 64px; perspective: 600px; margin: 0 auto; }
-.cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.5s ease-out; }
-.rolling { animation: tumble-3d 2.5s linear infinite; }
-.front  { transform: rotateY(0deg) translateZ(32px); }
-.back   { transform: rotateY(180deg) translateZ(32px); }
-.right  { transform: rotateY(90deg) translateZ(32px); }
-.left   { transform: rotateY(-90deg) translateZ(32px); }
-.top    { transform: rotateX(90deg) translateZ(32px); }
-.bottom { transform: rotateX(-90deg) translateZ(32px); }
-@keyframes tumble-3d {
-    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-    100% { transform: rotateX(720deg) rotateY(1080deg) rotateZ(360deg); }
 }

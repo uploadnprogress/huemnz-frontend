@@ -1,24 +1,27 @@
 /* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
+/* GLOBAL OVERRIDE: TARGETING THE SPECIFIC GENERATED CLASS PATTERN */
+[class*="missionSection"], 
+[class*="welcomeSection"], 
+[class*="roadmapSection"], 
+[class*="teamSection"], 
+[class*="carouselSection"] {
+  background-color: #000000 !important;
+  background: #000000 !important;
+}
+
+/* ENSURE THE ROOT AND BODY ARE PURE BLACK */
 html, body, #root {
   background-color: #000000 !important;
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  color: #ffffff;
-}
-
-/* Ensure global variables for the dice are preserved */
+/* PRESERVE THE DICE VARIABLES */
 :root {
-  --color-card-background: #032535; /* Your original dice background variable */
+  --color-card-background: #032535;
   --color-text-primary: #f0f8ff;
   --color-light-orange: #F7A019;
 }
