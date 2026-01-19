@@ -64,7 +64,8 @@ function AllowlistPage({ userData }) {
     };
 
     const handleRoll = () => {
-        /*if (!walletAddress) return;*/
+        // CORRECTED: This is standard JS, so /* comment */ works here
+        /* if (!walletAddress) return; */
         setIsRolling(true);
         setResult(null);
         setTimeout(() => {
@@ -102,7 +103,14 @@ function AllowlistPage({ userData }) {
                 ) : (
                     <>
                         <h2 className={styles.gradientTitle}>Allowlist Challenge</h2>
-                        <input type="text" className={styles.walletInput} /*value={walletAddress || 'No Wallet Detected'}*/ value={walletAddress || 'TEST MODE: BYPASS ACTIVE'} disabled />
+                        {/* FIXED JSX COMMENT SYNTAX BELOW */}
+                        <input 
+                            type="text" 
+                            className={styles.walletInput} 
+                            {/* value={walletAddress || 'No Wallet Detected'} */}
+                            value={walletAddress || 'TEST MODE: BYPASS ACTIVE'} 
+                            disabled 
+                        />
                         <div className={styles.diceContainer}>
                             <div className={styles.diceWrapper}>
                                 <h3>You</h3>
@@ -121,7 +129,8 @@ function AllowlistPage({ userData }) {
                             </div>
                         </div>
                         {result && !isRolling && <div className={`${styles.resultMessage} ${styles[result]}`}>{result.toUpperCase()}!</div>}
-                        <button onClick={handleRoll} disabled={isRolling || /*!walletAddress*/}>{isRolling ? 'Rolling...' : 'Roll'}</button>
+                        {/* FIXED JSX COMMENT SYNTAX BELOW */}
+                        <button onClick={handleRoll} disabled={isRolling || {/* !walletAddress */}}>{isRolling ? 'Rolling...' : 'Roll'}</button>
                     </>
                 )}
             </motion.div>
