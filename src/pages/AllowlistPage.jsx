@@ -4,7 +4,6 @@ import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, F
 import styles from './AllowlistPage.module.css';
 
 const Dice = ({ value, isRolling }) => {
-    // Standardized 3D rotation map
     const rotationMap = {
         1: 'rotateY(0deg) rotateX(0deg)', 
         2: 'rotateX(-90deg)', 
@@ -96,7 +95,7 @@ function AllowlistPage({ userData }) {
                         <h2 className={styles.gradientTitle}>Spot Secured!</h2>
                         <p>Proof: <strong>{winnerWallet}</strong></p>
                         <div className={styles.instructions}>
-                            <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /> Discord</a>
+                            <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiceOne /> Discord</a>
                             <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">Twitter</a>
                         </div>
                     </div>
