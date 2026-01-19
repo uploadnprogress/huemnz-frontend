@@ -1,18 +1,33 @@
 /* src/pages/HomePage.module.css */
+
 .container {
-  max-width: 100%;
-  margin: 0 auto;
-  background-color: #000000;
-  color: #e0e0e0;
+  width: 100%;
+  background-color: #000000 !important;
 }
 
-/* Force all sections to be transparent to show the solid black index.css background */
-.welcomeSection, .missionSection, .roadmapSection, .teamSection, .carouselSection {
+/* Targeting the specific class names from your inspector to force transparency */
+.welcomeSection, 
+.missionSection, 
+.roadmapSection, 
+.teamSection, 
+.carouselSection {
+  background-color: transparent !important;
+  background: transparent !important;
   max-width: 1200px;
   margin: 0 auto;
   padding: 6rem 2rem;
   text-align: center;
-  background-color: transparent !important;
+}
+
+/* BLUEISH CONTAINERS: The only visible blocks on the black background */
+.missionCard {
+  background-color: #021c29 !important;
+  border: 1px solid #2a2a2a;
+  padding: 2.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .missionGrid {
@@ -21,19 +36,11 @@
   gap: 1.5rem;
 }
 
-/* The Blueish Card remains the only container */
-.missionCard {
-  background-color: #021c29;
-  border: 1px solid #2a2a2a;
-  padding: 2.5rem;
-  border-radius: 12px;
-  height: 100%;
-}
-
 @media (max-width: 768px) {
   .missionGrid { grid-template-columns: 1fr !important; }
 }
 
+/* TEAM SOCIALS: Stacked vertically as requested */
 .memberSocials {
   display: flex;
   flex-direction: column;
@@ -44,10 +51,5 @@
 .socialLink {
   color: #F7931A !important;
   font-weight: 600;
-}
-
-.footer { 
-  background-color: #050505; 
-  padding: 4rem 2rem; 
-  border-top: 1px solid #2a2a2a;
+  text-decoration: none;
 }

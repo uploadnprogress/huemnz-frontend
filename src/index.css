@@ -2,32 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
-:root {
-  --color-light-orange: #F7931A;
-  --color-background: #000000; 
-  --color-text-primary: #ffffff;
-  --color-card-background: #021c29; /* Branded Blue */
-  --font-body: 'Inter', sans-serif;
-  --font-heading: 'Archivo Black', sans-serif;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
+html, body, #root {
+  background-color: #000000 !important;
   margin: 0;
   padding: 0;
-  background-color: #000000 !important; /* Force pure black background */
+  width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: var(--font-body);
-  color: var(--color-text-primary);
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  margin: 0;
+/* Ensure global variables for the dice are preserved */
+:root {
+  --color-card-background: #032535; /* Your original dice background variable */
+  --color-text-primary: #f0f8ff;
+  --color-light-orange: #F7A019;
 }
