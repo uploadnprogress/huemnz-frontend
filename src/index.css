@@ -1,27 +1,28 @@
 /* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&display=swap');
 
-/* GLOBAL OVERRIDE: TARGETING THE SPECIFIC GENERATED CLASS PATTERN */
-[class*="missionSection"], 
-[class*="welcomeSection"], 
-[class*="roadmapSection"], 
-[class*="teamSection"], 
-[class*="carouselSection"] {
-  background-color: #000000 !important;
-  background: #000000 !important;
+:root {
+  --color-background: #000000;
+  --color-brand-gold: #F7931A;
+  --color-card-blue: #021c29;
+  --font-heading: 'Archivo Black', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-/* ENSURE THE ROOT AND BODY ARE PURE BLACK */
-html, body, #root {
+html, body {
   background-color: #000000 !important;
   margin: 0;
   padding: 0;
-  width: 100%;
-  min-height: 100vh;
+  font-family: var(--font-body);
 }
 
-/* PRESERVE THE DICE VARIABLES */
-:root {
-  --color-card-background: #032535;
-  --color-text-primary: #f0f8ff;
-  --color-light-orange: #F7A019;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Ensure the homepage sections remain pure black */
+[class*="missionSection"], [class*="welcomeSection"], [class*="teamSection"] {
+  background-color: #000000 !important;
 }

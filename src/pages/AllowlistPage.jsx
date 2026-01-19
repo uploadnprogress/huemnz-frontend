@@ -12,9 +12,11 @@ const Dice = ({ value, isRolling }) => {
         5: 'rotateX(90deg)', 
         6: 'rotateY(180deg)',
     };
+    
     return (
         <div className={styles.scene}>
-            <div className={`${styles.cube} ${isRolling ? styles.rolling : ''}`} style={!isRolling ? { transform: rotationMap[value] } : {}}>
+            <div className={`${styles.cube} ${isRolling ? styles.rolling : ''}`} 
+                 style={!isRolling ? { transform: rotationMap[value] } : {}}>
                 <div className={`${styles.face} ${styles.front}`}><FaDiceOne /></div>
                 <div className={`${styles.face} ${styles.back}`}><FaDiceSix /></div>
                 <div className={`${styles.face} ${styles.right}`}><FaDiceThree /></div>

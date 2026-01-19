@@ -3,23 +3,21 @@
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 4rem 2rem;
-    min-height: calc(100vh - 80px);
+    background-color: #000000;
 }
 
-/* BRANDED BLUE CONTAINER */
 .gameBox {
     width: 100%;
     max-width: 600px;
-    background-color: #021c29; 
+    background-color: #021c29;
     border: 1px solid #2a2a2a;
     border-radius: 16px;
     padding: 3rem;
     text-align: center;
 }
 
-/* 3D DICE LOGIC - RESTORED TO PRE-DEPLOYMENT STATE */
+/* 3D DICE RESTORATION */
 .scene {
     width: 64px;
     height: 64px;
@@ -32,14 +30,9 @@
     height: 100%;
     position: relative;
     transform-style: preserve-3d; /* Required for 3D rotation */
-    transition: transform 0.5s ease-out;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.rolling {
-    animation: tumble-3d 2.5s linear infinite;
-}
-
-/* FACE STYLING - REVERTED TO ORIGINAL VARIABLES */
 .face {
     position: absolute;
     width: 64px;
@@ -47,15 +40,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
-    color: var(--color-text-primary);
-    background-color: var(--color-card-background);
-    border: 2px solid var(--color-light-orange);
+    font-size: 3.5rem;
+    color: #F7931A; /* Branded Gold Dots */
+    background-color: #000000;
+    border: 2px solid #F7931A;
     border-radius: 8px;
     backface-visibility: visible;
 }
 
-/* FACE POSITIONS - 3D OFFSETS */
+/* 3D Offsets */
 .front  { transform: rotateY(0deg) translateZ(32px); }
 .back   { transform: rotateY(180deg) translateZ(32px); }
 .right  { transform: rotateY(90deg) translateZ(32px); }
@@ -63,12 +56,41 @@
 .top    { transform: rotateX(90deg) translateZ(32px); }
 .bottom { transform: rotateX(-90deg) translateZ(32px); }
 
-@keyframes tumble-3d {
-    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-    100% { transform: rotateX(720deg) rotateY(1080deg) rotateZ(360deg); }
+.rolling {
+    animation: tumble-3d 2s linear infinite;
 }
 
-/* BRANDED NO WALLET INPUT */
+@keyframes tumble-3d {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(180deg); }
+}
+
+/* BRANDED ROLL BUTTON */
+.gameBox button {
+    padding: 1rem 2rem;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.2rem;
+    background-color: #F7931A;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 2rem;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.gameBox button:hover:not(:disabled) {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+.gameBox button:disabled {
+    background-color: #333;
+    color: #666;
+    cursor: not-allowed;
+}
+
 .walletInput {
     width: 100%;
     background-color: #000000;
@@ -77,6 +99,6 @@
     padding: 12px;
     border-radius: 8px;
     text-align: center;
-    font-weight: 700;
+    font-family: 'Archivo Black', sans-serif;
     margin-bottom: 2rem;
 }
