@@ -1,55 +1,266 @@
 /* src/pages/HomePage.module.css */
 
+/* GLOBAL CONTAINER */
 .container {
   width: 100%;
-  background-color: #000000 !important;
-}
-
-/* Targeting the specific class names from your inspector to force transparency */
-.welcomeSection, 
-.missionSection, 
-.roadmapSection, 
-.teamSection, 
-.carouselSection {
-  background-color: transparent !important;
-  background: transparent !important;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 6rem 2rem;
-  text-align: center;
-}
-
-/* BLUEISH CONTAINERS: The only visible blocks on the black background */
-.missionCard {
-  background-color: #021c29 !important;
-  border: 1px solid #2a2a2a;
-  padding: 2.5rem;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.missionGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .missionGrid { grid-template-columns: 1fr !important; }
-}
-
-/* TEAM SOCIALS: Stacked vertically as requested */
-.memberSocials {
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  background-color: #0a0a0a;
 }
 
-.socialLink {
-  color: #F7931A !important;
-  font-weight: 600;
+/* WINNER BANNER - BRANDED UPDATE */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px rgba(247, 147, 26, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(247, 147, 26, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(247, 147, 26, 0.2); }
+}
+
+.winnerBanner {
+  background-color: #021c29; /* Branded Blue */
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  width: 90%;
+  border-radius: 8px;
+  border: 1px solid #F7931A; /* Branded Orange */
+  animation: pulseGlow 4s infinite ease-in-out;
+  padding: 1rem;
+  margin-top: 100px;
+}
+
+.winnerBanner a {
+  display: block;
+  color: #F7931A; /* Orange Text */
   text-decoration: none;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* SECTIONS */
+.welcomeSection, 
+.missionSection, 
+.carouselSection, 
+.roadmapSection, 
+.teamSection, 
+.submissionSection {
+  width: 100%;
+  max-width: 1200px; 
+  padding: 60px 20px;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TEXT TYPOGRAPHY */
+h1, h2, h3 { 
+  color: #fff; 
+  margin-bottom: 20px; 
+}
+
+p { 
+  color: #ccc; 
+  line-height: 1.6; 
+  max-width: 800px; 
+  margin: 0 auto 30px auto; 
+}
+
+/* --- MISSION GRID --- */
+.missionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.missionCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+/* --- TEAM GRID --- */
+.teamGrid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.teamMember {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+}
+
+.teamMember img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  margin-bottom: 15px;
+}
+
+/* SOCIAL BUTTONS */
+.memberSocials {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.memberSocials a {
+  font-size: 0.85rem;
+  color: #fff;
+  border: 1px solid #666;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.memberSocials a:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+/* IMAGES */
+.roadmapImage { 
+  width: 100%; 
+  max-width: 800px; 
+  border-radius: 10px; 
+  height: auto;
+}
+
+/* FORM STYLES */
+.artForm {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formInput, .formTextarea {
+  padding: 12px;
+  background: #222;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.primaryButton {
+  padding: 12px 30px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: center;
+  transition: transform 0.2s;
+}
+
+.primaryButton:hover {
+  transform: scale(1.05);
+}
+
+/* CAROUSEL */
+.carouselSection { 
+  display: block; 
+  width: 90%; 
+  margin: 0 auto; 
+}
+.carouselImage { 
+  width: 100%; 
+  border-radius: 10px; 
+  padding: 0 5px; 
+  box-sizing: border-box;
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  background: #111;
+  padding: 40px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footerContent { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 20px; 
+}
+
+.footerLinks { 
+  display: flex; 
+  gap: 20px; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+}
+
+.footerLinks span { 
+  cursor: pointer; 
+  color: #aaa; 
+  transition: color 0.2s;
+}
+
+.footerLinks span:hover { 
+  color: #fff; 
+}
+
+.socialIcons { 
+  display: flex; 
+  gap: 20px; 
+  font-size: 1.5rem; 
+  justify-content: center; 
+}
+
+/* --- MOBILE OVERRIDES --- */
+@media (max-width: 768px) {
+  .container { 
+    width: 100%; 
+    overflow-x: hidden;
+  }
+
+  .missionGrid {
+    grid-template-columns: 1fr; 
+    gap: 20px;
+  }
+  
+  .teamGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .carouselSection {
+    width: 100%;
+    padding: 0;
+  }
+  
+  h1, h2, h3, p {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

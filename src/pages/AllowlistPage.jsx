@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord } from 'react-icons/fa';
+import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord, FaTwitter } from 'react-icons/fa';
 import styles from './AllowlistPage.module.css';
 
 const Dice = ({ value, isRolling }) => {
@@ -96,11 +96,17 @@ function AllowlistPage({ userData }) {
                         <h2 className={styles.gradientTitle}>Spot Secured!</h2>
                         <p>Proof: <strong>{winnerWallet || 'Verified'}</strong></p>
                         <div className={styles.instructions}>
-                            <p>You have earned your spot in the ecosystem. Follow these steps to finalize your entry:</p>
+                            <p>MANDATORY NEXT STEPS:</p>
                             <ul>
-                                <li>Join the <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer">Huemnz Discord</a> to verify your role.</li>
-                                <li>Follow <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">@theHueMnz on X</a> for the latest updates.</li>
-                                <li>Keep this wallet address handy for the upcoming mint phase.</li>
+                                <li>
+                                    <strong>Step 1:</strong> Join the <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer">Discord</a> to secure this spot.
+                                </li>
+                                <li>
+                                    <strong>Step 2:</strong> Follow <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">@theHueMnz</a> to validate participation.
+                                </li>
+                                <li>
+                                    <strong>Step 3:</strong> Like & Repost the pinned post on <a href="https://x.com/thehuemnnetwork" target="_blank" rel="noopener noreferrer">@thehuemnnetwork</a> & <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">@theHueMnz</a>.
+                                </li>
                             </ul>
                         </div>
                     </div>
