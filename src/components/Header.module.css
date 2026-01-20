@@ -1,229 +1,140 @@
-/* CONTAINER: Keeps everything centered globally */
-.container {
-  width: 100%;
-  overflow-x: hidden; /* Double safety against scrolling */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers all sections horizontally */
-  text-align: center;  /* Centers text inside sections */
-}
+/* src/components/Header.module.css */
 
-/* SECTIONS: General spacing for all page parts */
-.welcomeSection, 
-.missionSection, 
-.carouselSection, 
-.roadmapSection, 
-.teamSection, 
-.submissionSection {
+/* --- MAIN HEADER BAR --- */
+.header {
   width: 100%;
-  max-width: 1200px; /* Keeps desktop view from getting too wide */
-  padding: 60px 20px; /* Top/Bottom padding + Side padding for mobile */
+  height: 80px;
+  background-color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
   box-sizing: border-box;
+  position: fixed; /* Sticks to top */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.logoImage {
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+/* --- DESKTOP NAVIGATION (Visible on large screens) --- */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navLink {
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: #F7931A;
+}
+
+.disabledLink {
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Desktop Game Button */
+.gameButton {
+  background: #F7931A;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Archivo Black', sans-serif;
+  transition: transform 0.2s;
+}
+
+.gameButton:hover {
+  transform: scale(1.05);
+  background: #fff;
+}
+
+/* --- HAMBURGER ICON (Hidden on Desktop) --- */
+.hamburger {
+  display: none; 
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* --- MOBILE MENU DRAWER (The Dropdown) --- */
+.mobileMenu {
+  position: absolute;
+  top: 80px; /* Pushes it exactly below the header bar */
+  left: 0;
+  width: 100%;
+  background-color: #0a0a0a;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* HEADINGS & TEXT */
-h1, h2, h3 {
-  margin-bottom: 20px;
-  color: #ffffff; /* Assuming white text */
-}
-
-p {
-  line-height: 1.6;
-  max-width: 800px; /* Prevents text from stretching too wide to read */
-  margin: 0 auto 30px auto; /* Centers the paragraph block */
-}
-
-/* --- MISSION GRID (THE TILES) --- */
-.missionGrid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap; /* Allows wrapping on smaller desktops */
-  width: 100%;
-}
-
-.missionCard {
-  background: rgba(255, 255, 255, 0.05); /* Subtle glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 30px;
-  border-radius: 12px;
-  flex: 1; /* All cards grow equally */
-  min-width: 280px; /* Don't let them get thinner than a phone screen */
-  max-width: 350px; /* Don't let them get huge */
-  text-align: center; /* Centers text inside the card */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* --- TEAM GRID --- */
-.teamGrid {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.teamMember {
-  text-align: center;
-  max-width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.teamMember img {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%; /* Circle shape */
-  object-fit: cover;
-  margin-bottom: 15px;
-  border: 3px solid #ffffff;
-}
-
-/* --- IMAGES --- */
-.roadmapImage {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  border-radius: 10px;
-}
-
-/* --- FORM STYLES --- */
-.artForm {
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
+  padding: 2rem 0;
+  border-bottom: 1px solid #333;
   gap: 15px;
 }
 
-.formInput, .formTextarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background: #222;
-  color: white;
-  box-sizing: border-box; /* Crucial for alignment */
-}
-
-.primaryButton {
-  padding: 12px 30px;
-  background: #ffffff;
-  color: #000;
-  border: none;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s;
-  align-self: center; /* Centers the button in the form */
-}
-
-.primaryButton:hover {
-  transform: scale(1.05);
-}
-
-/* --- CAROUSEL FIXES --- */
-/* This forces the carousel container to behave */
-.carouselSection {
-  display: block; /* Slider needs block, not flex */
-  width: 90%;     /* Leave some breathing room on sides */
-  margin: 0 auto;
-}
-
-.carouselImage {
-  width: 100%;
-  border-radius: 10px;
-  padding: 0 10px; /* Spacing between slides */
-  box-sizing: border-box;
-}
-
-/* --- FOOTER --- */
-.footer {
-  width: 100%;
-  background: #111;
-  padding: 40px 20px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footerContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.footerLinks {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.footerLinks span {
-  cursor: pointer;
-}
-
-.socialIcons {
-  display: flex;
-  gap: 20px;
-  font-size: 1.5rem;
-}
-
-/* --- MOBILE SPECIFIC ADJUSTMENTS --- */
-@media (max-width: 768px) {
-  .missionGrid, .teamGrid {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .missionCard {
-    width: 100%; /* Take full width of the phone */
-    max-width: 100%;
-  }
-
-  .carouselSection {
-    width: 100%; /* Full width on mobile */
-  }
-}
-
-/* Target the links inside the mobile menu container */
-.mobileNav a, 
-.mobileMenu a, 
-.navLinks.mobile a { 
+/* BRANDED MOBILE BUTTONS (The Orange Pills) */
+.mobileBtn {
   display: block;
-  width: 80%; /* Takes up most of the drawer width */
-  margin: 10px auto; /* Centers them */
-  padding: 12px 20px;
+  width: 80%;
+  max-width: 300px;
+  padding: 15px 0;
   
-  /* BRANDED BUTTON STYLE */
-  background-color: #F7931A; /* Branded Orange */
+  /* Orange Pill Style */
+  background-color: #F7931A;
   color: #000000;
   font-family: 'Archivo Black', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   text-align: center;
-  text-decoration: none;
-  border-radius: 30px; /* Pill shape */
-  border: 1px solid #F7931A;
-  transition: all 0.3s ease;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Hover State for Mobile Buttons */
-.mobileNav a:hover, 
-.mobileMenu a:hover, 
-.navLinks.mobile a:hover {
+.mobileBtn:hover {
   background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(247, 147, 26, 0.4);
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(247, 147, 26, 0.4);
+}
+
+.disabledMobileBtn {
+  background-color: #333;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* --- RESPONSIVE LOGIC --- */
+@media (max-width: 768px) {
+  .desktopNav {
+    display: none; /* Hide standard links on mobile */
+  }
+
+  .hamburger {
+    display: block; /* Show the 3 lines on mobile */
+  }
 }
