@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa'; // Import icons
+import { FaBars, FaTimes } from 'react-icons/fa'; 
 import logoImg from '../assets/Huemnz Logo.jpg';
 import styles from './Header.module.css';
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for hamburger
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // <--- THIS CONTROLS THE MENU
 
   const handleLogoClick = () => {
     if (location.pathname === '/home') {
@@ -20,7 +20,7 @@ const Header = () => {
 
   const handleNavClick = (path) => {
     navigate(path);
-    setIsMenuOpen(false); // Close menu on click
+    setIsMenuOpen(false);
   };
 
   return (
@@ -30,7 +30,7 @@ const Header = () => {
         <img src={logoImg} alt="HUEMNZ" className={styles.logoImage} />
       </div>
 
-      {/* DESKTOP NAV (Hidden on Mobile) */}
+      {/* DESKTOP NAV (Hidden on Mobile via CSS) */}
       <nav className={styles.desktopNav}>
         <span className={styles.navLink} onClick={() => handleNavClick('/about')}>About</span>
         <span className={styles.navLink} onClick={() => handleNavClick('/vision')}>Vision</span>
@@ -41,12 +41,12 @@ const Header = () => {
         </button>
       </nav>
 
-      {/* HAMBURGER ICON (Visible on Mobile) */}
+      {/* HAMBURGER ICON (Visible on Mobile via CSS) */}
       <div className={styles.hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)}>
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </div>
 
-      {/* MOBILE MENU DRAWER (Only shows when isMenuOpen is true) */}
+      {/* MOBILE MENU DRAWER - THIS IS THE MISSING PIECE */}
       {isMenuOpen && (
         <div className={styles.mobileMenu}>
           <button className={styles.mobileBtn} onClick={() => handleNavClick('/about')}>About</button>

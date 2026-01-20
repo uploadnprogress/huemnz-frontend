@@ -1,6 +1,5 @@
 /* src/components/Header.module.css */
 
-/* --- MAIN HEADER BAR --- */
 .header {
   width: 100%;
   height: 80px;
@@ -10,7 +9,7 @@
   align-items: center;
   padding: 0 2rem;
   box-sizing: border-box;
-  position: fixed; /* Sticks to top */
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -27,7 +26,7 @@
   border: 2px solid #fff;
 }
 
-/* --- DESKTOP NAVIGATION (Visible on large screens) --- */
+/* DESKTOP NAV */
 .desktopNav {
   display: flex;
   align-items: center;
@@ -52,7 +51,6 @@
   cursor: not-allowed;
 }
 
-/* Desktop Game Button */
 .gameButton {
   background: #F7931A;
   color: #000;
@@ -71,19 +69,19 @@
   background: #fff;
 }
 
-/* --- HAMBURGER ICON (Hidden on Desktop) --- */
+/* HAMBURGER ICON */
 .hamburger {
-  display: none; 
+  display: none; /* Hidden by default */
   color: #fff;
   font-size: 1.8rem;
   cursor: pointer;
   z-index: 1001;
 }
 
-/* --- MOBILE MENU DRAWER (The Dropdown) --- */
+/* MOBILE MENU DRAWER */
 .mobileMenu {
   position: absolute;
-  top: 80px; /* Pushes it exactly below the header bar */
+  top: 80px;
   left: 0;
   width: 100%;
   background-color: #0a0a0a;
@@ -95,14 +93,12 @@
   gap: 15px;
 }
 
-/* BRANDED MOBILE BUTTONS (The Orange Pills) */
+/* MOBILE BUTTONS (ORANGE PILLS) */
 .mobileBtn {
   display: block;
   width: 80%;
   max-width: 300px;
   padding: 15px 0;
-  
-  /* Orange Pill Style */
   background-color: #F7931A;
   color: #000000;
   font-family: 'Archivo Black', sans-serif;
@@ -128,13 +124,8 @@
   box-shadow: none;
 }
 
-/* --- RESPONSIVE LOGIC --- */
+/* RESPONSIVE SWITCH */
 @media (max-width: 768px) {
-  .desktopNav {
-    display: none; /* Hide standard links on mobile */
-  }
-
-  .hamburger {
-    display: block; /* Show the 3 lines on mobile */
-  }
+  .desktopNav { display: none; }
+  .hamburger { display: block; }
 }
