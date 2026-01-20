@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useOutletContext, useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import Slider from 'react-slick';
-// FIX: Added FaGithub back to imports to prevent blank page crash
 import { FaTwitter, FaDiscord, FaGithub } from 'react-icons/fa'; 
 import styles from './HomePage.module.css';
 
@@ -25,8 +24,7 @@ const fadeIn = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
 };
 
-function HomePage() {
-  const { userData } = useOutletContext();
+function HomePage({ userData }) {
   const navigate = useNavigate();
   const [isWinner, setIsWinner] = useState(false);
   const [formStatus, setFormStatus] = useState('idle'); 
@@ -34,15 +32,22 @@ function HomePage() {
   const slideImages = [slide1, slide2, slide4, slide5, slide6, slide8];
 
   useEffect(() => {
-    // Logic to show banner if user has won (checks local storage)
     const winnerData = localStorage.getItem('huemnzWinner');
-    if (winnerData) {
-      setIsWinner(true);
+    if (winnerData && userData) {
+      const parsedWinner = JSON.parse(winnerData);
+      if (userData.wallet === parsedWinner.wallet) setIsWinner(true);
     }
-  }, []);
+  }, [userData]);
 
   const carouselSettings = {
-    dots: true, infinite: true, speed: 500, autoplay: true, slidesToShow: 4, slidesToScroll: 1, arrows: false,
+    dots: true, 
+    infinite: true, 
+    speed: 500, 
+    autoplay: true, 
+    autoplaySpeed: 3000, 
+    slidesToShow: 4, 
+    slidesToScroll: 1, 
+    arrows: false,
     responsive: [
         { breakpoint: 1024, settings: { slidesToShow: 3 } },
         { breakpoint: 600, settings: { slidesToShow: 2 } },
@@ -54,13 +59,6 @@ function HomePage() {
     e.preventDefault();
     setFormStatus('submitting');
     const formData = new FormData(e.target);
-    const emailValue = formData.get('Email'); 
-    
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(emailValue) || emailValue.includes('test.mail')) {
-        setFormStatus('blocked'); return; 
-    }
-
     try {
       await fetch("https://formsubmit.co/ajax/info@huemn.life", { method: 'POST', body: formData });
       setFormStatus('success'); e.target.reset();
@@ -77,24 +75,24 @@ function HomePage() {
         )}
 
         <motion.section className={styles.welcomeSection} initial="hidden" animate="visible" variants={fadeIn}>
-          <h1>Welcome to the Ecosystem</h1>
-          <p>Huemnz is more than a collection; it's the start of a new standard for on-chain identity.</p>
+          <h1 className={styles.mainTitle}>Welcome to the Ecosystem</h1>
+          <p className={styles.subText}>Huemnz is more than a collection; it's the start of a new standard for on-chain identity.</p>
         </motion.section>
 
         <motion.section className={styles.missionSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-          <h2>This Hasn't Been Done Before.</h2>
+          <h2 className={styles.sectionTitle}>This Hasn't Been Done Before.</h2>
           <div className={styles.missionGrid}>
               <div className={styles.missionCard}>
-                  <h3>Digital Frailty</h3>
-                  <p>Impersonation and exploits are bugs, not features.</p>
+                  <h3 className={styles.cardTitle}>The Problem: Digital Frailty</h3>
+                  <p className={styles.cardBody}>Impersonation, smart contract exploits, and the inability to build a lasting reputation are not features; they are bugs in the system. Current "security" is reactive, not foundational.</p>
               </div>
               <div className={styles.missionCard}>
-                  <h3>Provable Identity</h3>
-                  <p>We tie assets to a non-transferable SBT.</p>
+                  <h3 className={styles.cardTitle}>The Huemnz Solution: Provable Identity</h3>
+                  <p className={styles.cardBody}>We tie your unique assets to a non-transferable Soul-Bound Token (SBT), creating the first layer of true digital identity. This isn't just a profile picture; it's a verifiable link between you and your digital footprint.</p>
               </div>
               <div className={styles.missionCard}>
-                  <h3>KYC Synergy</h3>
-                  <p>Anchoring your SBT to real-world identity securely.</p>
+                  <h3 className={styles.cardTitle}>How It Works: KYC & SBT Synergy</h3>
+                  <p className={styles.cardBody}>Through a secure, one-time KYC verification, we anchor your SBT to a real-world identity without storing personal data on-chain. This creates a trust layer, enabling everything from fraud-proof transactions to a portable, persistent reputation across the Web3 space.</p>
               </div>
           </div>
         </motion.section>
@@ -102,59 +100,55 @@ function HomePage() {
         <section className={styles.carouselSection}>
           <Slider {...carouselSettings}>
             {slideImages.map((src, index) => (
-               <div key={index} className={styles.carouselSlide}><img src={src} className={styles.carouselImage} /></div>
+               <div key={index} className={styles.carouselSlide}><img src={src} className={styles.carouselImage} alt="Character Slide" /></div>
             ))}
           </Slider>
         </section>
 
         <motion.section className={styles.roadmapSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-          <h2>Roadmap</h2>
-          <img src={roadmapImg} className={styles.roadmapImage}/>
+          <h2 className={styles.sectionTitle}>Roadmap</h2>
+          <img src={roadmapImg} className={styles.roadmapImage} alt="Project Roadmap"/>
         </motion.section>
 
         <motion.section className={styles.teamSection} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-          <h2>Meet the Founders</h2>
+          <h2 className={styles.sectionTitle}>Meet the Founders</h2>
           <div className={styles.teamGrid}>
             <div className={styles.teamMember}>
               <img src={artistImg} alt="The Artist"/>
-              <h3>The Artist</h3>
-              <p>The visionary architect behind the aesthetic.</p>
+              <h3 className={styles.memberTitle}>The Artist</h3>
+              <p className={styles.memberDesc}>The visionary architect behind the aesthetic.</p>
               <div className={styles.memberSocials}>
-                  <a href="https://oziomajesuloba.artstation.com/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-                  <a href="https://x.com/oziomajesuloba" target="_blank" rel="noopener noreferrer"><FaTwitter /> @oziomajesuloba</a>
+                  {/* Portfolio on Top */}
+                  <a href="https://oziomajesuloba.artstation.com/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Portfolio</a>
+                  {/* Twitter below it */}
+                  <a href="https://x.com/oziomajesuloba" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @oziomajesuloba</a>
               </div>
             </div>
             <div className={styles.teamMember}>
               <img src={founderImg} alt="The Founder"/>
-              <h3>The Founder</h3>
-              <p>The technical mind building the protocols.</p>
+              <h3 className={styles.memberTitle}>The Founder</h3>
+              <p className={styles.memberDesc}>The technical mind building the protocols.</p>
               <div className={styles.memberSocials}>
-                  <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer"><FaGithub /> GitHub</a>
-                  <a href="https://x.com/singleletterd" target="_blank" rel="noopener noreferrer"><FaTwitter /> @singleletterd</a>
+                  {/* GitHub on Top */}
+                  <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaGithub /> GitHub</a>
+                  {/* Twitter below it */}
+                  <a href="https://x.com/singleletterd" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @singleletterd</a>
               </div>
             </div>
           </div>
         </motion.section>
 
         <section className={styles.submissionSection}>
-          <h3>Share Your Art</h3>
+          <h3 className={styles.sectionTitle}>Share Your Art</h3>
           <form className={styles.artForm} onSubmit={handleSubmit} encType="multipart/form-data">
             <input type="hidden" name="_subject" value="New Art Submission (Huemnz)" />
-            <input type="hidden" name="_captcha" value="false" />
             <input type="text" name="Alias" placeholder="Your Name or Alias" className={styles.formInput} required />
             <input type="email" name="Email" placeholder="Your Email" className={styles.formInput} required />
             <textarea name="Description" placeholder="Tell us about your art!" className={styles.formTextarea} required></textarea>
             <input type="file" name="attachment" className={styles.formInput} accept="image/*" multiple required />
-            
-            <div style={{textAlign:'left', color:'#ccc'}}>
-                <input type="checkbox" name="Newsletter_Opt_In" value="Yes" defaultChecked /> Keep me updated.
-            </div>
-
             <button type="submit" className={styles.primaryButton} disabled={formStatus === 'submitting'}>
               {formStatus === 'submitting' ? 'Uploading...' : 'Submit'}
             </button>
-            {formStatus === 'success' && <div style={{color:'#4caf50'}}>Received!</div>}
-            {formStatus === 'blocked' && <div style={{color:'#f44336'}}>Invalid email.</div>}
           </form>
         </section>
       </main>
@@ -173,7 +167,7 @@ function HomePage() {
             <a href="https://discord.gg/F8cnTTPssn" target="_blank" rel="noopener noreferrer"><FaDiscord /></a>
           </div>
         </div>
-        <p style={{color:'#666', marginTop:'20px'}}>© 2025 Huemnz. All rights reserved.</p>
+        <p className={styles.copyright}>© 2025 Huemnz. All rights reserved.</p>
       </footer>
     </div>
   );
