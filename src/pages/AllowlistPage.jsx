@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaDiceOne, FaDiceTwo, FaDiceThree, FaDiceFour, FaDiceFive, FaDiceSix, FaDiscord, FaTwitter } from 'react-icons/fa';
+import { recordWin } from '../utils/api'; // NEW IMPORT
 import styles from './AllowlistPage.module.css';
 
 const Dice = ({ value, isRolling }) => {
@@ -64,7 +65,7 @@ function AllowlistPage({ userData }) {
     };
 
     const handleRoll = () => {
-        // PRODUCTION MODE: Wallet check restored to prevent cheating
+        // PRODUCTION MODE: Wallet check active
         if (!walletAddress) return;
         
         setIsRolling(true);
@@ -81,7 +82,13 @@ function AllowlistPage({ userData }) {
                 setResult('win');
                 setIsGuaranteed(true);
                 setWinnerWallet(walletAddress);
+                
+                // 1. Local Persistence (Legacy/Offline support)
                 localStorage.setItem('huemnzWinner', JSON.stringify({ wallet: walletAddress, winningRoll: { player: {d1:p1,d2:p2}, pc: {d1:c1,d2:c2} } }));
+                
+                // 2. Cloud Persistence (NEW)
+                recordWin(walletAddress);
+
                 sendWinnerNotification(walletAddress);
             } else {
                 setResult((p1 + p2) === (c1 + c2) ? 'tie' : 'lose');

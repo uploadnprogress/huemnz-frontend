@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom'; 
 import Slider from 'react-slick';
 import { FaTwitter, FaDiscord, FaGithub } from 'react-icons/fa'; 
+import { syncUser, onboardUser } from '../utils/api'; // NEW IMPORT
 import styles from './HomePage.module.css';
 
 import "slick-carousel/slick/slick.css"; 
@@ -32,22 +33,23 @@ function HomePage({ userData }) {
   const slideImages = [slide1, slide2, slide4, slide5, slide6, slide8];
 
   useEffect(() => {
-    // FIX: Check localStorage directly so banner appears even in Test Mode
+    // 1. Legacy LocalStorage Check
     const winnerData = localStorage.getItem('huemnzWinner');
-    if (winnerData) {
-      setIsWinner(true);
-    }
-  }, []);
+    if (winnerData) setIsWinner(true);
+
+    // 2. NEW: Cloud Sync
+    const checkCloudStatus = async () => {
+      if (userData?.wallet) {
+        const status = await syncUser(userData.wallet);
+        if (status?.is_winner) setIsWinner(true);
+      }
+    };
+    checkCloudStatus();
+  }, [userData]);
 
   const carouselSettings = {
-    dots: true, 
-    infinite: true, 
-    speed: 500, 
-    autoplay: true, 
-    autoplaySpeed: 3000, 
-    slidesToShow: 4, 
-    slidesToScroll: 1, 
-    arrows: false,
+    dots: true, infinite: true, speed: 500, autoplay: true, autoplaySpeed: 3000, 
+    slidesToShow: 4, slidesToScroll: 1, arrows: false,
     responsive: [
         { breakpoint: 1024, settings: { slidesToShow: 3 } },
         { breakpoint: 600, settings: { slidesToShow: 2 } },
@@ -59,8 +61,18 @@ function HomePage({ userData }) {
     e.preventDefault();
     setFormStatus('submitting');
     const formData = new FormData(e.target);
+    const email = formData.get('Email');
+    const alias = formData.get('Alias');
+
     try {
+      // 1. FormSubmit (Email)
       await fetch("https://formsubmit.co/ajax/info@huemn.life", { method: 'POST', body: formData });
+      
+      // 2. NEW: Cloud Onboard
+      if (userData?.wallet) {
+          await onboardUser(userData.wallet, email, alias);
+      }
+
       setFormStatus('success'); e.target.reset();
     } catch (error) { setFormStatus('error'); }
   };
