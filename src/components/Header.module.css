@@ -194,3 +194,36 @@ p {
     width: 100%; /* Full width on mobile */
   }
 }
+
+/* Target the links inside the mobile menu container */
+.mobileNav a, 
+.mobileMenu a, 
+.navLinks.mobile a { 
+  display: block;
+  width: 80%; /* Takes up most of the drawer width */
+  margin: 10px auto; /* Centers them */
+  padding: 12px 20px;
+  
+  /* BRANDED BUTTON STYLE */
+  background-color: #F7931A; /* Branded Orange */
+  color: #000000;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px; /* Pill shape */
+  border: 1px solid #F7931A;
+  transition: all 0.3s ease;
+}
+
+/* Hover State for Mobile Buttons */
+.mobileNav a:hover, 
+.mobileMenu a:hover, 
+.navLinks.mobile a:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(247, 147, 26, 0.4);
+}

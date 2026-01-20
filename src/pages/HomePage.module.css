@@ -162,3 +162,40 @@
 .socialIcons a { color: #fff; font-size: 1.5rem; transition: color 0.3s; }
 .socialIcons a:hover { color: var(--accent); }
 .copyright { margin-top: 3rem; color: #555; font-size: 0.9rem; }
+
+/* ===== MEMBER SOCIALS===== */
+
+.memberSocials {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column; /* THIS STACKS THEM */
+  gap: 15px; /* Adds space between the stacked buttons */
+  width: 100%;
+  align-items: center;
+}
+
+.memberSocials a {
+  font-size: 0.9rem;
+  color: #000; /* Text Color */
+  background: #F7931A; /* Branded Orange Background */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px; /* Rounded pill shape */
+  text-decoration: none;
+  transition: transform 0.2s, opacity 0.2s;
+  width: 100%; /* Makes them consistent width */
+  max-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.memberSocials a:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  background: #fff; /* White on hover */
+  color: #000;
+}
