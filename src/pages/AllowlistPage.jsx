@@ -105,7 +105,10 @@ function AllowlistPage({ userData }) {
                                     <strong>Step 2:</strong> Follow <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">@theHueMnz</a> to validate participation.
                                 </li>
                                 <li>
-                                    <strong>Step 3:</strong> Like & Repost the pinned post on <a href="https://x.com/thehuemnnetwork" target="_blank" rel="noopener noreferrer">@thehuemnnetwork</a> & <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">@theHueMnz</a>.
+                                    <strong>Step 3:</strong> Follow <a href="https://x.com/TheHueMnNetwork" target="_blank" rel="noopener noreferrer">@TheHueMnNetwork</a> for ecosystem updates.
+                                </li>
+                                <li>
+                                    <strong>Step 4:</strong> Like & Repost the pinned post on <a href="https://x.com/TheHueMnNetwork" target="_blank" rel="noopener noreferrer">@TheHueMnNetwork</a> & <a href="https://x.com/theHueMnz" target="_blank" rel="noopener noreferrer">@theHueMnz</a>.
                                 </li>
                             </ul>
                         </div>
