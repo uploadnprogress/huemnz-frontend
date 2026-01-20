@@ -44,8 +44,8 @@ function VisionPage() {
           <h2>3. The Identity Stack: HDSBT & Pallets</h2>
           <p>Our "Proof of Personhood" is built into the chain's core through custom Substrate Pallets:</p>
           <ul>
-            <li><strong>The HDSBT Pallet:</strong> A custom non-transferable token standard—the HueMn Digital Soulbound Token. Your HDSBT is anchored to your on-chain identity and cannot be traded or stolen.</li>
-            <li><strong>The Registrar System:</strong> Utilizing Substrate’s native Identity Pallet for privacy-preserving KYC where a "Judgment" is issued on-chain, proving you are human without exposing documents.</li>
+            <li><strong>The HDSBT Pallet:</strong> A custom non-transferable token standard the HueMn Digital Soulbound Token. Your HDSBT is anchored to your on-chain identity and cannot be traded or stolen.</li>
+            <li><strong>The Registrar System:</strong> Utilizing Substrate’s native Identity Pallet for privacy preserving KYC where a "Judgment" is issued on-chain, proving you are human without exposing documents.</li>
           </ul>
         </div>
 
