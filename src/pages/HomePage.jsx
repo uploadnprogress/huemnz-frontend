@@ -32,12 +32,12 @@ function HomePage({ userData }) {
   const slideImages = [slide1, slide2, slide4, slide5, slide6, slide8];
 
   useEffect(() => {
+    // FIX: Check localStorage directly so banner appears even in Test Mode
     const winnerData = localStorage.getItem('huemnzWinner');
-    if (winnerData && userData) {
-      const parsedWinner = JSON.parse(winnerData);
-      if (userData.wallet === parsedWinner.wallet) setIsWinner(true);
+    if (winnerData) {
+      setIsWinner(true);
     }
-  }, [userData]);
+  }, []);
 
   const carouselSettings = {
     dots: true, 
@@ -118,9 +118,7 @@ function HomePage({ userData }) {
               <h3 className={styles.memberTitle}>The Artist</h3>
               <p className={styles.memberDesc}>The visionary architect behind the aesthetic.</p>
               <div className={styles.memberSocials}>
-                  {/* Portfolio on Top */}
                   <a href="https://oziomajesuloba.artstation.com/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>Portfolio</a>
-                  {/* Twitter below it */}
                   <a href="https://x.com/oziomajesuloba" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @oziomajesuloba</a>
               </div>
             </div>
@@ -129,9 +127,7 @@ function HomePage({ userData }) {
               <h3 className={styles.memberTitle}>The Founder</h3>
               <p className={styles.memberDesc}>The technical mind building the protocols.</p>
               <div className={styles.memberSocials}>
-                  {/* GitHub on Top */}
                   <a href="https://github.com/uploadnprogress" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaGithub /> GitHub</a>
-                  {/* Twitter below it */}
                   <a href="https://x.com/singleletterd" target="_blank" rel="noopener noreferrer" className={styles.socialLink}><FaTwitter /> @singleletterd</a>
               </div>
             </div>
@@ -142,6 +138,7 @@ function HomePage({ userData }) {
           <h3 className={styles.sectionTitle}>Share Your Art</h3>
           <form className={styles.artForm} onSubmit={handleSubmit} encType="multipart/form-data">
             <input type="hidden" name="_subject" value="New Art Submission (Huemnz)" />
+            <input type="hidden" name="_captcha" value="false" />
             <input type="text" name="Alias" placeholder="Your Name or Alias" className={styles.formInput} required />
             <input type="email" name="Email" placeholder="Your Email" className={styles.formInput} required />
             <textarea name="Description" placeholder="Tell us about your art!" className={styles.formTextarea} required></textarea>
