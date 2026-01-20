@@ -64,8 +64,9 @@ function AllowlistPage({ userData }) {
     };
 
     const handleRoll = () => {
-        // TEST MODE: Wallet check bypassed
-        /* if (!walletAddress) return; */
+        // PRODUCTION MODE: Wallet check restored to prevent cheating
+        if (!walletAddress) return;
+        
         setIsRolling(true);
         setResult(null);
         setTimeout(() => {
@@ -119,8 +120,7 @@ function AllowlistPage({ userData }) {
                         <input 
                             type="text" 
                             className={styles.walletInput} 
-                            /* value={walletAddress || 'No Wallet Detected'} */
-                            value={walletAddress || 'TEST MODE: BYPASS ACTIVE'} 
+                            value={walletAddress || 'No Wallet Detected'}
                             disabled 
                         />
                         <div className={styles.diceContainer}>
@@ -143,7 +143,7 @@ function AllowlistPage({ userData }) {
                         {result && !isRolling && <div className={`${styles.resultMessage} ${styles[result]}`}>{result.toUpperCase()}!</div>}
                         <button 
                             onClick={handleRoll} 
-                            disabled={isRolling /* || !walletAddress */}
+                            disabled={isRolling || !walletAddress}
                         >
                             {isRolling ? 'Rolling...' : 'Roll'}
                         </button>
