@@ -17,9 +17,7 @@
   border-bottom: 1px solid #333;
 }
 
-.logo {
-  cursor: pointer;
-}
+.logo { cursor: pointer; }
 
 .logoImage {
   height: 50px;
@@ -43,9 +41,7 @@
   transition: color 0.3s;
 }
 
-.navLink:hover {
-  color: #F7931A;
-}
+.navLink:hover { color: #F7931A; }
 
 .disabledLink {
   color: #666;
@@ -99,7 +95,6 @@
 }
 
 /* --- FORCE MOBILE BUTTON STYLES --- */
-/* We target the class AND the element tag to force the style */
 .mobileBtn,
 .mobileMenu button { 
   display: block;
@@ -117,7 +112,7 @@
   border: none !important;
   border-radius: 50px;
   cursor: pointer;
-  text-decoration: none !important; /* Removes blue underline */
+  text-decoration: none !important;
   transition: transform 0.2s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
