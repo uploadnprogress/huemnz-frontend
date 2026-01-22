@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+
+// IMPORT THE NEW COMPONENT (This enables the Orange Buttons)
+import Header from './components/Header'; 
+
+// Import Pages
 import GatewayPage from './pages/GatewayPage'; 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -9,36 +13,11 @@ import VisionPage from './pages/VisionPage';
 import FAQPage from './pages/FAQPage';
 import AllowlistPage from './pages/AllowlistPage';
 
-// Import the branding logo
-import logo from './assets/Huemnz_Logo.jpg';
+// Import Global CSS
 import './App.css';
-
-const WalletConnect = ({ onConnect, userData }) => {
-  const connectWallet = async () => {
-    if (window.ethereum) {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        onConnect(accounts[0]);
-      } catch (error) {
-        console.error("Connection failed", error);
-      }
-    } else {
-      alert("Please install Metamask!");
-    }
-  };
-
-  return (
-    <button onClick={connectWallet} className="wallet-btn">
-      {userData?.wallet 
-        ? `${userData.wallet.substring(0, 6)}...${userData.wallet.substring(userData.wallet.length - 4)}`
-        : "Connect Wallet"}
-    </button>
-  );
-};
 
 function App() {
   const [userData, setUserData] = useState(null);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -57,49 +36,32 @@ function App() {
     setUserData(prev => ({ ...prev, email }));
   };
 
-  const handleWalletConnect = (wallet) => {
-    setUserData(prev => ({ ...prev, wallet }));
+  const handleWalletConnect = async () => {
+    if (window.ethereum) {
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        setUserData(prev => ({ ...prev, wallet: accounts[0] }));
+      } catch (error) {
+        console.error("Connection failed", error);
+      }
+    } else {
+      alert("Please install Metamask!");
+    }
   };
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
 
   const showHeader = location.pathname !== '/';
 
   return (
     <div className="app-container">
+      {/* CRITICAL FIX: 
+         We removed the hardcoded <header> code that was breaking the styling.
+         Now we use the <Header /> component which has the "Orange Pill" buttons.
+      */}
       {showHeader && (
-        <header className="main-header">
-          {/* LOGO "H" - branding as home button */}
-          <div className="logo-container" onClick={() => navigate('/home')}>
-            <img src={logoImg} alt="H" className="h-logo-img" />
-          </div>
-          
-          <nav className="desktop-nav">
-            <Link to="/about" className="nav-button">About</Link>
-            <Link to="/vision" className="nav-button">Vision</Link>
-            <Link to="/faq" className="nav-button">FAQ</Link>
-            <Link to="/allowlist" className="nav-button highlight">Game</Link>
-            <WalletConnect onConnect={handleWalletConnect} userData={userData} />
-          </nav>
-
-          {/* Hamburger menu - visible only on mobile via CSS */}
-          <div className="mobile-toggle" onClick={toggleMenu}>
-            {isMenuOpen ? <FaTimes /> : <FaBars />}
-          </div>
-
-          {isMenuOpen && (
-            <div className="mobile-nav">
-              <Link to="/about" onClick={closeMenu}>About</Link>
-              <Link to="/vision" onClick={closeMenu}>Vision</Link>
-              <Link to="/faq" onClick={closeMenu}>FAQ</Link>
-              <Link to="/allowlist" onClick={closeMenu}>Game</Link>
-              <div style={{marginTop: '20px'}}>
-                 <WalletConnect onConnect={handleWalletConnect} userData={userData} />
-              </div>
-            </div>
-          )}
-        </header>
+        <Header 
+          onConnect={handleWalletConnect} 
+          walletAddress={userData?.wallet} 
+        />
       )}
 
       <div className="page-content" style={{ marginTop: showHeader ? '80px' : '0' }}>
