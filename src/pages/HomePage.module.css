@@ -99,6 +99,40 @@ p {
   border: 3px solid #ffffff;
 }
 
+/* --- FOUNDER LINKS (Socials) - RESTORED --- */
+.memberSocials {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column; /* Stacks buttons vertically */
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+.memberSocials a {
+  font-size: 0.9rem;
+  color: #000; /* Black text */
+  background: #F7931A; /* Orange background */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px; /* Pill shape */
+  text-decoration: none;
+  transition: transform 0.2s, opacity 0.2s;
+  width: 100%;
+  max-width: 200px; /* Consistent width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.memberSocials a:hover {
+  transform: scale(1.05);
+  background: #fff; /* White on hover */
+  color: #000;
+}
+
 /* --- ROADMAP IMAGE FIX --- */
 .roadmapImage {
   width: 100%;         /* Takes full width of container */
