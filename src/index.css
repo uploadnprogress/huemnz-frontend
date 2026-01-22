@@ -14,17 +14,54 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: var(--font-body);
+  
+  /* CRITICAL FIX: Stops sideways scrolling on mobile */
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden; 
+  position: relative;
 }
 
-/* UPDATED: Added text-align center to fix mobile alignment issues */
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* FIX FOR ALL HEADINGS (Including FAQ and Vision) */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   text-transform: uppercase;
   letter-spacing: 1px;
-  text-align: center; 
+  text-align: center; /* Forces centering */
+  
+  /* Responsive Safety Logic */
+  max-width: 95%; /* Never touch the screen edges */
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word; /* Forces long words to wrap */
+  overflow-wrap: break-word;
 }
 
-/* Ensure the homepage sections remain pure black */
-[class*="missionSection"], [class*="welcomeSection"], [class*="teamSection"] {
+/* Ensure these pages respect the black background and don't overflow */
+[class*="missionSection"], 
+[class*="welcomeSection"], 
+[class*="teamSection"],
+.faq-container,
+.vision-container,
+.about-container {
   background-color: #000000 !important;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Mobile Typography Scaling */
+@media (max-width: 768px) {
+  h1 { font-size: 2.2rem !important; }
+  h2 { font-size: 1.8rem !important; }
+  p { 
+    font-size: 1rem !important; 
+    padding: 0 15px; /* Adds breathing room for text */
+  }
 }
