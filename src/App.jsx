@@ -10,7 +10,7 @@ import FAQPage from './pages/FAQPage';
 import AllowlistPage from './pages/AllowlistPage';
 
 // Import the branding logo
-import logoImg from './assets/Huemnz Logo.jpg';
+import logo from './assets/Huemnz_Logo.jpg';
 import './App.css';
 
 const WalletConnect = ({ onConnect, userData }) => {
