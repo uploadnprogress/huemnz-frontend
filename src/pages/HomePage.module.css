@@ -1,16 +1,16 @@
 /* src/pages/HomePage.module.css */
 
-/* CONTAINER: Keeps everything centered globally */
+/* CONTAINER: The main wrapper */
 .container {
   width: 100%;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  background-color: #000000;
 }
 
-/* SECTIONS: General spacing for all page parts */
+/* SECTIONS: Centers them and adds safety padding */
 .welcomeSection, 
 .missionSection, 
 .carouselSection, 
@@ -18,27 +18,37 @@
 .teamSection, 
 .submissionSection {
   width: 100%;
-  max-width: 1200px;
-  padding: 60px 20px;
+  max-width: 1200px; /* Max width for desktop */
+  margin: 0 auto;    /* CRITICAL: Centers the block horizontally */
+  padding: 40px 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center; /* Ensures text is centered */
 }
 
-/* HEADINGS & TEXT */
+/* --- WELCOME SECTION --- */
+.welcomeSection {
+  padding-top: 2rem; /* Reduced so it doesn't look empty */
+}
+
+/* HEADINGS */
 h1, h2, h3 {
   margin-bottom: 20px;
   color: #ffffff;
+  max-width: 100%; /* Prevents text overflow */
+  word-wrap: break-word;
 }
 
 p {
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto 30px auto;
+  color: #e0e0e0;
 }
 
-/* --- MISSION GRID (THE TILES) --- */
+/* --- MISSION GRID --- */
 .missionGrid {
   display: flex;
   justify-content: center;
@@ -59,9 +69,10 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 10px auto; /* Centers cards on mobile */
 }
 
-/* --- TEAM GRID --- */
+/* --- TEAM (FOUNDER) GRID --- */
 .teamGrid {
   display: flex;
   justify-content: center;
@@ -76,6 +87,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto; /* Centers the founder on mobile */
 }
 
 .teamMember img {
@@ -87,12 +99,29 @@ p {
   border: 3px solid #ffffff;
 }
 
-/* --- IMAGES --- */
+/* --- ROADMAP IMAGE FIX --- */
 .roadmapImage {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
+  width: 100%;         /* Takes full width of container */
+  max-width: 800px;    /* Stops at 800px on desktop */
+  height: auto;        /* Maintains aspect ratio */
   border-radius: 10px;
+  display: block;      /* Prevents weird inline gaps */
+  margin: 0 auto;      /* Centers the image */
+}
+
+/* --- CAROUSEL (SLIDESHOW) FIX --- */
+.carouselSection {
+  display: block;
+  width: 95%;          /* Use almost full width on mobile */
+  margin: 0 auto;
+}
+
+.carouselImage {
+  width: 100%;         /* Forces slide to fit screen */
+  height: auto;        /* Scales height automatically */
+  border-radius: 10px;
+  object-fit: contain; /* Ensures the whole image is seen */
+  max-height: 500px;   /* Prevents it from being too tall on desktop */
 }
 
 /* --- FORM STYLES --- */
@@ -102,6 +131,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  margin: 0 auto;
 }
 
 .formInput, .formTextarea {
@@ -122,26 +152,7 @@ p {
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s;
   align-self: center;
-}
-
-.primaryButton:hover {
-  transform: scale(1.05);
-}
-
-/* --- CAROUSEL FIXES --- */
-.carouselSection {
-  display: block;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.carouselImage {
-  width: 100%;
-  border-radius: 10px;
-  padding: 0 10px;
-  box-sizing: border-box;
 }
 
 /* --- FOOTER --- */
@@ -177,31 +188,32 @@ p {
   font-size: 1.5rem;
 }
 
-/* --- MOBILE SPECIFIC ADJUSTMENTS (The Fixes) --- */
+/* --- MOBILE SPECIFIC FIXES --- */
 @media (max-width: 768px) {
-  /* Fix: Shrink the huge Welcome text */
   .welcomeSection h1 {
-    font-size: 2rem !important;
-    line-height: 1.2;
+    font-size: 2rem !important; /* Smaller text */
     padding: 0 10px;
   }
   
-  .welcomeSection {
-    padding-top: 2rem;
-  }
-
-  /* Fix: Stack grids vertically */
   .missionGrid, .teamGrid {
     flex-direction: column;
     align-items: center;
   }
-  
-  .missionCard {
+
+  .missionCard, .teamMember {
     width: 100%;
-    max-width: 100%;
+    max-width: 90%; /* Leaves a little space on sides */
   }
 
-  .carouselSection {
-    width: 100%;
+  /* Force Roadmap/Carousel to fit */
+  .roadmapImage, .carouselImage {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Ensure padding prevents cut-off */
+  .welcomeSection, .missionSection, .roadmapSection {
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
