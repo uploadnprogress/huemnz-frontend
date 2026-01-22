@@ -6,32 +6,18 @@
   padding: 2rem 1rem;
   text-align: center;
   background-color: #f0f0f0;
-  margin: 2rem auto; /* Centers the block */
-  box-sizing: border-box;
-  overflow: hidden; /* Prevents spillover */
+  margin: 2rem auto;
+  box-sizing: border-box; /* CRITICAL: Includes padding in width calculation */
+  overflow: hidden; /* Safety: Cuts off anything that tries to stick out */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.roadmapSection h2 {
-  margin-bottom: 1.5rem;
-  color: #021c29; /* Dark Blue */
-  text-transform: uppercase;
-  font-family: 'Archivo Black', sans-serif;
-}
-
-.roadmapImage {
-  width: 100%; /* Takes available width */
-  max-width: 1000px; /* Cap width on desktop */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 auto;
-}
-
-/* DARK MODE SUPPORT */
+/* Dark Mode Adjustment */
 @media (prefers-color-scheme: dark) {
   .roadmapSection {
-    background-color: #111; /* Dark background */
+    background-color: #111;
     border: 1px solid #333;
   }
   .roadmapSection h2 {
@@ -39,20 +25,40 @@
   }
 }
 
-/* MOBILE RESPONSIVENESS */
+.roadmapSection h2 {
+  margin-bottom: 1.5rem;
+  color: #021c29;
+  text-transform: uppercase;
+  font-family: 'Archivo Black', sans-serif;
+  max-width: 100%;
+}
+
+.roadmapImage {
+  display: block;
+  width: 100% !important;      /* Forces image to fill the container */
+  max-width: 1000px;           /* but stop at 1000px on desktop */
+  height: auto !important;     /* Keeps the aspect ratio perfect */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  object-fit: contain;         /* Ensures the whole image is visible */
+}
+
+/* MOBILE SPECIFIC OVERRIDES */
 @media (max-width: 768px) {
   .roadmapSection {
-    padding: 1.5rem 0.5rem; /* Less padding on mobile */
+    padding: 1rem 15px; /* Less padding on mobile to give image more room */
     width: 100%;
     margin-top: 1rem;
+    border-radius: 0;
   }
 
   .roadmapImage {
-    max-width: 100%; /* Forces image to shrink */
+    width: 100% !important;
+    max-width: 100% !important;
     border-radius: 4px;
   }
   
   .roadmapSection h2 {
-    font-size: 1.5rem; /* Smaller heading */
+    font-size: 1.5rem;
   }
 }
