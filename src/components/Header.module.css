@@ -95,6 +95,7 @@
 }
 
 /* --- FORCE MOBILE BUTTON STYLES --- */
+/* Targeting both class and element to override any link defaults */
 .mobileBtn,
 .mobileMenu button { 
   display: block;
@@ -112,7 +113,7 @@
   border: none !important;
   border-radius: 50px;
   cursor: pointer;
-  text-decoration: none !important;
+  text-decoration: none !important; /* Removes blue underline */
   transition: transform 0.2s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }

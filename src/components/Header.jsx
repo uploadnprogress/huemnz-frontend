@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa'; 
-import logoImg from '../assets/Huemnz_Logo.jpg'; // FIX: Removed space to prevent build errors
+import logoImg from '../assets/Huemnz_Logo.jpg'; 
 import styles from './Header.module.css';
 
-const Header = () => {
+const Header = ({ onConnect, walletAddress }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,6 +54,11 @@ const Header = () => {
           <button className={styles.mobileBtn} onClick={() => handleNavClick('/faq')}>FAQ</button>
           <button className={`${styles.mobileBtn} ${styles.disabledMobileBtn}`} disabled>Mint (Soon)</button>
           <button className={styles.mobileBtn} onClick={() => handleNavClick('/allowlist')}>Allowlist Game</button>
+          
+          {/* RESTORED CONNECT WALLET BUTTON */}
+          <button className={styles.mobileBtn} onClick={onConnect}>
+             {walletAddress ? 'Wallet Connected' : 'Connect Wallet'}
+          </button>
         </div>
       )}
     </header>

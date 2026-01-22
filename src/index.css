@@ -16,10 +16,12 @@ html, body {
   font-family: var(--font-body);
 }
 
+/* UPDATED: Added text-align center to fix mobile alignment issues */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-align: center; 
 }
 
 /* Ensure the homepage sections remain pure black */
