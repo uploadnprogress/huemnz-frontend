@@ -22,7 +22,7 @@
   text-transform: uppercase;
 }
 
-/* --- THE GRID LAYOUT --- */
+/* --- GRID LAYOUT (Applies to FAQ, Vision, About) --- */
 .faqList, .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -30,34 +30,53 @@
   width: 100%;
 }
 
-/* --- THE CARD STYLE --- */
-.faqItem, .card {
-  background-color: #021c29; /* FIXED: Brand Blue */
+/* --- CARD STYLE (Brand Blue) --- */
+/* We target .faqItem, .card, and .contentBlock to cover all pages */
+.faqItem, .card, .contentBlock {
+  background-color: #021c29; /* BRAND BLUE */
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  /* Removed hover transitions so it doesn't look clickable */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  /* No hover transform to prevent button-like feel */
 }
 
-/* QUESTIONS / TITLES */
-.faqItem h3, .card h3 {
-  color: #F7931A; /* Branded Orange */
+/* QUESTIONS / TITLES (Brand Orange) */
+.faqItem h3, .card h3, .contentBlock h3, .container h2 {
+  color: #F7931A !important;
   margin: 0;
   font-family: 'Archivo Black', sans-serif;
   font-size: 1.2rem;
   text-transform: uppercase;
   line-height: 1.4;
+  margin-bottom: 10px;
 }
 
-/* ANSWERS / TEXT */
-.faqItem p, .card p {
+/* STANDARD TEXT */
+.faqItem p, .card p, .contentBlock p, .container p {
   color: #a0a0a0;
   line-height: 1.6;
   font-size: 1rem;
   margin: 0;
+}
+
+/* BRANDING: Hot Words (Orange) */
+.faqItem strong, .card strong, .contentBlock strong,
+.faqItem b, .card b, .contentBlock b, .container strong {
+  color: #F7931A !important;
+  font-weight: 700;
+}
+
+/* LISTS (If used in About/Vision) */
+.container ul {
+  padding-left: 1.5rem;
+  color: #a0a0a0;
+}
+.container li {
+  margin-bottom: 0.5rem;
 }
 
 /* --- MOBILE ADJUSTMENTS --- */
@@ -65,11 +84,9 @@
   .container {
     padding: 100px 15px 40px;
   }
-
   .container h1 {
     font-size: 2rem;
   }
-
   .faqList, .grid {
     grid-template-columns: 1fr;
   }
