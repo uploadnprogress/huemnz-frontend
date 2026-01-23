@@ -1,67 +1,81 @@
+/* src/pages/ContentPage.module.css */
+
 .container {
-  max-width: 1000px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 120px 20px;
   background-color: #000;
   min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container h1 {
-  color: #ffffff !important;
+  color: #ffffff;
   font-size: 3.5rem;
   text-align: center;
   margin-bottom: 3rem;
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase;
 }
 
-.subtitle {
-  color: #a0a0a0 !important;
-  font-size: 1.3rem;
-  text-align: center;
-  margin-bottom: 4rem;
-  font-style: italic;
+/* --- THE GRID LAYOUT (Copied from Home Page Logic) --- */
+.faqList, .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto-responsive columns */
+  gap: 30px;
+  width: 100%;
 }
 
-.content, .faqList {
+/* --- THE CARD STYLE (Copied from Home Page Logic) --- */
+.faqItem, .card {
+  background: rgba(255, 255, 255, 0.05); /* Glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 15px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.content > div, .faqItem, .contentBlock {
-  background-color: #021c29; 
-  border: 1px solid #2a2a2a;
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+.faqItem:hover, .card:hover {
+  transform: translateY(-5px);
+  border-color: #F7931A; /* Orange border on hover */
 }
 
-.container h2, .faqItem h3 {
-  color: #F7931A !important; 
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+/* QUESTIONS / TITLES */
+.faqItem h3, .card h3 {
+  color: #F7931A; /* Branded Orange */
+  margin: 0;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  line-height: 1.4;
 }
 
-.container h3 {
-  color: #ffffff !important;
-  margin-bottom: 0.75rem;
-  font-size: 1.4rem;
+/* ANSWERS / TEXT */
+.faqItem p, .card p {
+  color: #a0a0a0;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
 }
 
-.container p, .container li {
-  color: #cccccc !important;
-  line-height: 1.8;
-  font-size: 1.1rem;
-}
+/* --- MOBILE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 15px 40px; /* Adjust padding for mobile header */
+  }
 
-.container ul {
-  padding-left: 1.5rem;
-  margin-top: 1rem;
-}
+  .container h1 {
+    font-size: 2rem; /* Shrink title */
+  }
 
-.container li {
-  margin-bottom: 1rem;
-}
-
-.container strong {
-  color: #F7931A;
+  .faqList, .grid {
+    grid-template-columns: 1fr; /* Force 1 column on phones */
+  }
 }

@@ -135,12 +135,17 @@ p {
 
 /* --- ROADMAP IMAGE FIX --- */
 .roadmapImage {
-  width: 100%;         /* Takes full width of container */
-  max-width: 800px;    /* Stops at 800px on desktop */
-  height: auto;        /* Maintains aspect ratio */
+  display: block;
+  width: auto;          /* Let the constraints decide width */
+  max-width: 1000px;    /* Desktop Cap */
+  height: auto;
   border-radius: 10px;
-  display: block;      /* Prevents weird inline gaps */
-  margin: 0 auto;      /* Centers the image */
+  margin: 0 auto;
+  
+  /* CRITICAL MOBILE FIX: */
+  /* This ensures the image is NEVER wider than the phone screen */
+  max-width: 90vw !important; 
+  object-fit: contain;
 }
 
 /* --- CAROUSEL (SLIDESHOW) FIX --- */
