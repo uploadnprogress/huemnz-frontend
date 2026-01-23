@@ -13,16 +13,20 @@ function VisionPage() {
       <h1>The Huemnz Vision</h1>
       <p className={styles.subtitle}>Building the Foundational Trust Layer for the Next Generation of the Internet</p>
       
-      <div className={styles.content}>
-        <div>
-          <h2>Executive Summary</h2>
+      {/* UPDATED: Uses the Grid Layout */}
+      <div className={styles.grid}>
+        
+        {/* UPDATED: Wrapped in .card for Brand Blue background */}
+        {/* UPDATED: Changed h2 to h3 to get the Brand Orange text color */}
+        <div className={styles.card}>
+          <h3>Executive Summary</h3>
           <p>
             The promise of Web3—decentralized ownership, transparent systems, and user sovereignty—is fundamentally constrained by a single, unsolved problem: the absence of a reliable and private identity layer. Huemnz is a Layer 1 protocol built on Polkadot, designed to solve this problem by creating a new foundation for on-chain trust through a synergistic combination of one-time identity verification (KYC) and non-transferable Soul-Bound Tokens (SBTs).
           </p>
         </div>
 
-        <div>
-          <h2>1. The Problem: Digital Frailty</h2>
+        <div className={styles.card}>
+          <h3>1. The Problem: Digital Frailty</h3>
           <p>
             Anonymity, while a powerful feature, has created an environment of "digital frailty" where bad actors can thrive. This systemic weakness hinders mainstream adoption and erodes trust.
           </p>
@@ -33,15 +37,15 @@ function VisionPage() {
           </ul>
         </div>
 
-        <div>
-          <h2>2. The Bedrock: Beyond Smart Contracts</h2>
+        <div className={styles.card}>
+          <h3>2. The Bedrock: Beyond Smart Contracts</h3>
           <p>
             Most projects are tenants on rented land. HueMn is building the bedrock. We are utilizing the <strong>Polkadot SDK (Substrate)</strong> to launch a Sovereign Layer 1 blockchain. By utilizing Polkadot as a Layer 0 security provider, we inherit multi-billion dollar shared security while maintaining 100% control over our runtime logic.
           </p>
         </div>
 
-        <div>
-          <h2>3. The Identity Stack: HDSBT & Pallets</h2>
+        <div className={styles.card}>
+          <h3>3. The Identity Stack: HDSBT & Pallets</h3>
           <p>Our "Proof of Personhood" is built into the chain's core through custom Substrate Pallets:</p>
           <ul>
             <li><strong>The HDSBT Pallet:</strong> A custom non-transferable token standard the HueMn Digital Soulbound Token. Your HDSBT is anchored to your on-chain identity and cannot be traded or stolen.</li>
@@ -49,8 +53,8 @@ function VisionPage() {
           </ul>
         </div>
 
-        <div>
-          <h2>4. The Ecosystem Flywheel</h2>
+        <div className={styles.card}>
+          <h3>4. The Ecosystem Flywheel</h3>
           <p>
             With a foundation of trust, we build the rails for a verified creator economy where bots are mathematically impossible and gas fees are stable.
           </p>
