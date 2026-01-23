@@ -58,7 +58,7 @@ p {
 }
 
 .missionCard {
-  background: rgba(255, 255, 255, 0.05);
+  background-color: #021c29; /* FIXED: Brand Blue */
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 12px;
@@ -69,7 +69,8 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px auto; /* Centers cards on mobile */
+  margin: 10px auto;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Added depth */
 }
 
 /* --- TEAM (FOUNDER) GRID --- */

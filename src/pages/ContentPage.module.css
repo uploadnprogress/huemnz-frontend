@@ -22,29 +22,24 @@
   text-transform: uppercase;
 }
 
-/* --- THE GRID LAYOUT (Copied from Home Page Logic) --- */
+/* --- THE GRID LAYOUT --- */
 .faqList, .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Auto-responsive columns */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   width: 100%;
 }
 
-/* --- THE CARD STYLE (Copied from Home Page Logic) --- */
+/* --- THE CARD STYLE --- */
 .faqItem, .card {
-  background: rgba(255, 255, 255, 0.05); /* Glass effect */
+  background-color: #021c29; /* FIXED: Brand Blue */
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.faqItem:hover, .card:hover {
-  transform: translateY(-5px);
-  border-color: #F7931A; /* Orange border on hover */
+  /* Removed hover transitions so it doesn't look clickable */
 }
 
 /* QUESTIONS / TITLES */
@@ -68,14 +63,14 @@
 /* --- MOBILE ADJUSTMENTS --- */
 @media (max-width: 768px) {
   .container {
-    padding: 100px 15px 40px; /* Adjust padding for mobile header */
+    padding: 100px 15px 40px;
   }
 
   .container h1 {
-    font-size: 2rem; /* Shrink title */
+    font-size: 2rem;
   }
 
   .faqList, .grid {
-    grid-template-columns: 1fr; /* Force 1 column on phones */
+    grid-template-columns: 1fr;
   }
 }
