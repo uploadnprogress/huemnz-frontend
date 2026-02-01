@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa'; 
 import logoImg from '../assets/Huemnz_Logo.jpg'; 
@@ -8,6 +8,26 @@ const Header = ({ onConnect, walletAddress }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // 1. Create a reference to the menu HTML element
+  const menuRef = useRef(null);
+
+  // 2. Add "Click Outside" Listener
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // If menu is open, and the click is NOT inside the menu or the hamburger icon
+      if (isMenuOpen && menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    // Attach listener to the whole document
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Clean up listener when component unmounts
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   const handleLogoClick = () => {
     if (location.pathname === '/home') {
@@ -48,15 +68,15 @@ const Header = ({ onConnect, walletAddress }) => {
 
       {/* MOBILE MENU DRAWER */}
       {isMenuOpen && (
-        <div className={styles.mobileMenu}>
+        // 3. Attach the ref here so we know where the menu "boundary" is
+        <div className={styles.mobileMenu} ref={menuRef}>
           <button className={styles.mobileBtn} onClick={() => handleNavClick('/about')}>About</button>
           <button className={styles.mobileBtn} onClick={() => handleNavClick('/vision')}>Vision</button>
           <button className={styles.mobileBtn} onClick={() => handleNavClick('/faq')}>FAQ</button>
           <button className={`${styles.mobileBtn} ${styles.disabledMobileBtn}`} disabled>Mint (Soon)</button>
           <button className={styles.mobileBtn} onClick={() => handleNavClick('/allowlist')}>Allowlist Game</button>
           
-          {/* RESTORED CONNECT WALLET BUTTON */}
-          <button className={styles.mobileBtn} onClick={onConnect}>
+          <button className={styles.mobileBtn} onClick={() => { onConnect(); setIsMenuOpen(false); }}>
              {walletAddress ? 'Wallet Connected' : 'Connect Wallet'}
           </button>
         </div>
